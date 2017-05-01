@@ -36,8 +36,13 @@ Documentation here a Work In Progress
 * Resolutions are meant to be a single course and not ongoing. There will be a lot of data in those objects, and won't be easy to query across multiple.
     * If the core concept is viewing a single Resolution at a time we're fine
     * This structure leaves room for multiple runs of single ResolutionProgress 
-        
 
+## Deployment
+
+1. Do something like `ln -s /home/<user>/NewYearsResolutionsSecrets secrets` where a clone of [NewYearsResolutionsSecrets](https://github.com/KevinJain/NewYearsResolutionsSecrets)
+1. Use `resources/bin/*` to deploy to stage / production
+1. Think about DB migrations as needed
+    1. TODO later: Automate this
 
 # Original Description
 
