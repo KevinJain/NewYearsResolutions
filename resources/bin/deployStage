@@ -1,0 +1,18 @@
+#!/bin/bash
+DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
+ROOT_REPO_DIR=$(dirname $(dirname $DIR))
+SETTINGS_PATH="${ROOT_REPO_DIR}/secrets/settings.stage.json"
+DEPLOY_HOSTNAME="us-east-1.galaxy-deploy.meteor.com"
+DEPLOY_TO_URL="stage.12weekplans.com"
+METEOR_WHO=$(meteor whoami)
+METEOR_DEPLOY_USER="kevinjainit"
+
+if [ "$METEOR_WHO" != "$METEOR_DEPLOY_USER" ]
+then
+	echo "Please login with user $METEOR_DEPLOY_USER"
+	meteor logout
+	meteor login
+fi
+
+echo "Deploying on $DEPLOY_HOSTNAME to $DEPLOY_TO_URL"
+DEPLOY_HOSTNAME=$DEPLOY_HOSTNAME meteor deploy $DEPLOY_TO_URL --settings $SETTINGS_PATH
