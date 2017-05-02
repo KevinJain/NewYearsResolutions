@@ -12,15 +12,15 @@ Documentation here a Work In Progress
                      ||
                      ||
                     \  /
-                   Users (With indirect links can have many teams and many ResolutionProgress')
+                   Users (With indirect links can have many teams and many ResolutionLogs')
                     / \
                      |
                      |
-            ResolutionProgress (Per Entry: One User, One ResolutionPlan)
+            ResolutionLogs (Per Entry: One User, One ResolutionPlan)
                      |
                      |
                     \ /
-             ResolutionPlans (With link can have many ResolutionProgress')
+             ResolutionPlans (With link can have many ResolutionLogs')
 ```
 
 **High level scaling thoughts**
@@ -35,7 +35,7 @@ Documentation here a Work In Progress
 * Can always do caching when we need to improve performance, but trying to optomize for likely queries as much as we can now
 * Resolutions are meant to be a single course and not ongoing. There will be a lot of data in those objects, and won't be easy to query across multiple.
     * If the core concept is viewing a single Resolution at a time we're fine
-    * This structure leaves room for multiple runs of single ResolutionProgress 
+    * This structure leaves room for multiple runs of single ResolutionLogs
 
 ## Deployment
 
