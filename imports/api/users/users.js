@@ -9,6 +9,7 @@ const User = Class.create({
 		_id: {
 			type: Mongo.ObjectID
 		},
+		teams: [Mongo.ObjectID],
 		firstName: {
 			type: String,
 			validators: [
