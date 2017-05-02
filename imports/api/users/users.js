@@ -10,6 +10,11 @@ const User = Class.create({
 			type: Mongo.ObjectID
 		},
 		teams: [Mongo.ObjectID],
+		planner: {
+			// If the user can create ResolutionPlans
+			// TODO: Think through / migrate this to a roles package?
+			type: Boolean
+		},
 		firstName: {
 			type: String,
 			validators: [
