@@ -79,6 +79,13 @@ const User = Class.create({
 			// TODO: * Think through all states?
 			// TODO: * Think through international requirements?
 		},
+		passportNumber: {
+			type: Number
+			// TODO: Think through / research data form
+			// TODO: * Look at US standards?
+			// TODO: * Look through international standards?
+			// TODO: * Add validation as needed
+		},
 
 		/// Automatic
 		createdAt: Date,
