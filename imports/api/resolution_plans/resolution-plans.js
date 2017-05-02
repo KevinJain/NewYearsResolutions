@@ -40,7 +40,7 @@ const Task = Class.create({
 })
 
 const ResolutionPlans = new Mongo.Collection('ResolutionPlans')
-const ResolutionPlans = Class.create({
+const ResolutionPlan = Class.create({
 	name: 'ResolutionPlan',
 	collection: ResolutionPlans,
 	fields: {

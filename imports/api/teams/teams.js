@@ -1,7 +1,7 @@
 import { Class } from 'meteor/jagi:astronomy';
 
 const Teams = new Mongo.Collection('Teams');
-const Teams = Class.create({
+const Team = Class.create({
 	name: 'Team',
 	collection: Teams,
 	fields: {
