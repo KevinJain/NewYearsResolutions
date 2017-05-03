@@ -4,17 +4,21 @@ export const User = Class.create({
 	name: 'User',
 	collection: Meteor.users,
 	fields: {
-		/// Required
-		// Default Meteor feidls
-		_id: Mongo.ObjectID,
+		/// Default Meteor feidls
+		_id: String, // TODO
 		emails: [Object],
 		services: Object,
-		teams: [Mongo.ObjectID],
 
+		/// Required
+		teams: {
+			type: [String],
+			default: () => []
+		},
 		planner: {
 			// If the user can create ResolutionPlans
 			// TODO: Think through / migrate this to a roles package?
-			type: Boolean
+			type: Boolean,
+			default: () => false
 		},
 		// TODO: Move a bunch of fields into a 'Profile' sub-object?
 		// TODO: * Then require the population of indivual fields as full set?
@@ -61,8 +65,28 @@ export const User = Class.create({
 		*/
 
 		/// Optional
+		stripeSubscriptionId: {
+			type: String,
+			optional: true,
+			validators: [
+				{
+					type: 'string'
+				},
+				// Length expected to be 18
+				// * Giving some wiggle room just in case API changes a little
+				{
+					type: 'minLength',
+					param: 10
+				},
+				{
+					type: 'maxLength',
+					param: 30
+				}
+			]
+		},
 		ssn: {
 			type: Number,
+			optional: true,
 			validators: [
 				{
 					type: 'number',
@@ -80,13 +104,15 @@ export const User = Class.create({
 			// TODO: Think through international requirements?
 		},
 		driverLicenceNumber: {
-			type: String
+			type: String,
+			optional: true
 			// TODO: Add validation
 			// TODO: * Think through all states?
 			// TODO: * Think through international requirements?
 		},
 		passportNumber: {
-			type: Number
+			type: Number,
+			optional: true
 			// TODO: Think through / research data form
 			// TODO: * Look at US standards?
 			// TODO: * Look through international standards?
@@ -96,7 +122,6 @@ export const User = Class.create({
 		/// Automatic
 		createdAt: Date,
 		updatedAt: Date
-		// TODO: Add field to connect with Stripe?
 	},
 	behaviors: {
 		timestamp: {
