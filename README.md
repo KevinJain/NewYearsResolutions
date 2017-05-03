@@ -44,6 +44,12 @@ Documentation here a Work In Progress
 1. Think about DB migrations as needed
     1. TODO later: Automate this
 
+## Testing
+
+### Stripe
+
+https://stripe.com/docs/testing#cards
+
 # Original Description
 
 [![Circle CI](https://circleci.com/gh/meteor/todos/tree/react.svg?style=svg)](https://circleci.com/gh/meteor/todos/tree/react)

@@ -1,3 +1,4 @@
+/* Globals Stripe */
 import React from 'react';
 import { Link } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
@@ -18,14 +19,15 @@ export default class JoinPage extends BaseComponent {
 	const expirationMonth = this.ccexpmonth.value;
 	const expirationYear = this.ccexpyear.value;
 	const cvc = this.cccvc.value;
-	// TODO: Remove these comments, refactor, etc.
-	/*
-	console.log(number)
-	console.log(expirationMonth)
-	console.log(expirationYear)
-	console.log(cvc)
-	*/
-	alert('submitted')
+	Stripe.card.createToken({
+		number,
+		cvc,
+		exp_month: expirationMonth,
+		exp_year: expirationYear
+	}, (status, response) => {
+		stripeToken = response.id
+		Meteor.call('stripe.subscription.create', stripeToken);
+	})
     event.preventDefault();
 	/*
     const email = this.email.value;
@@ -76,9 +78,6 @@ export default class JoinPage extends BaseComponent {
         <p className="subtitle-subscribe">
           {i18n.__('pages.subscribePageJoin.reason')}
         </p>
-        <p className="subtitle-subscribe">
-			{stripePublishableKey}
-		</p>
         <form onSubmit={this.onSubmit}>
           <div className="list-errors">
             {errorMessages.map(msg => (
