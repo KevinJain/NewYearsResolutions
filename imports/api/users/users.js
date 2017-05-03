@@ -1,20 +1,25 @@
 import { Class } from 'meteor/jagi:astronomy';
 
-const Users = new Mongo.Collection('Users');
-const User = Class.create({
+export const User = Class.create({
 	name: 'User',
-	collection: Users,
+	collection: Meteor.users,
 	fields: {
 		/// Required
-		_id: {
-			type: Mongo.ObjectID
-		},
+		// Default Meteor feidls
+		_id: Mongo.ObjectID,
+		emails: [Object],
+		services: Object,
 		teams: [Mongo.ObjectID],
+
 		planner: {
 			// If the user can create ResolutionPlans
 			// TODO: Think through / migrate this to a roles package?
 			type: Boolean
 		},
+		// TODO: Move a bunch of fields into a 'Profile' sub-object?
+		// TODO: * Then require the population of indivual fields as full set?
+		// TODO: * Note: Commented out to develop without required fields
+		/*
 		firstName: {
 			type: String,
 			validators: [
@@ -53,13 +58,14 @@ const User = Class.create({
 				}
 			]
 		},
+		*/
 
 		/// Optional
 		ssn: {
 			type: Number,
 			validators: [
 				{
-					type: 'Number',
+					type: 'number',
 					param: 10
 				},
 				{
