@@ -36,6 +36,18 @@
     }
   },
   "pages": {
+	"subscribePageJoin": {
+	  "subscribe": "Subscribe.",
+      "emailRequired": "Email required",
+      "passwordRequired": "Password required",
+      "passwordConfirm": "Please confirm your password",
+      "joinReason": "Joining allows you to make private lists",
+      "yourEmail": "Your Email",
+      "password": "Password",
+      "confirmPassword": "Confirm Password",
+      "joinNow": "Join Now",
+      "haveAccountSignIn": "Have an account? Sign in"
+	},
     "authPageJoin": {
       "emailRequired": "Email required",
       "passwordRequired": "Password required",
