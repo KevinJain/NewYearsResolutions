@@ -56,6 +56,7 @@ export default class JoinPage extends BaseComponent {
     const { errors } = this.state;
     const errorMessages = Object.keys(errors).map(key => errors[key]);
     const errorClass = key => errors[key] && 'error';
+	const stripePublishableKey = Meteor.settings.public.stripe.publishable_key;
 
     const content = (
       <div className="wrapper-subscribe">
@@ -65,6 +66,9 @@ export default class JoinPage extends BaseComponent {
         <p className="subtitle-subscribe">
           {i18n.__('pages.subscribePageJoin.joinReason')}
         </p>
+        <p className="subtitle-subscribe">
+			{stripePublishableKey}
+		</p>
         <form onSubmit={this.onSubmit}>
           <div className="list-errors">
             {errorMessages.map(msg => (
