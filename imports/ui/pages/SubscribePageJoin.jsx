@@ -14,10 +14,20 @@ export default class JoinPage extends BaseComponent {
   }
 
   onSubmit(event) {
-	console.log(event)
-	alert('submitted')
+	const number = this.ccnumber.value;
+	const expirationMonth = this.ccexpmonth.value;
+	const expirationYear = this.ccexpyear.value;
+	const cvc = this.cccvc.value;
+	// TODO: Remove these comments, refactor, etc.
 	/*
+	console.log(number)
+	console.log(expirationMonth)
+	console.log(expirationYear)
+	console.log(cvc)
+	*/
+	alert('submitted')
     event.preventDefault();
+	/*
     const email = this.email.value;
     const password = this.password.value;
     const confirm = this.confirm.value;
@@ -64,7 +74,7 @@ export default class JoinPage extends BaseComponent {
           {i18n.__('pages.subscribePageJoin.subscribe')}
         </h1>
         <p className="subtitle-subscribe">
-          {i18n.__('pages.subscribePageJoin.joinReason')}
+          {i18n.__('pages.subscribePageJoin.reason')}
         </p>
         <p className="subtitle-subscribe">
 			{stripePublishableKey}
@@ -75,44 +85,40 @@ export default class JoinPage extends BaseComponent {
               <div className="list-item" key={msg}>{msg}</div>
             ))}
           </div>
-          <div className={`input-symbol ${errorClass('email')}`}>
+          <div className={`input-symbol ${errorClass('ccnumber')}`}>
             <input
-              type="email"
-              name="email"
-              ref={(c) => { this.email = c; }}
-              placeholder={i18n.__('pages.subscribePageJoin.yourEmail')}
-            />
-            <span
-              className="icon-email"
-              title={i18n.__('pages.subscribePageJoin.yourEmail')}
+			  type="text"
+              name="ccnumber"
+              ref={(c) => { this.ccnumber= c; }}
+              placeholder={i18n.__('pages.subscribePageJoin.ccNumber')}
             />
           </div>
-          <div className={`input-symbol ${errorClass('password')}`}>
+          <div className={`input-symbol ${errorClass('ccexpmonth')}`}>
             <input
-              type="password"
-              name="password"
-              ref={(c) => { this.password = c; }}
-              placeholder={i18n.__('pages.subscribePageJoin.password')}
-            />
-            <span
-              className="icon-lock"
-              title={i18n.__('pages.subscribePageJoin.password')}
+			  type="text"
+              name="ccexpmonth"
+              ref={(c) => { this.ccexpmonth= c; }}
+              placeholder={i18n.__('pages.subscribePageJoin.ccExpMonth')}
             />
           </div>
-          <div className={`input-symbol ${errorClass('confirm')}`}>
+          <div className={`input-symbol ${errorClass('ccexpyear')}`}>
             <input
-              type="password"
-              name="confirm"
-              ref={(c) => { this.confirm = c; }}
-              placeholder={i18n.__('pages.subscribePageJoin.confirmPassword')}
+			  type="text"
+              name="ccexpyear"
+              ref={(c) => { this.ccexpyear= c; }}
+              placeholder={i18n.__('pages.subscribePageJoin.ccExpYear')}
             />
-            <span
-              className="icon-lock"
-              title={i18n.__('pages.subscribePageJoin.confirmPassword')}
+          </div>
+          <div className={`input-symbol ${errorClass('cccvc')}`}>
+            <input
+			  type="text"
+              name="cccvc"
+              ref={(c) => { this.cccvc= c; }}
+              placeholder={i18n.__('pages.subscribePageJoin.ccCvc')}
             />
           </div>
           <button type="submit" className="btn-primary">
-            {i18n.__('pages.subscribePageJoin.joinNow')}
+            {i18n.__('pages.subscribePageJoin.subscribeNow')}
           </button>
         </form>
       </div>

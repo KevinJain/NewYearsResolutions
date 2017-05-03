@@ -38,15 +38,12 @@
   "pages": {
 	"subscribePageJoin": {
 	  "subscribe": "Subscribe.",
-      "emailRequired": "Email required",
-      "passwordRequired": "Password required",
-      "passwordConfirm": "Please confirm your password",
-      "joinReason": "Joining allows you to make private lists",
-      "yourEmail": "Your Email",
-      "password": "Password",
-      "confirmPassword": "Confirm Password",
-      "joinNow": "Join Now",
-      "haveAccountSignIn": "Have an account? Sign in"
+      "reason": "Acheive your goals for $7/month!",
+	  "ccNumber": "Credit Card Number",
+	  "subscribeNow": "Subscribe now",
+	  "ccExpMonth": "Credit Card Expiration Month (e.g;; 12)",
+	  "ccExpYear": "Credit Card Expiration Year (e.g;; 2025)",
+	  "ccCvc": "Credit Card Security Code (e.g; 123)"
 	},
     "authPageJoin": {
       "emailRequired": "Email required",
