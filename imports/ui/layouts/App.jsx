@@ -1,5 +1,6 @@
 import React from 'react';
 import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
+import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session'; // XXX: SESSION
 import { Lists } from '../../api/lists/lists.js';
@@ -80,6 +81,14 @@ export default class App extends React.Component {
         <section id="menu">
           <LanguageToggle />
           <UserMenu user={user} logout={this.logout} />
+			<Link
+				to={`/subscribe-join/`}
+				title="Subscribe-join Concept Proof"
+				className="list-todo"
+				activeClassName="active"
+			>
+				Subscribe-join Concept Proof
+			</Link>
           <ListList lists={lists} />
         </section>
         {showConnectionIssue && !connected
