@@ -31,8 +31,9 @@ export default class JoinPage extends BaseComponent {
 		stripeToken = response.id
 		Meteor.call('stripe.subscription.create', stripeToken, (err, res) => {
 			if(err) {
+				console.log(err)
 				// TODO: Add real error handling if bad value returned from Meteor?
-				alert('Error subscribing')
+				alert('Error subscribing, see console')
 			} else {
 				// TODO: Add in real flow here / adjust form / etc as needed
 				alert('Subscription successful')
