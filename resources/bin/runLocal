@@ -2,6 +2,6 @@
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_REPO_DIR=$(dirname $(dirname $DIR))
 SETTINGS_PATH="${ROOT_REPO_DIR}/secrets/settings.local.json"
-ROOT_URL="https://stage.12weekplans.com"
+ROOT_URL="http://12weekplans.loc:3000"
 
 ROOT_URL=$ROOT_URL meteor --settings $SETTINGS_PATH
