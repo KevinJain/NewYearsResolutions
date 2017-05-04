@@ -3,7 +3,7 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_REPO_DIR=$(dirname $(dirname $DIR))
 SETTINGS_PATH="${ROOT_REPO_DIR}/secrets/settings.production.json"
 DEPLOY_HOSTNAME="us-east-1.galaxy-deploy.meteor.com"
-DEPLOY_TO_URL="https://www.12weekplans.com"
+DEPLOY_TO_URL="http://www.12weekplans.com"
 METEOR_DEPLOY_USER="kevinjainit"
 
 read -r -p "Are you sure you want to deploy to production? Type 'YES' to continue. " response
