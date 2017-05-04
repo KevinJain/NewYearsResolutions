@@ -31,10 +31,14 @@ export default class App extends React.Component {
   }
 
   componentWillReceiveProps({ loading, children }) {
-    // redirect / to a list once lists are ready
+	// redirect / somewhere once data is ready
     if (!loading && !children) {
-      const list = Lists.findOne();
-      this.context.router.replace(`/lists/${list._id}`);
+		const user = Meteor.user();
+		let redirectTo = '/join'
+		if (user) {
+			redirectTo = '/subscribe-join'
+		}
+		this.context.router.replace(redirectTo)
     }
   }
 
