@@ -83,7 +83,6 @@ export default class App extends React.Component {
     return (
       <div id="container" className={menuOpen ? 'menu-open' : ''}>
         <section id="menu">
-          <LanguageToggle />
           <UserMenu user={user} logout={this.logout} />
 			<Link
 				to={`/subscribe-join/`}
@@ -93,7 +92,6 @@ export default class App extends React.Component {
 			>
 				Subscribe-join Concept Proof
 			</Link>
-          <ListList lists={lists} />
         </section>
         {showConnectionIssue && !connected
           ? <ConnectionNotification />
