@@ -6,10 +6,10 @@
 
 # meteor libraries
 meteor-base@1.0.4
-ecmascript@0.7.2
+ecmascript@0.7.3
 es5-shim@4.6.15
 check@1.2.5
-tracker@1.1.2
+tracker@1.1.3
 session@1.1.7
 
 # standard libraries
@@ -22,7 +22,7 @@ static-html@1.1.12_1
 react-meteor-data
 
 # data
-mongo@1.1.16
+mongo@1.1.17
 aldeed:simple-schema
 aldeed:collection2
 dburles:collection-helpers
@@ -34,7 +34,7 @@ mdg:validation-error
 universe:i18n
 
 # accounts
-accounts-password@1.3.5
+accounts-password@1.3.6
 
 # mobile
 crosswalk@1.7.1
