@@ -61,6 +61,7 @@ export default class JoinPage extends BaseComponent {
         <p className="subtitle-auth">
           {i18n.__('pages.authPageJoin.joinReason')}
         </p>
+		<iframe className="intro-video" src="https://www.youtube.com/embed/GPaYrhUZSYQ" frameBorder="0" allowFullScreen></iframe>
         <form onSubmit={this.onSubmit}>
           <div className="list-errors">
             {errorMessages.map(msg => (
