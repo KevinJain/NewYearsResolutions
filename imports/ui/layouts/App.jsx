@@ -36,7 +36,7 @@ export default class App extends React.Component {
 		const user = Meteor.user();
 		let redirectTo = '/join'
 		if (user) {
-			redirectTo = '/subscribe-join'
+			redirectTo = '/subscribe-basics'
 		}
 		this.context.router.replace(redirectTo)
     }
@@ -84,14 +84,6 @@ export default class App extends React.Component {
       <div id="container" className={menuOpen ? 'menu-open' : ''}>
         <section id="menu">
           <UserMenu user={user} logout={this.logout} />
-			<Link
-				to={`/subscribe-join/`}
-				title="Subscribe-join Concept Proof"
-				className="list-todo"
-				activeClassName="active"
-			>
-				Subscribe-join Concept Proof
-			</Link>
         </section>
         {showConnectionIssue && !connected
           ? <ConnectionNotification />

@@ -20,10 +20,7 @@ export const User = Class.create({
 			type: Boolean,
 			default: () => false
 		},
-		// TODO: Move a bunch of fields into a 'Profile' sub-object?
-		// TODO: * Then require the population of indivual fields as full set?
-		// TODO: * Note: Commented out to develop without required fields
-		/*
+
 		firstName: {
 			type: String,
 			validators: [
@@ -36,7 +33,7 @@ export const User = Class.create({
 				}
 			]
 		},
-		middleName: String,
+		// middleName: String,
 		lastName: {
 			type: String,
 			validators: [
@@ -62,7 +59,6 @@ export const User = Class.create({
 				}
 			]
 		},
-		*/
 
 		/// Optional
 		stripeSubscriptionId: {

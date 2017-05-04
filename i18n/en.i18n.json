@@ -36,6 +36,18 @@
     }
   },
   "pages": {
+	"subscribePageBasics": {
+	  "subscribe": "Tell us about yourself.",
+      "reason": "Let us know who you are",
+	  "firstName": "First Name",
+	  "lastName": "Last Name",
+	  "phone": "Phone Number",
+	  "optional": "The following fields are optional. We'd like you to let us know who you are so we're all commited to achieving together",
+	  "ssn": "Social Security Number",
+	  "driverLicenceNumber": "Drivers Licence Number",
+	  "passportNumber": "Passport Number",
+	  "continue": "Continue"
+	},
 	"subscribePageJoin": {
 	  "subscribe": "Subscribe.",
       "reason": "Acheive your goals for $7/month!",
