@@ -6,6 +6,7 @@ import i18n from 'meteor/universe:i18n';
 import BaseComponent from '../components/BaseComponent.jsx';
 
 import SubscribePage from './SubscribePage.jsx';
+import { User } from '../../api/users/users.js'
 
 export default class BasicsPage extends BaseComponent {
   constructor(props) {
@@ -16,35 +17,25 @@ export default class BasicsPage extends BaseComponent {
 
   onSubmit(event) {
     event.preventDefault();
-	alert('Submission received: TODO: Make this actually save');
-	this.context.router.replace('/subscribe-join')
-	/*
-	const number = this.ccnumber.value;
-	const expirationMonth = this.ccexpmonth.value;
-	const expirationYear = this.ccexpyear.value;
-	const cvc = this.cccvc.value;
-	Stripe.card.createToken({
-		number,
-		cvc,
-		exp_month: expirationMonth,
-		exp_year: expirationYear
-	}, (status, response) => {
-		// TODO: Add error handling bad return value from Stripe
-		// TODO: * Like bad cc, etc as can test with https://stripe.com/docs/testing#cards-responses
-
-		stripeToken = response.id
-		Meteor.call('stripe.subscription.create', stripeToken, (err, res) => {
-			if(err) {
-				// TODO: Add real error handling if bad value returned from Meteor?
-				alert('Error subscribing')
-			} else {
-				// TODO: Add in real flow here / adjust form / etc as needed
-				alert('Subscription successful')
-			}
-		});
-	})
-    event.preventDefault();
-	*/
+    const userBasics = {
+		firstName: this.firstname.value,
+		lastName: this.lastname.value,
+		phone: this.phone.value
+    }
+	Meteor.call('users.registration.saveBasics', userBasics, (err, res) => {
+		if (err) {
+			this.setState((prevState, props) => {
+				const errors = {}
+				// TODO: Make this display all errors (adjust server code too)
+				errors[err.details[0].name] = err.details[0].message
+				return {
+					errors
+				}
+			})
+		} else {
+			this.context.router.replace('/subscribe-join')
+		}
+	});
   }
 
   render() {

@@ -4,3 +4,4 @@ import '../../api/todos/methods.js';
 import '../../api/todos/server/publications.js';
 import '../../api/languages/methods.js';
 import '../../api/stripe.js';
+import '../../api/users/methods.js';
