@@ -82,13 +82,9 @@ export default class App extends React.Component {
 
     return (
       <div id="container" className={menuOpen ? 'menu-open' : ''}>
-        <section id="menu">
-          <UserMenu user={user} logout={this.logout} />
-        </section>
         {showConnectionIssue && !connected
           ? <ConnectionNotification />
           : null}
-        <div className="content-overlay" onClick={closeMenu} />
         <div id="content-container">
           <ReactCSSTransitionGroup
             transitionName="fade"
