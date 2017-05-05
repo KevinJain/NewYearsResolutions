@@ -8,11 +8,16 @@ const ProofType = Enum.create({
 	// 'IMAGE', 'VIDEO', 'AUDIO'
 })
 
-const Frequency = Enum.create({
-	name: 'Frequency',
-	identifiers: {
-		DAILY: 1,
-		WEEKLY: 7
+const TaskGroup = Class.create({
+	name: 'TaskGroup',
+	fields: {
+		title: {
+			type: String
+		},
+		orderStart: {
+			// TODO: Add validation here that Numbers are unique
+			type: Number
+		}
 	}
 })
 
@@ -20,6 +25,16 @@ const Task = Class.create({
 	name: 'Task',
 	// No collection attribute
 	fields: {
+		_id: {
+			type: String,
+			// TODO: Make this _id unique within a ResolutionPlan
+			// TODO: Autogenerate this _id
+			validators: [
+				{
+					type: 'required'
+				}
+			]
+		},
 		title: {
 			type: String,
 			validators: [
@@ -29,11 +44,20 @@ const Task = Class.create({
 				{
 					type: 'minLength',
 					param: 3
+				},
+				{
+					type: 'maxLength',
+					param: 140
 				}
 			]
 		},
 		description: {
 			type: String
+		},
+		order: {
+			type: Number
+			// TODO: Add auto-incrementing number here when a new task is added
+			// TODO: * Shoud increment to integer after largest in this particular ResolutionPlan
 		}
 	}
 })
@@ -70,7 +94,7 @@ const ResolutionPlan = Class.create({
 			type: 'Number',
 			// TODO: Add integer validation? Or Semver?
 			// TODO: * If semver will need minor version additions:
-			// TODO: ** Enforcement where possible like no removing or re-ordering steps, but allow adding
+			// TODO: ** Enforcement where possible like no removing or re-ordering tasks, but allow adding
 			// TODO: ** UI explaining non-breaking change
 			// TODO: * Allow version -1 for the current draft, but all other must be > 0?
 			default: () => -1
@@ -79,12 +103,31 @@ const ResolutionPlan = Class.create({
 			type: ProofType
 			default: () => ProofType.BOOLEAN
 		},
-		frequency: {
-			type: Frequency
-			default: () => Frequency.DAILY
+		daysPerWeekSuggestedTarget: {
+			type: Number,
+			default: () => 7,
+			validators: [
+				{
+					type: 'required'
+				},
+				{
+					type: 'gte',
+					param: 1
+				},
+				{
+					type: 'lte',
+					param: 7
+				}
+			]
 		},
-		taskSteps: {
+		// A bunch of tasks planned to be done in order for this resolution
+		tasks: {
 			type: [Task],
+			default: () => []
+		},
+		// Probably not used in MVP
+		taskGroups: {
+			type: [TaskGroup]
 			default: () => []
 		},
 		title: {
