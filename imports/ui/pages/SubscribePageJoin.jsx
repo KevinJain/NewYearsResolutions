@@ -25,8 +25,16 @@ export default class JoinPage extends BaseComponent {
 		exp_month: expirationMonth,
 		exp_year: expirationYear
 	}, (status, response) => {
-		// TODO: Add error handling bad return value from Stripe
-		// TODO: * Like bad cc, etc as can test with https://stripe.com/docs/testing#cards-responses
+		if (status !== 200) {
+			this.setState((prevState, props) => {
+				const errors = {}
+				errors.stripe = response.error.message;
+				return {
+					errors
+				}
+			})
+			return
+		}
 
 		stripeToken = response.id
 		Meteor.call('stripe.subscription.create', stripeToken, (err, res) => {
@@ -36,7 +44,7 @@ export default class JoinPage extends BaseComponent {
 				alert('Error subscribing, see console')
 			} else {
 				// TODO: Add in real flow here / adjust form / etc as needed
-				alert('Subscription successful')
+				alert('Subscription successful TODO: Redirect user somewhere')
 			}
 		});
 	})
