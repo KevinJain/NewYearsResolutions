@@ -126,5 +126,11 @@ export const User = Class.create({
 			hasUpdatedField: true,
 			updatedFieldName: 'updatedAt'
 		}
+	},
+	helpers: {
+		// Checks if the user has their basic information filled in or not
+		basicsFull() {
+			return Boolean(this.firstName && this.lastName && this.phone)
+		}
 	}
 })

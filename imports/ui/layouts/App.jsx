@@ -4,6 +4,7 @@ import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session'; // XXX: SESSION
 import { Lists } from '../../api/lists/lists.js';
+import { User } from '../../api/users/users.js';
 import UserMenu from '../components/UserMenu.jsx';
 import ListList from '../components/ListList.jsx';
 import LanguageToggle from '../components/LanguageToggle.jsx';
@@ -31,12 +32,17 @@ export default class App extends React.Component {
   }
 
   componentWillReceiveProps({ loading, children }) {
-	// redirect / somewhere once data is ready
+	// redirect somewhere once data is ready
     if (!loading && !children) {
-		const user = Meteor.user();
+		let user = Meteor.user();
 		let redirectTo = '/join'
 		if (user) {
-			redirectTo = '/subscribe-basics'
+			user = User.findOne(user._id)
+			if(user.basicsFull()) {
+				redirectTo = '/subscribe-join'
+			} else {
+				redirectTo = '/subscribe-basics'
+			}
 		}
 		this.context.router.replace(redirectTo)
     }
