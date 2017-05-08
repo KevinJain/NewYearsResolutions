@@ -1,5 +1,6 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
+import { Random } from 'meteor/random'
 
 const ProofType = Enum.create({
 	name: 'ProofType',
@@ -33,7 +34,9 @@ const Task = Class.create({
 				{
 					type: 'required'
 				}
-			]
+			],
+			// TODO: Ensure unique (within ResolutionPlan?) to avoid collisions
+			default: () => Random.id()
 		},
 		title: {
 			type: String,
@@ -80,6 +83,19 @@ const ResolutionPlan = Class.create({
 				}
 			]
 		},
+		title: {
+			type: String,
+			validators: [
+				{
+					type: 'minLength',
+					param: 3
+				},
+				{
+					type: 'required'
+				}
+			]
+		},
+
 		// A ResolutionLog depends on a particular version of a ResolutionPlan
 		// * ResolutionPlans may be drafted and updated
 		// TODO: Add validation only allow editing version -1
@@ -103,7 +119,7 @@ const ResolutionPlan = Class.create({
 			type: ProofType
 			default: () => ProofType.BOOLEAN
 		},
-		daysPerWeekSuggestedTarget: {
+		daysPerWeekSuggested: {
 			type: Number,
 			default: () => 7,
 			validators: [
@@ -129,18 +145,6 @@ const ResolutionPlan = Class.create({
 		taskGroups: {
 			type: [TaskGroup]
 			default: () => []
-		},
-		title: {
-			type: String,
-			validators: [
-				{
-					type: 'minLength',
-					param: 3
-				},
-				{
-					type: 'required'
-				}
-			]
 		},
 
 		/// Optional
