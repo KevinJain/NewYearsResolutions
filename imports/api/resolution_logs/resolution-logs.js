@@ -49,7 +49,7 @@ const CompletedTask = Class.create({
 	}
 })
 
-const ResolutionLogs = new Mongo.Collection('ResolutionLogs')
+export const ResolutionLogs = new Mongo.Collection('ResolutionLogs')
 export const ResolutionLog = Class.create({
 	name: 'ResolutionLog',
 	collection: ResolutionLogs,
@@ -68,7 +68,8 @@ export const ResolutionLog = Class.create({
 				{
 					type: 'required'
 				}
-			]
+			],
+			default: () => new Date()
 		},
 		/*
 		// Array of completed tasks, with this data structure some tasks may be skipped
@@ -85,7 +86,8 @@ export const ResolutionLog = Class.create({
 			// The ._id of the current task the user is on
 			// TODO: Make this auto-advance when a new task is completed
 			// TODO: * Do via a helper method 'completeStep'?
-			type: String
+			type: String,
+			optional: true
 		},
 		// Choosing to target our goals by day of week
 		// * Does not account for day of month or time of year
@@ -102,6 +104,73 @@ export const ResolutionLog = Class.create({
 		/// Automatic
 		createdAt: Date,
 		updatedAt: Date
+	},
+	helpers: {
+		populateDefaultTargeting(daysPerWeekSuggested) {
+			this.targetingMondays = false;
+			this.targetingTuesdays = false;
+			this.targetingWednesdays = false;
+			this.targetingThursdays = false;
+			this.targetingFridays = false;
+			this.targetingSaturdays = false;
+			this.targetingSundays = false;
+			switch(daysPerWeekSuggested) {
+				case 1:
+					this.targetingMondays = true;
+					break;
+				case 2:
+					this.targetingMondays = true;
+					this.targetingThursdays = true;
+					break;
+				case 3:
+					this.targetingMondays = true;
+					this.targetingWednesdays = true;
+					this.targetingFridays = true;
+					break;
+				case 4:
+					this.targetingMondays = true;
+					this.targetingTuesdays = true;
+					this.targetingThursdays = true;
+					this.targetingSaturdays = true;
+					break;
+				case 5:
+					this.targetingMondays = true;
+					this.targetingTuesdays = true;
+					this.targetingWednesdays = true;
+					this.targetingThursdays = true;
+					this.targetingFridays = true;
+					break;
+				case 6:
+					this.targetingMondays = true;
+					this.targetingTuesdays = true;
+					this.targetingWednesdays = true;
+					this.targetingThursdays = true;
+					this.targetingFridays = true;
+					this.targetingSaturdays = true;
+					break;
+				case 7:
+					this.targetingMondays = true;
+					this.targetingTuesdays = true;
+					this.targetingWednesdays = true;
+					this.targetingThursdays = true;
+					this.targetingFridays = true;
+					this.targetingSaturdays = true;
+					this.targetingSundays = true;
+					break;
+			}
+		}
+	},
+	indexes: {
+		// Only one version for each plan
+		userResolutionPlans: {
+			fields: {
+				user: 1,
+				resolutionPlan: 1
+			},
+			options: {
+				unique: true
+			}
+		}
 	},
 	behaviors: {
 		timestamp: {
