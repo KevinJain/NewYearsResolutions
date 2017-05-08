@@ -139,6 +139,10 @@ export default class JoinPage extends BaseComponent {
             {i18n.__('pages.subscribePageJoin.subscribeNow')}
           </button>
         </form>
+		<br />
+		<Link to="/dashboard" className="btn-secondary">
+			Skip
+		</Link>
       </div>
     );
 
