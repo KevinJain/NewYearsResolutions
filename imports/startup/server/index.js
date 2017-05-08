@@ -10,3 +10,7 @@ import './security.js';
 // This defines all the collections, publications and methods that the application provides
 // as an API to the client.
 import './register-api.js';
+
+// Add ResolutionPlans to the database from manual files
+// TODO: Remove this once we have a way for teacher to admin for real in UX
+import './import-resolution-plans.js'

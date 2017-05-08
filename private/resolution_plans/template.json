@@ -1,0 +1,22 @@
+{
+	"planId": "",
+	"title": "",
+	"version": "1.0.0",
+	"proofTypes": [
+		"BOOLEAN"
+	],
+	"daysPerWeekSuggested": ,
+	"tasks": [
+		{
+			"title":"",
+			"description":"",
+			"order":
+		},
+		{
+			"title":"",
+			"description":"",
+			"order":
+		}
+	],
+	"description":""
+}

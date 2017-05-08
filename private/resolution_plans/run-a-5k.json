@@ -1,0 +1,145 @@
+{
+	"planId": "run-a-5k",
+	"title": "Run a 5k (timed)",
+	"version": "1.0.0",
+	"proofTypes": [ 0 ],
+	"daysPerWeekSuggested": 3,
+	"tasks": [
+		{
+			"title":"Run 1 minute rest 1 minutes for 30 minutes",
+			"description":"",
+			"order": 1
+		},
+		{
+			"title":"Run 1 minute rest 1 minutes for 30 minutes",
+			"description":"",
+			"order": 2
+		},
+		{
+			"title":"Run 1 minute rest 1 minutes for 30 minutes",
+			"description":"",
+			"order": 3
+		},
+
+
+		{
+			"title":"Run 3 minutes rest 2 minutes for 30 minutes",
+			"description":"",
+			"order": 4
+		},
+		{
+			"title":"Run 3 minutes rest 2 minutes for 30 minutes",
+			"description":"",
+			"order": 5
+		},
+		{
+			"title":"Run 3 minutes rest 2 minutes for 30 minutes",
+			"description":"",
+			"order": 6
+		},
+
+
+		{
+			"title":"Run 3 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 7
+		},
+		{
+			"title":"Run 3 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 8
+		},
+		{
+			"title":"Run 3 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 9
+		},
+
+
+		{
+			"title":"Run 4 minutes rest 6 minutes for 30 minutes",
+			"description":"",
+			"order": 10
+		},
+		{
+			"title":"Run 4 minutes rest 6 minutes for 30 minutes",
+			"description":"",
+			"order": 11
+		},
+		{
+			"title":"Run 4 minutes rest 6 minutes for 30 minutes",
+			"description":"",
+			"order": 12
+		},
+
+
+		{
+			"title":"Run 6 minutes rest 4 minutes for 30 minutes",
+			"description":"",
+			"order": 13
+		},
+		{
+			"title":"Run 6 minutes rest 4 minutes for 30 minutes",
+			"description":"",
+			"order": 14
+		},
+		{
+			"title":"Run 6 minutes rest 4 minutes for 30 minutes",
+			"description":"",
+			"order": 15
+		},
+
+
+		{
+			"title":"Run 7 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 16
+		},
+		{
+			"title":"Run 7 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 17
+		},
+		{
+			"title":"Run 7 minutes rest 3 minutes for 30 minutes",
+			"description":"",
+			"order": 18
+		},
+
+
+		{
+			"title":"Run 8 minutes rest 2 minutes for 30 minutes",
+			"description":"",
+			"order": 19
+		},
+		{
+			"title":"Run 9 minutes rest 1 minutes for 30 minutes",
+			"description":"",
+			"order": 20
+		},
+		{
+			"title":"Run 14 minutes rest 1 minute for 30 minutes",
+			"description":"",
+			"order": 21
+		},
+
+
+		{
+			"title":"Run 8 minutes rest 2 minutes 3x",
+			"description":"",
+			"order": 22
+		},
+		{
+			"title":"Run 8 minutes rest 2 minutes 3x",
+			"description":"",
+			"order": 23
+		},
+		{
+			"title":"Run 30 minutes (5k!)",
+			"description":"",
+			"order": 24
+		}
+
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}

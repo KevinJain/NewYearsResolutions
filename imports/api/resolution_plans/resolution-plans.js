@@ -6,7 +6,7 @@ const ProofType = Enum.create({
 	name: 'ProofType',
 	identifiers: ['BOOLEAN']
 	// TODO: Add support for these proof types later
-	// 'IMAGE', 'VIDEO', 'AUDIO'
+	// 'IMAGE', 'AUDIO', 'VIDEO'
 })
 
 const TaskGroup = Class.create({
@@ -66,13 +66,13 @@ const Task = Class.create({
 })
 
 const ResolutionPlans = new Mongo.Collection('ResolutionPlans')
-const ResolutionPlan = Class.create({
+export const ResolutionPlan = Class.create({
 	name: 'ResolutionPlan',
 	collection: ResolutionPlans,
 	fields: {
 		/// Required
 		_id: {
-			type: Mongo.ObjectID
+			type: String
 		},
 		planId: {
 			// A plan identifier to Group together mulitple versions of the same plan
@@ -103,11 +103,12 @@ const ResolutionPlan = Class.create({
 		// TODO: * Add validation allow creating a newer version than latest?
 		// TODO: * Maybe can find semver package for this logic?
 		version: {
-			// For now any version update will be incompatable with previous
-			// Only show students ResolutionPlans
-			// * With version >= 0
-			// * Of the greatest version in a set of planId
-			type: 'Number',
+			// TODO: For now any version update will be incompatable with previous
+			// TODO: Only show students ResolutionPlans
+			// TODO: * With version >= 0
+			// TODO: * Of the greatest version in a set of planId
+			// TODO: Implement SemVar versioning
+			type: String,
 			// TODO: Add integer validation? Or Semver?
 			// TODO: * If semver will need minor version additions:
 			// TODO: ** Enforcement where possible like no removing or re-ordering tasks, but allow adding
@@ -116,7 +117,7 @@ const ResolutionPlan = Class.create({
 			default: () => -1
 		},
 		proofTypes: {
-			type: ProofType
+			type: [ ProofType ],
 			default: () => ProofType.BOOLEAN
 		},
 		daysPerWeekSuggested: {
@@ -143,7 +144,7 @@ const ResolutionPlan = Class.create({
 		},
 		// Probably not used in MVP
 		taskGroups: {
-			type: [TaskGroup]
+			type: [TaskGroup],
 			default: () => []
 		},
 
@@ -160,15 +161,15 @@ const ResolutionPlan = Class.create({
 	indexes: {
 		// Only one version for each plan
 		idVersions: {
-			fields: [
+			fields: {
 				planId: 1,
 				version: 1
-			],
+			},
 			options: {
 				unique: true
 			}
 		}
-	}
+	},
 	behaviors: {
 		timestamp: {
 			hasCreatedField: true,
