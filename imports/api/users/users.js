@@ -131,6 +131,11 @@ export const User = Class.create({
 		// Checks if the user has their basic information filled in or not
 		basicsFull() {
 			return Boolean(this.firstName && this.lastName && this.phone)
+		},
+		// TODO: Maybe make this and all calls to it do something smart
+		// TODO: * Like check if subscription is active via stripe API call
+		hasStripeSubscription() {
+			return !!this.stripeSubscriptionId
 		}
 	}
 })

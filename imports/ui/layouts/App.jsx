@@ -44,7 +44,10 @@ export default class App extends React.Component {
 		// Not logged in, point to join page
 		let redirectTo = '/join'
 		if (user) {
-			if (ResolutionLogsHelpers.userHas(user._id)) {
+			if (user.hasStripeSubscription()) {
+				// All done with subscription steps, redirect to their dashboard
+				redirectTo = '/dashboard';
+			} else if (ResolutionLogsHelpers.userHas(user._id)) {
 				// Has done step 2 of picking resolutions plans, do step 3 of credit card
 				redirectTo = '/subscribe-join'
 			} else if (user.basicsFull()) {

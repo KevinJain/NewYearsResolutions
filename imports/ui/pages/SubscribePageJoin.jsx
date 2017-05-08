@@ -43,8 +43,7 @@ export default class JoinPage extends BaseComponent {
 				// TODO: Add real error handling if bad value returned from Meteor?
 				alert('Error subscribing, see console')
 			} else {
-				// TODO: Add in real flow here / adjust form / etc as needed
-				alert('Subscription successful TODO: Redirect user somewhere')
+				this.context.router.replace('/dashboard')
 			}
 		});
 	})

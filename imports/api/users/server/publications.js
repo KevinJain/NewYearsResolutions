@@ -14,7 +14,8 @@ Meteor.publish("userData", function () {
 			fields: {
 				'firstName': 1,
 				'lastName': 1,
-				'phone': 1
+				'phone': 1,
+				'stripeSubscriptionId': 1
 			}
 		}
 	);
