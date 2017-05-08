@@ -5,6 +5,8 @@ import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session'; // XXX: SESSION
 import { Lists } from '../../api/lists/lists.js';
 import { User } from '../../api/users/users.js';
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
+import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
 import UserMenu from '../components/UserMenu.jsx';
 import ListList from '../components/ListList.jsx';
 import LanguageToggle from '../components/LanguageToggle.jsx';
@@ -35,12 +37,21 @@ export default class App extends React.Component {
 	// redirect somewhere once data is ready
     if (!loading && !children) {
 		let user = Meteor.user();
-		let redirectTo = '/join'
 		if (user) {
 			user = User.findOne(user._id)
-			if(user.basicsFull()) {
+		}
+
+		// Not logged in, point to join page
+		let redirectTo = '/join'
+		if (user) {
+			if (ResolutionLogsHelpers.userHas(user._id)) {
+				// Has done step 2 of picking resolutions plans, do step 3 of credit card
 				redirectTo = '/subscribe-join'
+			} else if (user.basicsFull()) {
+				// Has done step 1 of basics input, do step 2 of planning
+				redirectTo = '/subscribe-plans'
 			} else {
+				// Just started registration get basics
 				redirectTo = '/subscribe-basics'
 			}
 		}

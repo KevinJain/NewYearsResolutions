@@ -36,6 +36,11 @@
     }
   },
   "pages": {
+	"subscribePagePlans": {
+	  "pickPlans": "Pick & follow plan(s)",
+      "reason": "They help you acheive your goals",
+	  "continue": "Continue"
+	},
 	"subscribePageBasics": {
 	  "subscribe": "Tell us about yourself.",
       "reason": "Let us know who you are",

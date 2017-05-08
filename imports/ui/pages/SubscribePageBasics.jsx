@@ -33,7 +33,7 @@ export default class BasicsPage extends BaseComponent {
 				}
 			})
 		} else {
-			this.context.router.replace('/subscribe-join')
+			this.context.router.replace('/subscribe-plans')
 		}
 	});
   }

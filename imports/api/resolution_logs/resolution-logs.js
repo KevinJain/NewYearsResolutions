@@ -1,8 +1,7 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
 
-// TODO: Abstract this and re-use across ResolutionPlan
-const Proof = Enum.create({
+const Proof = Class.create({
 	name: 'Proof',
 	fields: {
 		boolean: {
@@ -51,7 +50,7 @@ const CompletedTask = Class.create({
 })
 
 const ResolutionLogs = new Mongo.Collection('ResolutionLogs')
-const ResolutionLog = Class.create({
+export const ResolutionLog = Class.create({
 	name: 'ResolutionLog',
 	collection: ResolutionLogs,
 	fields: {
@@ -71,6 +70,7 @@ const ResolutionLog = Class.create({
 				}
 			]
 		},
+		/*
 		// Array of completed tasks, with this data structure some tasks may be skipped
 		// * Though the UX may enforce tasks to not be skipped
 		completedTasks: {
@@ -80,6 +80,7 @@ const ResolutionLog = Class.create({
 			type: [CompletedTask],
 			default: () => []
 		},
+		*/
 		currentTask: {
 			// The ._id of the current task the user is on
 			// TODO: Make this auto-advance when a new task is completed
@@ -111,3 +112,17 @@ const ResolutionLog = Class.create({
 		}
 	}
 })
+
+// Helper methods not related to a specific ResolutionLog
+export const ResolutionLogsHelpers = {
+	// Checks if the user has chosen at least one plan already
+	// Doesn't check for archive status
+	userHas(userId) {
+		// TODO: Make this actually check if user has ResolutionLog entries
+		/*
+		console.log('checking if user has')
+		console.log(userId)
+		*/
+		return false
+	}
+}
