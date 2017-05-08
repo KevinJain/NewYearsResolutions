@@ -65,7 +65,7 @@ export default class App extends React.Component {
 
   logout() {
     Meteor.logout(() => {
-      this.context.router.replace('/')
+      this.context.router.replace('/signin')
     });
   }
 

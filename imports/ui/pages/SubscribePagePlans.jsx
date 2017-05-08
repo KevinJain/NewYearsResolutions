@@ -56,6 +56,10 @@ export default class PlansPage extends BaseComponent {
 
 	render() {
 		const user = Meteor.user()
+		if (!user) {
+			const loggingOutContent = <div>Logging out</div>
+			return <SubscribePage content={loggingOutContent} />;
+		}
 
 		const plans = ResolutionPlan.find()
 		const plansContent = plans.map((plan) => {
