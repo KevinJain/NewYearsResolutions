@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { User } from '../users.js';
 
 Meteor.publish("userData", function () {
+	if (!this.userId) return false;
 	return Meteor.users.find(
 		{
 			_id: this.userId

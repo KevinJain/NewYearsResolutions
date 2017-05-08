@@ -5,6 +5,7 @@ import { Meteor } from 'meteor/meteor';
 import { ResolutionLogs } from '../resolution-logs.js';
 
 Meteor.publish('resolutionLogsUser', function () {
+	if (!this.userId) return false;
 	return ResolutionLogs.find(
 		{
 			user: this.userId
