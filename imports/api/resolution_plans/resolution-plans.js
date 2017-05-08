@@ -65,7 +65,7 @@ const Task = Class.create({
 	}
 })
 
-const ResolutionPlans = new Mongo.Collection('ResolutionPlans')
+export const ResolutionPlans = new Mongo.Collection('ResolutionPlans')
 export const ResolutionPlan = Class.create({
 	name: 'ResolutionPlan',
 	collection: ResolutionPlans,
