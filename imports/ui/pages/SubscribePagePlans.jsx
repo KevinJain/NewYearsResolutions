@@ -15,6 +15,7 @@ export default class PlansPage extends BaseComponent {
 		super(props);
 		this.state = Object.assign(this.state, { selectingPlan: false });
 		this.onSubmit = this.onSubmit.bind(this);
+		this.togglePlan = this.togglePlan.bind(this);
 	}
 
 	onSubmit(event) {
