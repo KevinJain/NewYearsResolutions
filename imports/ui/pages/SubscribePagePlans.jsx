@@ -66,7 +66,7 @@ export default class PlansPage extends BaseComponent {
 				return (
 					<button
 						key={plan._id}
-						className="btn-primary"
+						className="btn-secondary"
 						onClick={(e) => this.togglePlan(e, plan, false)}>Unfollow plan: {plan.title}
 					</button>
 				)
@@ -74,7 +74,7 @@ export default class PlansPage extends BaseComponent {
 				return (
 					<button
 						key={plan._id}
-						className="btn-secondary"
+						className="btn-primary"
 						onClick={(e) => this.togglePlan(e, plan, true)}>Follow plan: {plan.title}
 					</button>
 				)
