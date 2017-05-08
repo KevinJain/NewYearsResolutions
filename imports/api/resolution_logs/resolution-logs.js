@@ -187,11 +187,7 @@ export const ResolutionLogsHelpers = {
 	// Checks if the user has chosen at least one plan already
 	// Doesn't check for archive status
 	userHas(userId) {
-		// TODO: Make this actually check if user has ResolutionLog entries
-		/*
-		console.log('checking if user has')
-		console.log(userId)
-		*/
-		return false
+		const res = ResolutionLog.findOne({user: userId})
+		return undefined !== res
 	}
 }
