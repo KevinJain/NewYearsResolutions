@@ -10,6 +10,7 @@ import AuthPageJoin from '../../ui/pages/AuthPageJoin.jsx';
 import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx';
 import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx';
 import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx';
+import DashboardPage from '../../ui/pages/DashboardPage.jsx';
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx';
 
 i18n.setLocale('en');
@@ -20,6 +21,7 @@ export const renderRoutes = () => (
       <Route path="lists/:id" component={ListPageContainer} />
       <Route path="signin" component={AuthPageSignIn} />
       <Route path="join" component={AuthPageJoin} />
+      <Route path="dashboard" component={DashboardPage} />
       <Route path="subscribe-basics" component={SubscribePageBasics} />
       <Route path="subscribe-plans" component={SubscribePagePlans} />
       <Route path="subscribe-join" component={SubscribePageJoin} />
