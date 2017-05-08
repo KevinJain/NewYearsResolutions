@@ -1,4 +1,3 @@
-/* Globals Stripe */
 import React from 'react';
 import { Link } from 'react-router';
 import { Accounts } from 'meteor/accounts-base';
@@ -42,7 +41,6 @@ export default class BasicsPage extends BaseComponent {
     const { errors } = this.state;
     const errorMessages = Object.keys(errors).map(key => errors[key]);
     const errorClass = key => errors[key] && 'error';
-	const stripePublishableKey = Meteor.settings.public.stripe.publishable_key;
 
     const content = (
       <div className="wrapper-subscribe">
