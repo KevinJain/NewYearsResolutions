@@ -1,5 +1,7 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
+import { ResolutionPlan } from '../resolution_plans/resolution-plans.js'
+import { _ } from 'lodash'
 
 const Proof = Class.create({
 	name: 'Proof',
@@ -158,6 +160,80 @@ export const ResolutionLog = Class.create({
 					this.targetingSundays = true;
 					break;
 			}
+		},
+
+		isTaskDay(date) {
+			switch(date.getDay()) {
+				case 0: return this.targetingSundays
+				case 1: return this.targetingMondays
+				case 2: return this.targetingTuesdays
+				case 3: return this.targetingWednesdays
+				case 4: return this.targetingThursdays
+				case 5: return this.targetingFridays
+				case 6: return this.targetingSaturdays
+			}
+		},
+		getPlannedTasksAfterCurrent() {
+			// Get tasks from ResolutionPlan & put them in order
+			const plan = ResolutionPlan.findOne(this.resolutionPlan)
+			let tasks = _.sortBy(plan.tasks, 'order')
+
+			// If no current task, we're at start
+			if (!this.currentTask) {
+				return tasks
+			}
+
+			// Return all those at and after current task
+			let found = false
+			return _.filter(
+				_.map(tasks, (task) => {
+					if(task._id === this.currentTask) {
+						found = true
+					}
+					return found ? task : false
+				})
+			)
+		},
+		// Gets upcoming tasks in the ResolutionPlan according to progress & setting
+		// in this ResolutionLog
+		// TODO: Document this method well?
+		// TODO: * Perhaps unit tests too?
+		// TODO: * It may end up very core to the application
+		getScheduledTasksBetween(start, end) {
+			// Sanity check state
+			check(start, Date)
+			check(end, Date)
+			check(this._id, String)
+			check(this.resolutionPlan, String)
+
+			// Grab the tasks to schedule
+			const tasks = this.getPlannedTasksAfterCurrent()
+
+			// TODO: Take this.startDate into account
+			// TODO: * Used for delayed start
+			// TODO: * Used for putting on hold
+
+			// Loop through all dates in range
+			const scheduledTasks = []
+			let curr = new Date(start.valueOf())
+			while((curr < end) && (tasks.length > 0)) {
+				// Grab a task if today is a do day
+				if (this.isTaskDay(curr)) {
+					const scheduledDate = new Date()
+					scheduledDate.setDate(curr.getDate())
+					scheduledDate.setHours(0,0,0,0);
+					scheduledTasks.push({
+						when: scheduledDate,
+						task: tasks.shift()
+					})
+				}
+
+				// Move to next date
+				const nextDate = curr.setDate(curr.getDate() + 1)
+				curr = new Date(nextDate)
+			}
+
+			return scheduledTasks
 		}
 	},
 	indexes: {

@@ -22,6 +22,19 @@ export default class DashboardPage extends BaseComponent {
 			const loggingOutContent = <div>Logging out</div>
 			return <DashboardPage content={loggingOutContent} />;
 		}
+		const logs = ResolutionLog.find({user: user._id})
+
+		const start = new Date()
+		start.setHours(0,0,0,0)
+		const end = new Date()
+		end.setHours(23,59,59,999)
+
+		logs.forEach((log) => {
+			console.log(`Tasks for: ${ResolutionPlan.findOne(log.resolutionPlan).title}`)
+			const tasks = log.getScheduledTasksBetween(start, end)
+			console.log(tasks)
+		})
+		alert('See the logs to tasks in date range found')
 
 		const content = <div>Placeholder</div>
 
