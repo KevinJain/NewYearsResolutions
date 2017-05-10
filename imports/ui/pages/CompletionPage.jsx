@@ -32,10 +32,8 @@ export default class CompletionPage extends BaseComponent {
 		}
 
 		// Get data
-		const resolutionLogId = this.props.params.resolutionLog
-		const log = ResolutionLog.findOne(resolutionLogId)
-		const resolutionPlanId = log.resolutionPlan
-		const plan = ResolutionPlan.findOne(resolutionPlanId)
+		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
+		const plan = ResolutionPlan.findOne(log.resolutionPlan)
 		const task = log.getTodaysScheduledTask()
 
 		// Setup
