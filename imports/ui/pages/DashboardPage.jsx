@@ -27,16 +27,17 @@ export default class DashboardPage extends BaseComponent {
 		let tasksContent = []
 		logs.forEach((log) => {
 			const task = log.getTodaysScheduledTask()
-			if (task) {
-				const linkTo = `/completion/${log._id}`
-				tasksContent.push(
-					<div className="task-wrapper" key={task._id}>
-						<Link to={linkTo} className="btn-primary">
-							{task.title}
-						</Link>
-					</div>
-				)
+			if (!task) {
+				return
 			}
+			const linkTo = `/completion/${log._id}`
+			tasksContent.push(
+				<div className="task-wrapper" key={task._id}>
+					<Link to={linkTo} className="btn-primary">
+						{task.title}
+					</Link>
+				</div>
+			)
 		})
 
 		const content = (
