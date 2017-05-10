@@ -35,7 +35,7 @@ export default class DashboardPage extends BaseComponent {
 			if (tasks.length > 0) {
 				const linkTo = `/completion/${log._id}`
 				tasksContent.push(
-					<div className="task-wrapper">
+					<div className="task-wrapper" key={tasks[0].task._id}>
 						<Link to={linkTo} className="btn-primary">
 							{tasks[0].task.title}
 						</Link>
