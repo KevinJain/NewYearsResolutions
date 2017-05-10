@@ -29,17 +29,30 @@ export default class DashboardPage extends BaseComponent {
 		const end = new Date()
 		end.setHours(23,59,59,999)
 
+		let tasksContent = []
 		logs.forEach((log) => {
-			console.log(`Tasks for: ${ResolutionPlan.findOne(log.resolutionPlan).title}`)
 			const tasks = log.getScheduledTasksBetween(start, end)
-			console.log(tasks)
+			if (tasks.length > 0) {
+				const linkTo = `/completion/${log.resolutionPlan}`
+				tasksContent.push(
+					<div className="task-wrapper">
+						<Link to={linkTo} className="btn-primary">
+							{tasks[0].task.title}
+						</Link>
+					</div>
+				)
+			}
 		})
-		alert('See the logs to tasks in date range found')
 
-		const content = <div>Placeholder</div>
+		const content = (
+			<div>
+				<h1>Placeholder</h1>
+				{tasksContent}
+			</div>
+		)
 
 		return (
-			<div className="page subscribe">
+			<div className="page dashboard">
 				<nav>
 					<MobileMenu />
 				</nav>
