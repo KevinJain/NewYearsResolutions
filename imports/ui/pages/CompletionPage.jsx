@@ -31,22 +31,16 @@ export default class CompletionPage extends BaseComponent {
 			return <CompletionPage content={loggingOutContent} />;
 		}
 
-		// Get the ResolutionLog & ResolutionPlan
+		// Get data
 		const resolutionLogId = this.props.params.resolutionLog
 		const log = ResolutionLog.findOne(resolutionLogId)
 		const resolutionPlanId = log.resolutionPlan
 		const plan = ResolutionPlan.findOne(resolutionPlanId)
-
-		// Get today's task
-		const start = new Date()
-		start.setHours(0,0,0,0)
-		const end = new Date()
-		end.setHours(23,59,59,999)
-		const tasks = log.getScheduledTasksBetween(start, end)
+		const task = log.getTodaysScheduledTask()
 
 		// Setup
-		const taskName = tasks[0].task.title
-		const taskDescription = tasks[0].task.description
+		const taskName = task.title
+		const taskDescription = task.description
 		const planTitle = plan.title
 
 		const content = (

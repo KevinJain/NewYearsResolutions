@@ -24,20 +24,15 @@ export default class DashboardPage extends BaseComponent {
 		}
 		const logs = ResolutionLog.find({user: user._id})
 
-		const start = new Date()
-		start.setHours(0,0,0,0)
-		const end = new Date()
-		end.setHours(23,59,59,999)
-
 		let tasksContent = []
 		logs.forEach((log) => {
-			const tasks = log.getScheduledTasksBetween(start, end)
-			if (tasks.length > 0) {
+			const task = log.getTodaysScheduledTask()
+			if (task) {
 				const linkTo = `/completion/${log._id}`
 				tasksContent.push(
-					<div className="task-wrapper" key={tasks[0].task._id}>
+					<div className="task-wrapper" key={task._id}>
 						<Link to={linkTo} className="btn-primary">
-							{tasks[0].task.title}
+							{task.title}
 						</Link>
 					</div>
 				)

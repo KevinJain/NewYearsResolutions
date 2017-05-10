@@ -234,6 +234,19 @@ export const ResolutionLog = Class.create({
 			}
 
 			return scheduledTasks
+		},
+
+		getTodaysScheduledTask() {
+			const start = new Date()
+			start.setHours(0,0,0,0)
+			const end = new Date()
+			end.setHours(23,59,59,999)
+			const tasks = this.getScheduledTasksBetween(start, end)
+
+			if (!tasks.length) {
+				return false
+			}
+			return tasks[0].task
 		}
 	},
 	indexes: {
