@@ -66,8 +66,7 @@ Meteor.methods({
 		})
 
 		// Mark `startDate` as tomorrow
-		// TODO: Take timezone into account property
-		const tomorrow = moment(completedAt).add(1, 'day').startOf('day').toDate()
+		const tomorrow = moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
 		log.startDate = tomorrow
 
 		// Mark currentTask to next

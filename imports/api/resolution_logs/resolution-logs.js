@@ -1,3 +1,4 @@
+import moment from 'moment'
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
@@ -69,13 +70,14 @@ export const ResolutionLog = Class.create({
 		// * To a patch / minor semver update?
 		resolutionPlan: String,
 		startDate: {
-			type: Date,
+			type: String,
+			// TODO: Add validation follows format YYYY-MM-DD
 			validators: [
 				{
 					type: 'required'
 				}
 			],
-			default: () => new Date()
+			default: () => moment().format('YYYY-MM-DD')
 		},
 		// Array of completed tasks, with this data structure some tasks may be skipped
 		// * Though the UX may enforce tasks to not be skipped
@@ -198,9 +200,11 @@ export const ResolutionLog = Class.create({
 		},
 		// Gets upcoming tasks in the ResolutionPlan according to progress & setting
 		// in this ResolutionLog
+		// TODO: Refactor this method for easier maitence
 		// TODO: Document this method well?
 		// TODO: * Perhaps unit tests too?
 		// TODO: * It may end up very core to the application
+		// TODO: Test this method works outside of the current day
 		getScheduledTasksBetween(start, end) {
 			// Sanity check state
 			check(start, Date)
@@ -211,16 +215,21 @@ export const ResolutionLog = Class.create({
 			// Grab the tasks to schedule
 			const tasks = this.getPlannedTasksAfterCurrent()
 
-			// TODO: Take this.startDate into account
-			// TODO: * Used for delayed start
-			// TODO: * Used for putting on hold
+			// Start of all tasks is later of today or specified start date
+			const today =  moment().startOf('day').toDate()
+			const logStartDate = moment(this.startDate).toDate()
+			const startDate = (logStartDate > today ? logStartDate : today)
 
-			// Loop through all dates in range
+			// Gather all scheduled tasks in range
+			// TODO: Optomize this algorithm, many many loops if long running resolution
 			const scheduledTasks = []
-			let curr = new Date(start.valueOf())
-			while((curr < end) && (tasks.length > 0)) {
-				// Grab a task if today is a do day
-				if (this.isTaskDay(curr)) {
+			let curr = new Date(startDate.valueOf())
+			while((curr <= end) && (tasks.length > 0)) {
+				// Grab a task if meant to include
+				if (
+					curr >= start			// Only include at and after range start
+					&& this.isTaskDay(curr)	// Only include those on enabled days of week
+				) {
 					const scheduledDate = new Date()
 					scheduledDate.setDate(curr.getDate())
 					scheduledDate.setHours(0,0,0,0);
@@ -230,7 +239,7 @@ export const ResolutionLog = Class.create({
 					})
 				}
 
-				// Move to next date
+				// Move to next day
 				const nextDate = curr.setDate(curr.getDate() + 1)
 				curr = new Date(nextDate)
 			}
