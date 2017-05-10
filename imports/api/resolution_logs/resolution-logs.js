@@ -27,12 +27,12 @@ const CompletedTask = Class.create({
 		// `ResolutionPlan`.`Task`.`_id`
 		_id: {
 			type: String,
-			// TODO: Make this _id unique within a ResolutionLog.completedTasks
 			validators: [
 				{
 					type: 'required'
 				}
 			],
+			// TODO: Make this _id unique within a ResolutionLog.completedTasks
 			default: () => Random.id()
 		},
 		task: {
