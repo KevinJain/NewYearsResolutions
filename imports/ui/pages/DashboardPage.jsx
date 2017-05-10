@@ -50,8 +50,9 @@ export default class DashboardPage extends BaseComponent {
 			}
 
 			let plan = ResolutionPlan.findOne(log.resolutionPlan)
+			const key = `plan::${plan._id}`
 			tasksDone.push(
-				<h2>
+				<h2 key={key}>
 					{plan.title}
 				</h2>
 			)
@@ -59,9 +60,10 @@ export default class DashboardPage extends BaseComponent {
 			_.each(completedTasks, (logTask) => {
 				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
 				const planTask = _.find(plan.tasks, {_id: logTask.task})
+				const key = `task::${logTask._id}`
 
 				tasksDone.push(
-					<div key={logTask._id}>
+					<div key={key}>
 						{planTask.title}&nbsp;on&nbsp;{completedAtStr}
 					</div>
 				)
