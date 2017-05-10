@@ -36,6 +36,10 @@
     }
   },
   "pages": {
+    "dashboardPage": {
+      "tasksTodoToday": "Your tasks to do today",
+	  "progress":"Progress"
+	},
     "completionPage": {
       "dashboard": "Back to dashboard",
 	  "completeTodaysPlan": "Complete today's",

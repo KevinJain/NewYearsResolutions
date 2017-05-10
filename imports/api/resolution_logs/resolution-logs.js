@@ -1,5 +1,6 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
+import { Random } from 'meteor/random'
 import { ResolutionPlan } from '../resolution_plans/resolution-plans.js'
 import { _ } from 'lodash'
 
@@ -24,6 +25,16 @@ const CompletedTask = Class.create({
 	// No collection attribute
 	fields: {
 		// `ResolutionPlan`.`Task`.`_id`
+		_id: {
+			type: String,
+			// TODO: Make this _id unique within a ResolutionLog.completedTasks
+			validators: [
+				{
+					type: 'required'
+				}
+			],
+			default: () => Random.id()
+		},
 		task: {
 			type: String,
 			validators: [

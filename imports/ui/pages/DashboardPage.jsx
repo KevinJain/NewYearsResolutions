@@ -1,3 +1,5 @@
+import _ from 'lodash';
+import moment from 'moment';
 import React from 'react';
 import MobileMenu from '../components/MobileMenu.jsx';
 import { Link } from 'react-router';
@@ -24,14 +26,14 @@ export default class DashboardPage extends BaseComponent {
 		}
 		const logs = ResolutionLog.find({user: user._id})
 
-		let tasksContent = []
+		let tasksTodoContent = []
 		logs.forEach((log) => {
 			const task = log.getTodaysScheduledTask()
 			if (!task) {
 				return
 			}
 			const linkTo = `/completion/${log._id}`
-			tasksContent.push(
+			tasksTodoContent.push(
 				<div className="task-wrapper" key={task._id}>
 					<Link to={linkTo} className="btn-primary">
 						{task.title}
@@ -40,10 +42,38 @@ export default class DashboardPage extends BaseComponent {
 			)
 		})
 
+		let tasksDone = []
+		// TODO: Make this display work for more than just booleans
+		logs.forEach((log) => {
+			if (0 === log.completedTasks.length) {
+				return
+			}
+
+			let plan = ResolutionPlan.findOne(log.resolutionPlan)
+			tasksDone.push(
+				<h2>
+					{plan.title}
+				</h2>
+			)
+			let completedTasks = _.sortBy(log.completedTasks, 'completedAt').reverse()
+			_.each(completedTasks, (logTask) => {
+				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
+				const planTask = _.find(plan.tasks, {_id: logTask.task})
+
+				tasksDone.push(
+					<div key={logTask._id}>
+						{planTask.title}&nbsp;on&nbsp;{completedAtStr}
+					</div>
+				)
+			})
+		})
+
 		const content = (
 			<div>
-				<h1>Placeholder</h1>
-				{tasksContent}
+				<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
+				{tasksTodoContent}
+				<h1>{i18n.__('pages.dashboardPage.progress')}</h1>
+				{tasksDone}
 			</div>
 		)
 
