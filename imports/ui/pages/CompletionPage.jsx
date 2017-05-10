@@ -12,21 +12,63 @@ import { User } from '../../api/users/users.js'
 
 export default class CompletionPage extends BaseComponent {
 	constructor(props) {
-		super(props);
-		this.state = Object.assign(this.state, {});
+		super(props)
+		this.state = Object.assign(this.state, {})
+		this.completeBoolean = this.completeBoolean.bind(this)
+	}
+
+	completeBoolean(e) {
+		console.log(e)
+		alert('TODO: Implement task completion')
+		e.preventDefault()
 	}
 
 	render() {
+		// Confirm logged in
 		const user = Meteor.user()
 		if (!user) {
 			const loggingOutContent = <div>Logging out</div>
 			return <CompletionPage content={loggingOutContent} />;
 		}
 
+		// Get the ResolutionLog & ResolutionPlan
+		const resolutionLogId = this.props.params.resolutionLog
+		const log = ResolutionLog.findOne(resolutionLogId)
+		const resolutionPlanId = log.resolutionPlan
+		const plan = ResolutionPlan.findOne(resolutionPlanId)
+
+		// Get today's task
 		const start = new Date()
 		start.setHours(0,0,0,0)
+		const end = new Date()
+		end.setHours(23,59,59,999)
+		const tasks = log.getScheduledTasksBetween(start, end)
 
-		const content = <div>Completion page Placeholder</div>
+		// Setup
+		const taskName = tasks[0].task.title
+		const taskDescription = tasks[0].task.description
+		const planTitle = plan.title
+
+		const content = (
+			<div className="page completion">
+				<h3>{i18n.__('pages.completionPage.completeTodaysPlan')}</h3>
+				<h1>{planTitle}</h1>
+				<h2>{taskName}</h2>
+				<p>{taskDescription}</p>
+
+				<div>
+					<button onClick={this.completeBoolean} className="btn-primary">
+						{i18n.__('pages.completionPage.completeTodaysTask')}
+					</button>
+				</div>
+
+				<div>
+					<Link to="/dashboard" className="btn-secondary">
+						{i18n.__('pages.completionPage.dashboard')}
+					</Link>
+				</div>
+			</div>
+		)
 
 		return (
 			<div className="page subscribe">

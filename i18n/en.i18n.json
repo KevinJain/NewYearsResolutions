@@ -36,6 +36,11 @@
     }
   },
   "pages": {
+    "completionPage": {
+      "dashboard": "Back to dashboard",
+	  "completeTodaysPlan": "Complete today's",
+	  "completeTodaysTask": "Yes I've done it today"
+    },
 	"subscribePagePlans": {
 	  "pickPlans": "Pick & follow plan(s)",
       "reason": "They help you acheive your goals",

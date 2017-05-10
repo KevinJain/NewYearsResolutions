@@ -23,7 +23,7 @@ export const renderRoutes = () => (
       <Route path="signin" component={AuthPageSignIn} />
       <Route path="join" component={AuthPageJoin} />
       <Route path="dashboard" component={DashboardPage} />
-      <Route path="completion/:resolutionPlan" component={CompletionPage} />
+      <Route path="completion/:resolutionLog" component={CompletionPage} />
       <Route path="subscribe-basics" component={SubscribePageBasics} />
       <Route path="subscribe-plans" component={SubscribePagePlans} />
       <Route path="subscribe-join" component={SubscribePageJoin} />

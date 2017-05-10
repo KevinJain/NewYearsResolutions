@@ -33,7 +33,7 @@ export default class DashboardPage extends BaseComponent {
 		logs.forEach((log) => {
 			const tasks = log.getScheduledTasksBetween(start, end)
 			if (tasks.length > 0) {
-				const linkTo = `/completion/${log.resolutionPlan}`
+				const linkTo = `/completion/${log._id}`
 				tasksContent.push(
 					<div className="task-wrapper">
 						<Link to={linkTo} className="btn-primary">
