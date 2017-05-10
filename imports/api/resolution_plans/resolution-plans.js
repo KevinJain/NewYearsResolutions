@@ -1,6 +1,7 @@
 import { Class } from 'meteor/jagi:astronomy'
 import { Enum } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
+import _ from 'lodash'
 
 const ProofType = Enum.create({
 	name: 'ProofType',
@@ -157,6 +158,15 @@ export const ResolutionPlan = Class.create({
 		createdAt: Date,
 		updatedAt: Date
 		// TODO: Add field to connect with Stripe?
+	},
+	helpers: {
+		getTaskAfter(taskId) {
+			const tasks = _.sortBy(this.tasks, 'order')
+			const taskAfterIndex = _.findIndex(tasks, {_id: taskId}) + 1
+			if (tasks[taskAfterIndex]) {
+				return tasks[taskAfterIndex]
+			}
+		}
 	},
 	indexes: {
 		// Only one version for each plan

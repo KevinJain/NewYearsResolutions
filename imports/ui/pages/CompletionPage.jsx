@@ -14,13 +14,24 @@ export default class CompletionPage extends BaseComponent {
 	constructor(props) {
 		super(props)
 		this.state = Object.assign(this.state, {})
-		this.completeBoolean = this.completeBoolean.bind(this)
+		this.completeBooleanTask = this.completeBooleanTask.bind(this)
 	}
 
-	completeBoolean(e) {
-		console.log(e)
-		alert('TODO: Implement task completion')
+	completeBooleanTask(e) {
 		e.preventDefault()
+
+		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
+		const plan = ResolutionPlan.findOne(log.resolutionPlan)
+		const task = log.getTodaysScheduledTask()
+		const completedAt = new Date()
+
+		Meteor.call('resolutionlogs.tasks.complete', log._id, task._id, completedAt, (err, res) => {
+			if (err) {
+				alert('Error completing task')
+				return
+			}
+			this.context.router.replace('/dashboard')
+		})
 	}
 
 	render() {
@@ -49,7 +60,7 @@ export default class CompletionPage extends BaseComponent {
 				<p>{taskDescription}</p>
 
 				<div>
-					<button onClick={this.completeBoolean} className="btn-primary">
+					<button onClick={this.completeBooleanTask} className="btn-primary">
 						{i18n.__('pages.completionPage.completeTodaysTask')}
 					</button>
 				</div>

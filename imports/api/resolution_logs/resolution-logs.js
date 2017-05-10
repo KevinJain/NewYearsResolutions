@@ -41,13 +41,6 @@ const CompletedTask = Class.create({
 				}
 			]
 		}
-	},
-	// TODO: Confirm this actually works
-	behaviors: {
-		timestamp: {
-			hasCreatedField: true,
-			createdFieldName: 'completedAt'
-		}
 	}
 })
 
@@ -73,7 +66,6 @@ export const ResolutionLog = Class.create({
 			],
 			default: () => new Date()
 		},
-		/*
 		// Array of completed tasks, with this data structure some tasks may be skipped
 		// * Though the UX may enforce tasks to not be skipped
 		completedTasks: {
@@ -83,7 +75,6 @@ export const ResolutionLog = Class.create({
 			type: [CompletedTask],
 			default: () => []
 		},
-		*/
 		currentTask: {
 			// The ._id of the current task the user is on
 			// TODO: Make this auto-advance when a new task is completed
