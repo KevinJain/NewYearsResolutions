@@ -88,7 +88,12 @@ const events = [
   }
 ]
 
-let ResolutionCalendar = React.createClass({
+class ResolutionCalendar extends BaseComponent {
+	constructor(props) {
+		super(props);
+		this.state = Object.assign(this.state, {})
+	}
+
 	render() {
 		return (
 			<div {...this.props}>
@@ -108,7 +113,7 @@ let ResolutionCalendar = React.createClass({
 			</div>
 		)
 	}
-})
+}
 
 export default class CalendarPage extends BaseComponent {
 	constructor(props) {
