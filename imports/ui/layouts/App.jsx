@@ -8,6 +8,7 @@ import { User } from '../../api/users/users.js';
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
 import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
 import UserMenu from '../components/UserMenu.jsx';
+import MainMenu from '../components/MainMenu.jsx';
 import ListList from '../components/ListList.jsx';
 import LanguageToggle from '../components/LanguageToggle.jsx';
 import ConnectionNotification from '../components/ConnectionNotification.jsx';
@@ -97,6 +98,7 @@ export default class App extends React.Component {
       <div id="container" className={menuOpen ? 'menu-open' : ''}>
         <section id="menu">
           <UserMenu user={user} logout={this.logout} />
+		  <MainMenu user={user} />
         </section>
         {showConnectionIssue && !connected
           ? <ConnectionNotification />
