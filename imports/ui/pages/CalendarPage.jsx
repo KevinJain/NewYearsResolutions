@@ -89,7 +89,7 @@ const events = [
 ]
 
 let ResolutionCalendar = React.createClass({
-	render(){
+	render() {
 		return (
 			<div {...this.props}>
 				<BigCalendar
@@ -98,6 +98,7 @@ let ResolutionCalendar = React.createClass({
 					defaultView='month'
 					scrollToTime={new Date(1970, 1, 1, 6)}
 					defaultDate={new Date(2015, 3, 12)}
+					views={['month']}
 					onSelectEvent={event => alert(event.title)}
 					onSelectSlot={(slotInfo) => alert(
 						`selected slot: \n\nstart ${slotInfo.start.toLocaleString()} ` +
