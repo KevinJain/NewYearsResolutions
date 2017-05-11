@@ -28,6 +28,7 @@ class ResolutionCalendar extends BaseComponent {
 			<div>
 				<BigCalendar
 					selectable
+					onNavigate={this.props.onNavigate}
 					events={this.props.events}
 					defaultView='month'
 					scrollToTime={new Date(1970, 1, 1, 6)}
@@ -47,7 +48,18 @@ class ResolutionCalendar extends BaseComponent {
 export default class CalendarPage extends BaseComponent {
 	constructor(props) {
 		super(props);
-		this.state = Object.assign(this.state, {});
+		this.state = Object.assign(this.state, {
+			start: moment().startOf('month').toDate(),
+			end: moment().endOf('month').toDate()
+		})
+		this.onNavigate = this.onNavigate.bind(this)
+	}
+
+	onNavigate(to, type) {
+		this.setState({
+			start: moment(to).startOf('month').toDate(),
+			end: moment(to).endOf('month').toDate()
+		})
 	}
 
 	render() {
@@ -57,142 +69,33 @@ export default class CalendarPage extends BaseComponent {
 			return <CalendarPage content={loggingOutContent} />;
 		}
 
-		/*
+
 		const logs = ResolutionLog.find({user: user._id})
 
-		let tasksTodoContent = []
+		let events = []
 		logs.forEach((log) => {
-			const task = log.getTodaysScheduledTask()
-			if (!task) {
-				return
-			}
-			const linkTo = `/completion/${log._id}`
-			tasksTodoContent.push(
-				<div className="task-wrapper" key={task._id}>
-					<Link to={linkTo} className="btn-primary">
-						{task.title}
-					</Link>
-				</div>
-			)
-		})
-
-		let tasksDone = []
-		// TODO: Make this display work for more than just booleans
-		logs.forEach((log) => {
-			if (0 === log.completedTasks.length) {
-				return
-			}
-
-			let plan = ResolutionPlan.findOne(log.resolutionPlan)
-			const key = `plan::${plan._id}`
-			tasksDone.push(
-				<h2 key={key}>
-					{plan.title}
-				</h2>
-			)
-			let completedTasks = _.sortBy(log.completedTasks, 'completedAt').reverse()
-			_.each(completedTasks, (logTask) => {
-				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
-				const planTask = _.find(plan.tasks, {_id: logTask.task})
-				const key = `task::${logTask._id}`
-
-				tasksDone.push(
-					<div key={key}>
-						{planTask.title}&nbsp;on&nbsp;{completedAtStr}
-					</div>
+			const tasks = log.getScheduledTasksBetween(this.state.start, this.state.end)
+			_.forEach(tasks, (task) => {
+				const taskStart = task.when
+				const taskEnd = moment(task.when).endOf('day').toDate()
+				events.push(
+					{
+						title: `${task.task.title}`,
+						allDay: true,
+						start: taskStart,
+						end: taskEnd
+					}
 				)
 			})
 		})
-		*/
 
-		/*
-		const content = (
-			<div>
-				<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
-				{tasksTodoContent}
-				<h1>{i18n.__('pages.dashboardPage.progress')}</h1>
-				{tasksDone}
-			</div>
-		)
-		*/
-
-		const events = [
-		  {
-			'title': 'All Day Event',
-			'allDay': true,
-			'start': new Date(2015, 3, 0),
-			'end': new Date(2015, 3, 1)
-		  },
-		  {
-			'title': 'Long Event',
-			'start': new Date(2015, 3, 7),
-			'end': new Date(2015, 3, 10)
-		  },
-
-		  {
-			'title': 'DTS STARTS',
-			'start': new Date(2016, 2, 13, 0, 0, 0),
-			'end': new Date(2016, 2, 20, 0, 0, 0)
-		  },
-
-		  {
-			'title': 'DTS ENDS',
-			'start': new Date(2016, 10, 6, 0, 0, 0),
-			'end': new Date(2016, 10, 13, 0, 0, 0)
-		  },
-
-		  {
-			'title': 'Some Event',
-			'start': new Date(2015, 3, 9, 0, 0, 0),
-			'end': new Date(2015, 3, 9, 0, 0, 0)
-		  },
-		  {
-			'title': 'Conference',
-			'start': new Date(2015, 3, 11),
-			'end': new Date(2015, 3, 13),
-			desc: 'Big conference for important people'
-		  },
-		  {
-			'title': 'Meeting',
-			'start': new Date(2015, 3, 12, 10, 30, 0, 0),
-			'end': new Date(2015, 3, 12, 12, 30, 0, 0),
-			desc: 'Pre-meeting meeting, to prepare for the meeting'
-		  },
-		  {
-			'title': 'Lunch',
-			'start':new Date(2015, 3, 12, 12, 0, 0, 0),
-			'end': new Date(2015, 3, 12, 13, 0, 0, 0),
-			desc: 'Power lunch'
-		  },
-		  {
-			'title': 'Meeting',
-			'start':new Date(2015, 3, 12,14, 0, 0, 0),
-			'end': new Date(2015, 3, 12,15, 0, 0, 0)
-		  },
-		  {
-			'title': 'Happy Hour',
-			'start':new Date(2015, 3, 12, 17, 0, 0, 0),
-			'end': new Date(2015, 3, 12, 17, 30, 0, 0),
-			desc: 'Most important meal of the day'
-		  },
-		  {
-			'title': 'Dinner',
-			'start':new Date(2015, 3, 12, 20, 0, 0, 0),
-			'end': new Date(2015, 3, 12, 21, 0, 0, 0)
-		  },
-		  {
-			'title': 'Birthday Party',
-			'start':new Date(2015, 3, 13, 7, 0, 0),
-			'end': new Date(2015, 3, 13, 10, 30, 0)
-		  }
-		]
-		const defaultDate = new Date(2015, 3, 12)
-
+		const defaultDate = new Date()
 		const content = (
 			<div>
 				<h1>{i18n.__('pages.calendarPage.title')}</h1>
 				<h3>{i18n.__('pages.calendarPage.subTitle')}</h3>
 				<ResolutionCalendar
+					onNavigate={this.onNavigate}
 					events={events}
 					defaultDate={defaultDate}
 				/>
