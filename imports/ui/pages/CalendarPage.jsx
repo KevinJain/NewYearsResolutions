@@ -92,10 +92,6 @@ let ResolutionCalendar = React.createClass({
 	render(){
 		return (
 			<div {...this.props}>
-				<h3 className="callout">
-					Click an event to see more info, or
-					drag the mouse over the calendar to select a date/time range.
-				</h3>
 				<BigCalendar
 					selectable
 					events={events}
@@ -187,9 +183,8 @@ export default class CalendarPage extends BaseComponent {
 
 		const content = (
 			<div>
-				<h1>
-					Calendar page placeholder
-				</h1>
+				<h1>{i18n.__('pages.calendarPage.title')}</h1>
+				<h3>{i18n.__('pages.calendarPage.subTitle')}</h3>
 				<ResolutionCalendar />
 			</div>
 		)

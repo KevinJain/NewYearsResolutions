@@ -36,6 +36,10 @@
     }
   },
   "pages": {
+    "calendarPage": {
+      "title": "Scheduled goal tasks",
+      "subTitle": "Calendar will automatically adjust based on your progress"
+	},
     "dashboardPage": {
       "tasksTodoToday": "Your tasks to do today",
 	  "progress":"Progress"
