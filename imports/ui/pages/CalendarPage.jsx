@@ -31,7 +31,7 @@ class ResolutionCalendar extends BaseComponent {
 					events={this.props.events}
 					defaultView='month'
 					scrollToTime={new Date(1970, 1, 1, 6)}
-					defaultDate={new Date(2015, 3, 12)}
+					defaultDate={this.props.defaultDate}
 					views={['month']}
 					onSelectEvent={event => alert(event.title)}
 					onSelectSlot={(slotInfo) => alert(
@@ -186,12 +186,16 @@ export default class CalendarPage extends BaseComponent {
 			'end': new Date(2015, 3, 13, 10, 30, 0)
 		  }
 		]
+		const defaultDate = new Date(2015, 3, 12)
 
 		const content = (
 			<div>
 				<h1>{i18n.__('pages.calendarPage.title')}</h1>
 				<h3>{i18n.__('pages.calendarPage.subTitle')}</h3>
-				<ResolutionCalendar events={events} />
+				<ResolutionCalendar
+					events={events}
+					defaultDate={defaultDate}
+				/>
 			</div>
 		)
 
