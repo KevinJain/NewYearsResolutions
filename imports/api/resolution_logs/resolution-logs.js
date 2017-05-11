@@ -180,7 +180,7 @@ export const ResolutionLog = Class.create({
 		getPlannedTasksAfterCurrent() {
 			// Get tasks from ResolutionPlan & put them in order
 			const plan = ResolutionPlan.findOne(this.resolutionPlan)
-			let tasks = _.sortBy(plan.tasks, 'order')
+			let tasks = _.sortBy(_.clone(plan.tasks), 'order')
 
 			// If no current task, we're at start
 			if (!this.currentTask) {
@@ -222,21 +222,24 @@ export const ResolutionLog = Class.create({
 
 			// Gather all scheduled tasks in range
 			// TODO: Optomize this algorithm, many many loops if long running resolution
+			// Loop over days
+			// * Starting with when we should start tasks
+			// * Ending with when filter end date
 			const scheduledTasks = []
 			let curr = new Date(startDate.valueOf())
 			while((curr <= end) && (tasks.length > 0)) {
-				// Grab a task if meant to include
-				if (
-					curr >= start			// Only include at and after range start
-					&& this.isTaskDay(curr)	// Only include those on enabled days of week
-				) {
-					const scheduledDate = new Date()
-					scheduledDate.setDate(curr.getDate())
-					scheduledDate.setHours(0,0,0,0);
-					scheduledTasks.push({
-						when: scheduledDate,
-						task: tasks.shift()
-					})
+				// Walk forward on tasks list if this is a task day
+				if (this.isTaskDay(curr)) {
+					const task = tasks.shift() // Walk forward on tasks list
+
+					// Only include at and after range start
+					if (curr >= start) {
+						const scheduledDate = moment(curr).startOf('day').toDate()
+						scheduledTasks.push({
+							when: scheduledDate,
+							task: task
+						})
+					}
 				}
 
 				// Move to next day
