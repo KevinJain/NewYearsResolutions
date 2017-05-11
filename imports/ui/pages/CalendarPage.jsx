@@ -10,6 +10,7 @@ import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js';
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
 import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
 import BigCalendar from 'react-big-calendar';
+import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 import { User } from '../../api/users/users.js'
 
@@ -65,8 +66,7 @@ export default class CalendarPage extends BaseComponent {
 	render() {
 		const user = Meteor.user()
 		if (!user) {
-			const loggingOutContent = <div>Logging out</div>
-			return <CalendarPage content={loggingOutContent} />;
+			return <NotFoundPage />;
 		}
 
 

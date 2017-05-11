@@ -9,6 +9,7 @@ import BaseComponent from '../components/BaseComponent.jsx';
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js';
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
 import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
+import NotFoundPage from '../pages/NotFoundPage.jsx';
 
 import { User } from '../../api/users/users.js'
 
@@ -21,8 +22,7 @@ export default class DashboardPage extends BaseComponent {
 	render() {
 		const user = Meteor.user()
 		if (!user) {
-			const loggingOutContent = <div>Logging out</div>
-			return <DashboardPage content={loggingOutContent} />;
+			return <NotFoundPage />;
 		}
 		const logs = ResolutionLog.find({user: user._id})
 
