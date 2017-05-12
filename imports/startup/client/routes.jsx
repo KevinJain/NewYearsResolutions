@@ -1,22 +1,23 @@
+import { Route, Router, browserHistory } from 'react-router'
 import React from 'react'
-import { Router, Route, browserHistory } from 'react-router'
 import i18n from 'meteor/universe:i18n'
 
+/* eslint-disable sort-imports */
 // route components
 import AppContainer from '../../ui/containers/AppContainer.jsx'
-import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.jsx'
 import AuthPageJoin from '../../ui/pages/AuthPageJoin.jsx'
-import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx'
-import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
-import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
-import DashboardPage from '../../ui/pages/DashboardPage.jsx'
+import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.jsx'
 import CalendarPage from '../../ui/pages/CalendarPage.jsx'
 import CompletionPage from '../../ui/pages/CompletionPage.jsx'
+import DashboardPage from '../../ui/pages/DashboardPage.jsx'
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx'
+import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx'
+import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
+import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
 
 i18n.setLocale('en')
 
-export const renderRoutes = () => (
+export default () => (
 	<Router history={browserHistory}>
 		<Route path="/" component={AppContainer}>
 			<Route path="signin" component={AuthPageSignIn} />

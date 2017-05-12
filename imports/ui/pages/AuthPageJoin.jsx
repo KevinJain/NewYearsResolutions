@@ -1,10 +1,9 @@
-import React from 'react'
-import { Link } from 'react-router'
 import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
-import BaseComponent from '../components/BaseComponent.jsx'
-
 import AuthPage from './AuthPage.jsx'
+import BaseComponent from '../components/BaseComponent.jsx'
+import { Link } from 'react-router'
+import React from 'react'
+import i18n from 'meteor/universe:i18n'
 
 export default class JoinPage extends BaseComponent {
 	constructor(props) {
@@ -97,7 +96,10 @@ export default class JoinPage extends BaseComponent {
 							}}
 							placeholder={i18n.__('pages.authPageJoin.password')}
 						/>
-						<span className="icon-lock" title={i18n.__('pages.authPageJoin.password')} />
+						<span
+							className="icon-lock"
+							title={i18n.__('pages.authPageJoin.password')}
+						/>
 					</div>
 					<div className={`input-symbol ${errorClass('confirm')}`}>
 						<input

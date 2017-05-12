@@ -1,5 +1,5 @@
-import React from 'react'
 import MobileMenu from '../components/MobileMenu.jsx'
+import React from 'react'
 
 // a common layout wrapper for subscribe pages
 const SubscribePage = ({ content }) => (

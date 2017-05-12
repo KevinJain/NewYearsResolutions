@@ -1,14 +1,10 @@
-import React from 'react'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Meteor */
+import { ResolutionLog, ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs'
 import BaseComponent from '../components/BaseComponent.jsx'
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
-
+import React from 'react'
+import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
 import SubscribePage from './SubscribePage.jsx'
-import { User } from '../../api/users/users.js'
+import i18n from 'meteor/universe:i18n'
 
 export default class PlansPage extends BaseComponent {
 	constructor(props) {
@@ -30,7 +26,6 @@ export default class PlansPage extends BaseComponent {
 	}
 
 	togglePlan(event, resolutionPlan, toggleOn) {
-		const user = Meteor.user()
 		this.setState({ selectingPlan: true })
 		if (toggleOn) {
 			const logBasics = {
@@ -77,17 +72,16 @@ export default class PlansPage extends BaseComponent {
 						Unfollow plan: {plan.title}
 					</button>
 				)
-			} else {
-				return (
-					<button
-						key={plan._id}
-						className="btn-primary"
-						onClick={e => this.togglePlan(e, plan, true)}
-					>
-						Follow plan: {plan.title}
-					</button>
-				)
 			}
+			return (
+				<button
+					key={plan._id}
+					className="btn-primary"
+					onClick={e => this.togglePlan(e, plan, true)}
+				>
+					Follow plan: {plan.title}
+				</button>
+			)
 		})
 
 		const content = (

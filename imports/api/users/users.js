@@ -1,6 +1,8 @@
+/* globals Meteor */
 import { Class } from 'meteor/jagi:astronomy'
+import _ from 'lodash'
 
-export const User = Class.create({
+export default Class.create({
 	name: 'User',
 	collection: Meteor.users,
 	fields: {
@@ -18,7 +20,7 @@ export const User = Class.create({
 			// If the user can create ResolutionPlans
 			// TODO: Think through / migrate this to a roles package?
 			type: Boolean,
-			default: () => false
+			default: _.constant(false)
 		},
 
 		firstName: {
@@ -135,7 +137,7 @@ export const User = Class.create({
 		// TODO: Maybe make this and all calls to it do something smart
 		// TODO: * Like check if subscription is active via stripe API call
 		hasStripeSubscription() {
-			return !!this.stripeSubscriptionId
+			return Boolean(this.stripeSubscriptionId)
 		}
 	}
 })

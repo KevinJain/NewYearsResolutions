@@ -1,5 +1,5 @@
-import { Class } from 'meteor/jagi:astronomy'
-import { Enum } from 'meteor/jagi:astronomy'
+/* globals Mongo */
+import { Class, Enum } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
 import _ from 'lodash'
 
@@ -112,10 +112,11 @@ export const ResolutionPlan = Class.create({
 			type: String,
 			// TODO: Add integer validation? Or Semver?
 			// TODO: * If semver will need minor version additions:
-			// TODO: ** Enforcement where possible like no removing or re-ordering tasks, but allow adding
+			// TODO: ** Enforcement where possible like no removing or re-ordering tasks,
+			// TODO:    but allow adding
 			// TODO: ** UI explaining non-breaking change
 			// TODO: * Allow version -1 for the current draft, but all other must be > 0?
-			default: () => -1
+			default: _.constant(-1)
 		},
 		proofTypes: {
 			type: [ProofType],
@@ -123,7 +124,7 @@ export const ResolutionPlan = Class.create({
 		},
 		daysPerWeekSuggested: {
 			type: Number,
-			default: () => 7,
+			default: _.constant(7),
 			validators: [
 				{
 					type: 'required'
@@ -166,6 +167,7 @@ export const ResolutionPlan = Class.create({
 			if (tasks[taskAfterIndex]) {
 				return tasks[taskAfterIndex]
 			}
+			return false
 		}
 	},
 	indexes: {

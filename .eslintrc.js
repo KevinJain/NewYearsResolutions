@@ -194,7 +194,7 @@ module.exports = {
 		'linebreak-style': ['error', 'unix'],
 		// 'lines-around-comment': ['error'],	// Terser code style, this rule not for me
 		'max-depth': ['error', { max: 3 }],
-		'max-len': ['error', 90, { ignoreUrls: true }],
+		'max-len': ['error', 100, { ignoreUrls: true }], // Prettier imperfect @ 90 config
 		'max-nested-callbacks': ['error', 3],
 		'max-params': ['error', { max: 4 }],
 		'max-statements': ['error', { max: 15 }],
@@ -203,7 +203,7 @@ module.exports = {
 		'new-parens': ['error'],
 		// 'newline-after-var': ['error'],		// I instantiate later, & need both styles
 		// 'newline-before-return': ['error'],	// I like terse code, plus we highlight it
-		'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }],
+		// 'newline-per-chained-call': ['error', { ignoreChainWithDepth: 2 }], // Prettier
 		'no-array-constructor': ['error'],
 		'no-bitwise': ['error'],
 		// 'no-continue': ['error'],				// Continue statements squash nesting
@@ -249,7 +249,7 @@ module.exports = {
 		 * ECMAScript 6 (all)
 		 **/
 		'arrow-body-style': ['error', 'as-needed'],
-		'arrow-parens': ['error'],
+		'arrow-parens': ['error', 'as-needed'],
 		'arrow-spacing': ['error'],
 		// 'constructor-super': ['error'],						// eslint:recommended
 		'generator-star-spacing': ['error'],

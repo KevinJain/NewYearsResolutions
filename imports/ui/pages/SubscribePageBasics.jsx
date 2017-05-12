@@ -1,11 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Meteor */
 import BaseComponent from '../components/BaseComponent.jsx'
-
+import React from 'react'
 import SubscribePage from './SubscribePage.jsx'
-import { User } from '../../api/users/users.js'
+import i18n from 'meteor/universe:i18n'
 
 export default class BasicsPage extends BaseComponent {
 	constructor(props) {

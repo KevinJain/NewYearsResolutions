@@ -1,7 +1,7 @@
 import { Meteor } from 'meteor/meteor'
+import { ResolutionLog } from '../resolution-logs'
+import { ResolutionPlan } from '../../resolution_plans/resolution-plans'
 import { check } from 'meteor/check'
-import { ResolutionLog } from '../resolution-logs.js'
-import { ResolutionPlan } from '../../resolution_plans/resolution-plans.js'
 import moment from 'moment'
 
 Meteor.methods({
@@ -65,8 +65,7 @@ Meteor.methods({
 		})
 
 		// Mark `startDate` as tomorrow
-		const tomorrow = moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
-		log.startDate = tomorrow
+		log.startDate =	moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
 
 		// Mark currentTask to next
 		const nextTask = plan.getTaskAfter(taskId)

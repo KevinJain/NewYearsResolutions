@@ -1,18 +1,13 @@
-import _ from 'lodash'
-import moment from 'moment'
-import React from 'react'
-import MobileMenu from '../components/MobileMenu.jsx'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Meteor */
 import BaseComponent from '../components/BaseComponent.jsx'
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
 import BigCalendar from 'react-big-calendar'
+import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
-
-import { User } from '../../api/users/users.js'
+import React from 'react'
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
+import _ from 'lodash'
+import i18n from 'meteor/universe:i18n'
+import moment from 'moment'
 
 // Setup the localizer by providing the moment (or globalize) Object
 // to the correct localizer.
@@ -72,7 +67,7 @@ export default class CalendarPage extends BaseComponent {
 
 		const logs = ResolutionLog.find({ user: user._id })
 
-		let events = []
+		const events = []
 		logs.forEach(log => {
 			const tasks = log.getScheduledTasksBetween(this.state.start, this.state.end)
 			_.forEach(tasks, task => {

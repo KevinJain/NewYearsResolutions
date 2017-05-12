@@ -1,8 +1,8 @@
-import React from 'react'
-import { Link } from 'react-router'
-import i18n from 'meteor/universe:i18n'
 import BaseComponent from './BaseComponent.jsx'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
+import { Link } from 'react-router'
+import React from 'react'
+import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs'
+// import i18n from 'meteor/universe:i18n'
 
 export default class UserMenu extends BaseComponent {
 	constructor(props) {

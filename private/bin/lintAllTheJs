@@ -3,4 +3,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_REPO_DIR=$(dirname $(dirname $DIR))
 ESLINT="eslint"
 
-find $ROOT_REPO_DIR \( -iname "*.js" -o -iname "*.jsx" \) -type f -not -path "*node_modules*" -not -path "*.meteor*" -not -path "*/packages/*" -exec $ESLINT {} \;
+find $ROOT_REPO_DIR \( -iname "*.js" -o -iname "*.jsx" \) -type f -not -path "*node_modules*" -not -path "*.meteor*" -not -path "*/packages/*" -exec $ESLINT --quiet {} \;

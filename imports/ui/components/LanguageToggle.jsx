@@ -1,7 +1,7 @@
-import React from 'react'
-import i18n from 'meteor/universe:i18n'
 import BaseComponent from './BaseComponent.jsx'
+import React from 'react'
 import getLanguages from '../../api/languages/methods'
+import i18n from 'meteor/universe:i18n'
 
 class LanguageToggle extends BaseComponent {
 	constructor(props) {

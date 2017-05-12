@@ -1,17 +1,14 @@
-import _ from 'lodash'
-import moment from 'moment'
-import React from 'react'
-import MobileMenu from '../components/MobileMenu.jsx'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Meteor */
 import BaseComponent from '../components/BaseComponent.jsx'
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
+import { Link } from 'react-router'
+import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
-
-import { User } from '../../api/users/users.js'
+import React from 'react'
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
+import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
+import _ from 'lodash'
+import i18n from 'meteor/universe:i18n'
+import moment from 'moment'
 
 export default class DashboardPage extends BaseComponent {
 	constructor(props) {
@@ -26,7 +23,7 @@ export default class DashboardPage extends BaseComponent {
 		}
 		const logs = ResolutionLog.find({ user: user._id })
 
-		let tasksTodoContent = []
+		const tasksTodoContent = []
 		logs.forEach(log => {
 			const task = log.getTodaysScheduledTask()
 			if (!task) {
@@ -42,28 +39,28 @@ export default class DashboardPage extends BaseComponent {
 			)
 		})
 
-		let tasksDone = []
+		const tasksDone = []
 		// TODO: Make this display work for more than just booleans
 		logs.forEach(log => {
 			if (0 === log.completedTasks.length) {
 				return
 			}
 
-			let plan = ResolutionPlan.findOne(log.resolutionPlan)
+			const plan = ResolutionPlan.findOne(log.resolutionPlan)
 			const key = `plan::${plan._id}`
 			tasksDone.push(
 				<h2 key={key}>
 					{plan.title}
 				</h2>
 			)
-			let completedTasks = _.sortBy(log.completedTasks, 'completedAt').reverse()
-			_.each(completedTasks, logTask => {
+			const completedTasks = _.sortBy(log.completedTasks, 'completedAt').reverse()
+			_.forEach(completedTasks, logTask => {
 				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
 				const planTask = _.find(plan.tasks, { _id: logTask.task })
-				const key = `task::${logTask._id}`
+				const key2 = `task::${logTask._id}`
 
 				tasksDone.push(
-					<div key={key}>
+					<div key={key2}>
 						{planTask.title}&nbsp;on&nbsp;{completedAtStr}
 					</div>
 				)

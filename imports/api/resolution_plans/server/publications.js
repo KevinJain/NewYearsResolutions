@@ -1,7 +1,4 @@
 import { Meteor } from 'meteor/meteor'
+import { ResolutionPlans } from '../resolution-plans'
 
-import { ResolutionPlans } from '../resolution-plans.js'
-
-Meteor.publish('resolutionPlansAll', () => {
-	return ResolutionPlans.find()
-})
+Meteor.publish('resolutionPlansAll', () => ResolutionPlans.find())

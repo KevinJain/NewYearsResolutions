@@ -1,9 +1,10 @@
-import moment from 'moment'
+/* globals Meteor, Mongo, check */
+
 import { Class } from 'meteor/jagi:astronomy'
-import { Enum } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
-import { ResolutionPlan } from '../resolution_plans/resolution-plans.js'
+import { ResolutionPlan } from '../resolution_plans/resolution-plans'
 import { _ } from 'lodash'
+import moment from 'moment'
 
 const Proof = Class.create({
 	name: 'Proof',
@@ -83,7 +84,8 @@ export const ResolutionLog = Class.create({
 		// * Though the UX may enforce tasks to not be skipped
 		completedTasks: {
 			// TODO: Add sorting of logs so always in order first to last task
-			// TODO: * Enforcing this can increase performance and simplify logic in other app areas
+			// TODO: * Enforcing this can increase performance and simplify
+			// TODO:   logic in other app areas
 			// TODO: * Maybe can be done as a beforeSave trigger?
 			type: [CompletedTask],
 			default: () => []
@@ -98,7 +100,8 @@ export const ResolutionLog = Class.create({
 		// Choosing to target our goals by day of week
 		// * Does not account for day of month or time of year
 		// * However user can always just skip, and return later
-		// TODO: In UX when 'student' selects make suggestion based on `ResolutionPlan`.`daysPerWeekSuggestedTarget`
+		// TODO: In UX when 'student' selects make suggestion based on
+		// TODO:   `ResolutionPlan`.`daysPerWeekSuggestedTarget`
 		targetingMondays: Boolean,
 		targetingTuesdays: Boolean,
 		targetingWednesdays: Boolean,
@@ -112,6 +115,7 @@ export const ResolutionLog = Class.create({
 		updatedAt: Date
 	},
 	helpers: {
+		/* eslint-disable complexity */
 		populateDefaultTargeting(daysPerWeekSuggested) {
 			this.targetingMondays = false
 			this.targetingTuesdays = false
@@ -182,12 +186,15 @@ export const ResolutionLog = Class.create({
 					return this.targetingFridays
 				case 6:
 					return this.targetingSaturdays
+				default:
+					throw new Meteor.Error('Invalid date')
 			}
 		},
+		/* eslint-enable complexity */
 		getPlannedTasksAfterCurrent() {
 			// Get tasks from ResolutionPlan & put them in order
 			const plan = ResolutionPlan.findOne(this.resolutionPlan)
-			let tasks = _.sortBy(_.clone(plan.tasks), 'order')
+			const tasks = _.sortBy(_.clone(plan.tasks), 'order')
 
 			// If no current task, we're at start
 			if (!this.currentTask) {
@@ -212,7 +219,8 @@ export const ResolutionLog = Class.create({
 		// TODO: * Perhaps unit tests too?
 		// TODO: * It may end up very core to the application
 		// TODO: Test this method works outside of the current day
-		getScheduledTasksBetween(start, end) {
+		// TODO: Reduce statements and remove eslint disable
+		getScheduledTasksBetween(start, end) { // eslint-disable-line max-statements
 			// Sanity check state
 			check(start, Date)
 			check(end, Date)
@@ -244,7 +252,7 @@ export const ResolutionLog = Class.create({
 						const scheduledDate = moment(curr).startOf('day').toDate()
 						scheduledTasks.push({
 							when: scheduledDate,
-							task: task
+							task
 						})
 					}
 				}
@@ -298,6 +306,6 @@ export const ResolutionLogsHelpers = {
 	// Doesn't check for archive status
 	userHas(userId) {
 		const res = ResolutionLog.findOne({ user: userId })
-		return undefined !== res
+		return !_.isUndefined(res)
 	}
 }

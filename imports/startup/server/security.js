@@ -1,12 +1,11 @@
-import { Meteor } from 'meteor/meteor'
 import { DDPRateLimiter } from 'meteor/ddp-rate-limiter'
-import { _ } from 'meteor/underscore'
+import { Meteor } from 'meteor/meteor'
+import { _ } from 'lodash'
+import { _ as __ } from 'meteor/underscore'
 
 // Don't let people write arbitrary data to their 'profile' field from the client
 Meteor.users.deny({
-	update() {
-		return true
-	}
+	update: _.constant(true)
 })
 
 // Get a list of all accounts methods by running `Meteor.server.method_handlers` in meteor shell
@@ -32,13 +31,11 @@ if (Meteor.isServer) {
 	DDPRateLimiter.addRule(
 		{
 			name(name) {
-				return _.contains(AUTH_METHODS, name)
+				return __.contains(AUTH_METHODS, name)
 			},
 
 			// Rate limit per connection ID
-			connectionId() {
-				return true
-			}
+			connectionId: _.constant(true)
 		},
 		2,
 		5000

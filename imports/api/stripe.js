@@ -1,8 +1,9 @@
 import { Meteor } from 'meteor/meteor'
-import stripePackage from 'stripe'
-import { check } from 'meteor/check'
 import { Promise } from 'meteor/promise'
-import { User } from '../api/users/users.js'
+import User from '../api/users/users'
+import { check } from 'meteor/check'
+import stripePackage from 'stripe'
+
 const stripe = stripePackage(Meteor.settings.stripe.secret_key)
 
 Meteor.methods({

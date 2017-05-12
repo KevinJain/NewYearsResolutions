@@ -1,6 +1,6 @@
 import { Meteor } from 'meteor/meteor'
+import User from './users'
 import { check } from 'meteor/check'
-import { User } from './users.js'
 
 Meteor.methods({
 	'users.registration.saveBasics': basics => {

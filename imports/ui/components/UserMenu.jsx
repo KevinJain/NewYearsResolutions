@@ -1,7 +1,7 @@
-import React from 'react'
-import { Link } from 'react-router'
-import i18n from 'meteor/universe:i18n'
 import BaseComponent from './BaseComponent.jsx'
+import { Link } from 'react-router'
+import React from 'react'
+import i18n from 'meteor/universe:i18n'
 
 export default class UserMenu extends BaseComponent {
 	constructor(props) {

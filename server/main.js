@@ -1,3 +1,4 @@
+/* globals Meteor */
 import '/imports/startup/server'
 import { BrowserPolicy } from 'meteor/browser-policy'
 

@@ -1,11 +1,10 @@
-/* Globals Stripe */
-import React from 'react'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Stripe, Meteor */
+// import { Accounts } from 'meteor/accounts-base'
 import BaseComponent from '../components/BaseComponent.jsx'
-
+import { Link } from 'react-router'
+import React from 'react'
 import SubscribePage from './SubscribePage.jsx'
+import i18n from 'meteor/universe:i18n'
 
 export default class JoinPage extends BaseComponent {
 	constructor(props) {
@@ -38,7 +37,7 @@ export default class JoinPage extends BaseComponent {
 					return
 				}
 
-				stripeToken = response.id
+				const stripeToken = response.id
 				Meteor.call('stripe.subscription.create', stripeToken, (err, res) => {
 					if (err) {
 						console.log(err)
@@ -90,7 +89,6 @@ export default class JoinPage extends BaseComponent {
 		const { errors } = this.state
 		const errorMessages = Object.keys(errors).map(key => errors[key])
 		const errorClass = key => errors[key] && 'error'
-		const stripePublishableKey = Meteor.settings.public.stripe.publishable_key
 
 		const content = (
 			<div className="wrapper-subscribe">

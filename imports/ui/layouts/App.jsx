@@ -1,16 +1,15 @@
-import React from 'react'
-import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
-import { Link } from 'react-router'
-import { Meteor } from 'meteor/meteor'
-import { Session } from 'meteor/session' // XXX: SESSION
-import { User } from '../../api/users/users.js'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
-import UserMenu from '../components/UserMenu.jsx'
-import MainMenu from '../components/MainMenu.jsx'
-import LanguageToggle from '../components/LanguageToggle.jsx'
+// TODO: no-session!
+/* eslint-disable meteor/no-session */
 import ConnectionNotification from '../components/ConnectionNotification.jsx'
 import Loading from '../components/Loading.jsx'
+import MainMenu from '../components/MainMenu.jsx'
+import { Meteor } from 'meteor/meteor'
+import React from 'react'
+import ReactCSSTransitionGroup from 'react-addons-css-transition-group'
+import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs'
+import { Session } from 'meteor/session' // TODO: no-session!
+import User from '../../api/users/users'
+import UserMenu from '../components/UserMenu.jsx'
 
 const CONNECTION_ISSUE_TIMEOUT = 5000
 
@@ -32,7 +31,8 @@ export default class App extends React.Component {
 		}, CONNECTION_ISSUE_TIMEOUT)
 	}
 
-	componentWillReceiveProps({ loading, children }) {
+	// TODO: Reduce complexity
+	componentWillReceiveProps({ loading, children }) { // eslint-disable-line complexity
 		// redirect somewhere once data is ready
 		if (!loading && !children) {
 			let user = Meteor.user()
@@ -73,7 +73,7 @@ export default class App extends React.Component {
 
 	render() {
 		const { showConnectionIssue } = this.state
-		const { user, connected, loading, lists, menuOpen, children, location } = this.props
+		const { user, connected, loading, menuOpen, children, location } = this.props
 
 		// eslint-disable-next-line react/jsx-no-bind
 		const closeMenu = this.toggleMenu.bind(this, false)

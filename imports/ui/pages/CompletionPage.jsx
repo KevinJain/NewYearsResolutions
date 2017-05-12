@@ -1,14 +1,11 @@
-import React from 'react'
-import MobileMenu from '../components/MobileMenu.jsx'
-import { Link } from 'react-router'
-import { Accounts } from 'meteor/accounts-base'
-import i18n from 'meteor/universe:i18n'
+/* globals Meteor */
 import BaseComponent from '../components/BaseComponent.jsx'
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
-
-import { User } from '../../api/users/users.js'
+import { Link } from 'react-router'
+import MobileMenu from '../components/MobileMenu.jsx'
+import React from 'react'
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
+import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
+import i18n from 'meteor/universe:i18n'
 
 export default class CompletionPage extends BaseComponent {
 	constructor(props) {
@@ -21,7 +18,6 @@ export default class CompletionPage extends BaseComponent {
 		e.preventDefault()
 
 		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
-		const plan = ResolutionPlan.findOne(log.resolutionPlan)
 		const task = log.getTodaysScheduledTask()
 		const completedAt = new Date()
 

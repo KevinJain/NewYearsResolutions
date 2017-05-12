@@ -1,7 +1,10 @@
+/* eslint-disable */
+
 //////////////////////////////////////////////////////////////////////////////
 // DEVELOPER NOTE May 12th 2017
 // * We have yet to implement any tests, this file is not maintained but
 //   left as reference for when we do
+// * If come back turn back on eslint
 //////////////////////////////////////////////////////////////////////////////
 
 // This file will be auto-imported in the app-test context, ensuring the method is always available

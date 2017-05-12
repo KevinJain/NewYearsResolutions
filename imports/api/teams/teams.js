@@ -1,7 +1,8 @@
+/* globals Mongo */
 import { Class } from 'meteor/jagi:astronomy'
 
-const Teams = new Mongo.Collection('Teams')
-const Team = Class.create({
+export const Teams = new Mongo.Collection('Teams')
+export const Team = Class.create({
 	name: 'Team',
 	collection: Teams,
 	fields: {

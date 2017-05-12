@@ -1,8 +1,8 @@
+import BaseComponent from './BaseComponent.jsx'
 import React from 'react'
-// XXX: no session!
+// TODO: no session!
 import { Session } from 'meteor/session'
 import i18n from 'meteor/universe:i18n'
-import BaseComponent from './BaseComponent.jsx'
 
 class MobileMenu extends BaseComponent {
 	constructor(props) {
@@ -11,7 +11,7 @@ class MobileMenu extends BaseComponent {
 	}
 
 	toggleMenu() {
-		Session.set('menuOpen', !Session.get('menuOpen'))
+		Session.set('menuOpen', !Session.get('menuOpen')) // eslint-disable-line meteor/no-session
 	}
 
 	render() {

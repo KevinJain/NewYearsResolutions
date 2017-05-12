@@ -1,8 +1,8 @@
+import BaseComponent from '../components/BaseComponent.jsx'
+import Message from '../components/Message.jsx'
+import MobileMenu from '../components/MobileMenu.jsx'
 import React from 'react'
 import i18n from 'meteor/universe:i18n'
-import BaseComponent from '../components/BaseComponent.jsx'
-import MobileMenu from '../components/MobileMenu.jsx'
-import Message from '../components/Message.jsx'
 
 class NotFoundPage extends BaseComponent {
 	render() {

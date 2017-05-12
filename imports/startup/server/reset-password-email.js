@@ -1,6 +1,9 @@
+/* eslint-disable */
 // DEVELOPER NOT May 12th 2017
 // * We may not be using this file; it's not maintained
-// * If decide to go route of email registration support, then clean this up
+// * If decide to go route of email registration support, then
+// ** Enable eslint
+// ** Clean this file up
 
 import { Accounts } from 'meteor/accounts-base'
 
