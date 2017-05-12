@@ -248,7 +248,7 @@ module.exports = {
 		/**
 		 * ECMAScript 6 (all)
 		 **/
-		'arrow-body-style': ['error'],
+		'arrow-body-style': ['error', 'as-needed'],
 		'arrow-parens': ['error'],
 		'arrow-spacing': ['error'],
 		// 'constructor-super': ['error'],						// eslint:recommended
