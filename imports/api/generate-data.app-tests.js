@@ -1,3 +1,12 @@
+
+
+//////////////////////////////////////////////////////////////////////////////
+// DEVELOPER NOTE May 12th 2017
+// * We have yet to implement any tests, this file is not maintained but
+//   left as reference for when we do
+//////////////////////////////////////////////////////////////////////////////
+
+
 // This file will be auto-imported in the app-test context, ensuring the method is always available
 
 import { Meteor } from 'meteor/meteor';
@@ -7,21 +16,23 @@ import { Random } from 'meteor/random';
 import { Promise } from 'meteor/promise';
 import { _ } from 'meteor/underscore';
 
+/*
 const createList = (userId) => {
   const list = Factory.create('list', { userId });
   _.times(3, () => Factory.create('todo', { listId: list._id }));
   return list;
 };
+*/
 
 Meteor.methods({
   generateFixtures() {
     resetDatabase();
 
     // create 3 public lists
-    _.times(3, () => createList());
+	// _.times(3, () => createList());
 
     // create 3 private lists
-    _.times(3, () => createList(Random.id()));
+    // _.times(3, () => createList(Random.id()));
   },
 });
 

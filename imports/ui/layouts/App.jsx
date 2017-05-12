@@ -3,13 +3,11 @@ import ReactCSSTransitionGroup from 'react-addons-css-transition-group';
 import { Link } from 'react-router';
 import { Meteor } from 'meteor/meteor';
 import { Session } from 'meteor/session'; // XXX: SESSION
-import { Lists } from '../../api/lists/lists.js';
 import { User } from '../../api/users/users.js';
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
 import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
 import UserMenu from '../components/UserMenu.jsx';
 import MainMenu from '../components/MainMenu.jsx';
-import ListList from '../components/ListList.jsx';
 import LanguageToggle from '../components/LanguageToggle.jsx';
 import ConnectionNotification from '../components/ConnectionNotification.jsx';
 import Loading from '../components/Loading.jsx';
