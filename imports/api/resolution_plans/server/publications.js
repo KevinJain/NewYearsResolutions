@@ -1,7 +1,7 @@
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor'
 
-import { ResolutionPlans } from '../resolution-plans.js';
+import { ResolutionPlans } from '../resolution-plans.js'
 
-Meteor.publish("resolutionPlansAll", () => {
+Meteor.publish('resolutionPlansAll', () => {
 	return ResolutionPlans.find()
-});
+})

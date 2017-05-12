@@ -1,20 +1,17 @@
-
-
 //////////////////////////////////////////////////////////////////////////////
 // DEVELOPER NOTE May 12th 2017
 // * We have yet to implement any tests, this file is not maintained but
 //   left as reference for when we do
 //////////////////////////////////////////////////////////////////////////////
 
-
 // This file will be auto-imported in the app-test context, ensuring the method is always available
 
-import { Meteor } from 'meteor/meteor';
-import { Factory } from 'meteor/factory';
-import { resetDatabase } from 'meteor/xolvio:cleaner';
-import { Random } from 'meteor/random';
-import { Promise } from 'meteor/promise';
-import { _ } from 'meteor/underscore';
+import { Meteor } from 'meteor/meteor'
+import { Factory } from 'meteor/factory'
+import { resetDatabase } from 'meteor/xolvio:cleaner'
+import { Random } from 'meteor/random'
+import { Promise } from 'meteor/promise'
+import { _ } from 'meteor/underscore'
 
 /*
 const createList = (userId) => {
@@ -25,28 +22,28 @@ const createList = (userId) => {
 */
 
 Meteor.methods({
-  generateFixtures() {
-    resetDatabase();
+	generateFixtures() {
+		resetDatabase()
 
-    // create 3 public lists
-	// _.times(3, () => createList());
+		// create 3 public lists
+		// _.times(3, () => createList());
 
-    // create 3 private lists
-    // _.times(3, () => createList(Random.id()));
-  },
-});
+		// create 3 private lists
+		// _.times(3, () => createList(Random.id()));
+	}
+})
 
-let generateData;
+let generateData
 if (Meteor.isClient) {
-  // Create a second connection to the server to use to call test data methods
-  // We do this so there's no contention w/ the currently tested user's connection
-  const testConnection = Meteor.connect(Meteor.absoluteUrl());
+	// Create a second connection to the server to use to call test data methods
+	// We do this so there's no contention w/ the currently tested user's connection
+	const testConnection = Meteor.connect(Meteor.absoluteUrl())
 
-  generateData = Promise.denodeify((cb) => {
-    testConnection.call('generateFixtures', cb);
-  });
+	generateData = Promise.denodeify(cb => {
+		testConnection.call('generateFixtures', cb)
+	})
 }
 
-const generateDataExport = generateData;
+const generateDataExport = generateData
 
-export { generateDataExport };
+export { generateDataExport }

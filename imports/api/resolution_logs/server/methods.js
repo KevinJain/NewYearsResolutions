@@ -5,7 +5,7 @@ import { ResolutionPlan } from '../../resolution_plans/resolution-plans.js'
 import moment from 'moment'
 
 Meteor.methods({
-	'resolutionlogs.user.start': (basics) => {
+	'resolutionlogs.user.start': basics => {
 		// Enforce logged in
 		const userId = Meteor.userId()
 		check(userId, String)
@@ -21,7 +21,7 @@ Meteor.methods({
 		log.save()
 	},
 
-	'resolutionlogs.user.destroy': (resolutionPlanId) => {
+	'resolutionlogs.user.destroy': resolutionPlanId => {
 		// Enforce logged in
 		const userId = Meteor.userId()
 		check(userId, String)
@@ -47,7 +47,6 @@ Meteor.methods({
 		check(taskId, String)
 		check(completedAt, Date)
 
-
 		// Get basic info
 		const log = ResolutionLog.findOne(resolutionLogId)
 		const plan = ResolutionPlan.findOne(log.resolutionPlan)
@@ -61,7 +60,7 @@ Meteor.methods({
 		log.completedTasks.push({
 			task: taskId,
 			// TODO: Make this work for more than just boolean proof
-			proof: { boolean: true},
+			proof: { boolean: true },
 			completedAt
 		})
 

@@ -1,12 +1,12 @@
-import React from 'react';
-import MobileMenu from '../components/MobileMenu.jsx';
-import { Link } from 'react-router';
-import { Accounts } from 'meteor/accounts-base';
-import i18n from 'meteor/universe:i18n';
-import BaseComponent from '../components/BaseComponent.jsx';
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js';
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
+import React from 'react'
+import MobileMenu from '../components/MobileMenu.jsx'
+import { Link } from 'react-router'
+import { Accounts } from 'meteor/accounts-base'
+import i18n from 'meteor/universe:i18n'
+import BaseComponent from '../components/BaseComponent.jsx'
+import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
+import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
 
 import { User } from '../../api/users/users.js'
 
@@ -25,13 +25,19 @@ export default class CompletionPage extends BaseComponent {
 		const task = log.getTodaysScheduledTask()
 		const completedAt = new Date()
 
-		Meteor.call('resolutionlogs.tasks.complete', log._id, task._id, completedAt, (err, res) => {
-			if (err) {
-				alert('Error completing task')
-				return
+		Meteor.call(
+			'resolutionlogs.tasks.complete',
+			log._id,
+			task._id,
+			completedAt,
+			(err, res) => {
+				if (err) {
+					alert('Error completing task')
+					return
+				}
+				this.context.router.replace('/dashboard')
 			}
-			this.context.router.replace('/dashboard')
-		})
+		)
 	}
 
 	render() {
@@ -39,7 +45,7 @@ export default class CompletionPage extends BaseComponent {
 		const user = Meteor.user()
 		if (!user) {
 			const loggingOutContent = <div>Logging out</div>
-			return <CompletionPage content={loggingOutContent} />;
+			return <CompletionPage content={loggingOutContent} />
 		}
 
 		// Get data
@@ -87,5 +93,5 @@ export default class CompletionPage extends BaseComponent {
 }
 
 CompletionPage.contextTypes = {
-	router: React.PropTypes.object,
-};
+	router: React.PropTypes.object
+}

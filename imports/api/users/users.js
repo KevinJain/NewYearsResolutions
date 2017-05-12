@@ -1,4 +1,4 @@
-import { Class } from 'meteor/jagi:astronomy';
+import { Class } from 'meteor/jagi:astronomy'
 
 export const User = Class.create({
 	name: 'User',

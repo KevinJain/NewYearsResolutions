@@ -3,7 +3,7 @@ import { check } from 'meteor/check'
 import { User } from './users.js'
 
 Meteor.methods({
-	'users.registration.saveBasics': (basics) => {
+	'users.registration.saveBasics': basics => {
 		// Enforce logged in
 		const userId = Meteor.userId()
 		check(userId, String)

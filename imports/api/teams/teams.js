@@ -1,6 +1,6 @@
-import { Class } from 'meteor/jagi:astronomy';
+import { Class } from 'meteor/jagi:astronomy'
 
-const Teams = new Mongo.Collection('Teams');
+const Teams = new Mongo.Collection('Teams')
 const Team = Class.create({
 	name: 'Team',
 	collection: Teams,
@@ -14,10 +14,12 @@ const Team = Class.create({
 		},
 		title: {
 			type: String,
-			validators: [{
-				type: 'minLength',
-				param: 3
-			}]
+			validators: [
+				{
+					type: 'minLength',
+					param: 3
+				}
+			]
 		},
 
 		/// Automatic

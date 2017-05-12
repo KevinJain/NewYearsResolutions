@@ -1,29 +1,29 @@
-import React from 'react';
-import { Link } from 'react-router';
-import { Accounts } from 'meteor/accounts-base';
-import i18n from 'meteor/universe:i18n';
-import BaseComponent from '../components/BaseComponent.jsx';
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js';
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js';
-import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js';
+import React from 'react'
+import { Link } from 'react-router'
+import { Accounts } from 'meteor/accounts-base'
+import i18n from 'meteor/universe:i18n'
+import BaseComponent from '../components/BaseComponent.jsx'
+import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans.js'
+import { ResolutionLog } from '../../api/resolution_logs/resolution-logs.js'
+import { ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs.js'
 
-import SubscribePage from './SubscribePage.jsx';
+import SubscribePage from './SubscribePage.jsx'
 import { User } from '../../api/users/users.js'
 
 export default class PlansPage extends BaseComponent {
 	constructor(props) {
-		super(props);
-		this.state = Object.assign(this.state, { selectingPlan: false });
-		this.onSubmit = this.onSubmit.bind(this);
-		this.togglePlan = this.togglePlan.bind(this);
+		super(props)
+		this.state = Object.assign(this.state, { selectingPlan: false })
+		this.onSubmit = this.onSubmit.bind(this)
+		this.togglePlan = this.togglePlan.bind(this)
 	}
 
 	onSubmit(event) {
-		event.preventDefault();
+		event.preventDefault()
 
-		const user = Meteor.user();
+		const user = Meteor.user()
 		if (!ResolutionLogsHelpers.userHas(user._id)) {
-			alert("Please follow one or more plans before continuing")
+			alert('Please follow one or more plans before continuing')
 			return
 		}
 		this.context.router.replace('/subscribe-join')
@@ -43,7 +43,7 @@ export default class PlansPage extends BaseComponent {
 					console.log(err)
 					alert('Error')
 				}
-			});
+			})
 		} else {
 			Meteor.call('resolutionlogs.user.destroy', resolutionPlan._id, (err, res) => {
 				this.setState({ selectingPlan: false })
@@ -51,7 +51,7 @@ export default class PlansPage extends BaseComponent {
 					console.log(err)
 					alert('Error')
 				}
-			});
+			})
 		}
 	}
 
@@ -59,12 +59,12 @@ export default class PlansPage extends BaseComponent {
 		const user = Meteor.user()
 		if (!user) {
 			const loggingOutContent = <div>Logging out</div>
-			return <SubscribePage content={loggingOutContent} />;
+			return <SubscribePage content={loggingOutContent} />
 		}
 
 		const plans = ResolutionPlan.find()
-		const plansContent = plans.map((plan) => {
-			const query = {user: user._id, resolutionPlan: plan._id}
+		const plansContent = plans.map(plan => {
+			const query = { user: user._id, resolutionPlan: plan._id }
 			const log = ResolutionLog.findOne(query)
 
 			if (log) {
@@ -72,7 +72,9 @@ export default class PlansPage extends BaseComponent {
 					<button
 						key={plan._id}
 						className="btn-secondary"
-						onClick={(e) => this.togglePlan(e, plan, false)}>Unfollow plan: {plan.title}
+						onClick={e => this.togglePlan(e, plan, false)}
+					>
+						Unfollow plan: {plan.title}
 					</button>
 				)
 			} else {
@@ -80,7 +82,9 @@ export default class PlansPage extends BaseComponent {
 					<button
 						key={plan._id}
 						className="btn-primary"
-						onClick={(e) => this.togglePlan(e, plan, true)}>Follow plan: {plan.title}
+						onClick={e => this.togglePlan(e, plan, true)}
+					>
+						Follow plan: {plan.title}
 					</button>
 				)
 			}
@@ -89,24 +93,24 @@ export default class PlansPage extends BaseComponent {
 		const content = (
 			<div className="wrapper-subscribe">
 				<h1 className="title-subscribe">
-				  {i18n.__('pages.subscribePagePlans.pickPlans')}
+					{i18n.__('pages.subscribePagePlans.pickPlans')}
 				</h1>
 				<p className="subtitle-subscribe">
-				  {i18n.__('pages.subscribePagePlans.reason')}
+					{i18n.__('pages.subscribePagePlans.reason')}
 				</p>
 				{plansContent}
 				<form onSubmit={this.onSubmit}>
 					<button type="submit" className="btn-primary">
-					{i18n.__('pages.subscribePagePlans.continue')}
+						{i18n.__('pages.subscribePagePlans.continue')}
 					</button>
 				</form>
 			</div>
 		)
 
-		return <SubscribePage content={content} />;
+		return <SubscribePage content={content} />
 	}
 }
 
 PlansPage.contextTypes = {
-  router: React.PropTypes.object,
-};
+	router: React.PropTypes.object
+}

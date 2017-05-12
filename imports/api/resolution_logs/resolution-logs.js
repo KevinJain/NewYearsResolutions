@@ -113,68 +113,75 @@ export const ResolutionLog = Class.create({
 	},
 	helpers: {
 		populateDefaultTargeting(daysPerWeekSuggested) {
-			this.targetingMondays = false;
-			this.targetingTuesdays = false;
-			this.targetingWednesdays = false;
-			this.targetingThursdays = false;
-			this.targetingFridays = false;
-			this.targetingSaturdays = false;
-			this.targetingSundays = false;
-			switch(daysPerWeekSuggested) {
+			this.targetingMondays = false
+			this.targetingTuesdays = false
+			this.targetingWednesdays = false
+			this.targetingThursdays = false
+			this.targetingFridays = false
+			this.targetingSaturdays = false
+			this.targetingSundays = false
+			switch (daysPerWeekSuggested) {
 				case 1:
-					this.targetingMondays = true;
-					break;
+					this.targetingMondays = true
+					break
 				case 2:
-					this.targetingMondays = true;
-					this.targetingThursdays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingThursdays = true
+					break
 				case 3:
-					this.targetingMondays = true;
-					this.targetingWednesdays = true;
-					this.targetingFridays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingWednesdays = true
+					this.targetingFridays = true
+					break
 				case 4:
-					this.targetingMondays = true;
-					this.targetingTuesdays = true;
-					this.targetingThursdays = true;
-					this.targetingSaturdays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingTuesdays = true
+					this.targetingThursdays = true
+					this.targetingSaturdays = true
+					break
 				case 5:
-					this.targetingMondays = true;
-					this.targetingTuesdays = true;
-					this.targetingWednesdays = true;
-					this.targetingThursdays = true;
-					this.targetingFridays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingTuesdays = true
+					this.targetingWednesdays = true
+					this.targetingThursdays = true
+					this.targetingFridays = true
+					break
 				case 6:
-					this.targetingMondays = true;
-					this.targetingTuesdays = true;
-					this.targetingWednesdays = true;
-					this.targetingThursdays = true;
-					this.targetingFridays = true;
-					this.targetingSaturdays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingTuesdays = true
+					this.targetingWednesdays = true
+					this.targetingThursdays = true
+					this.targetingFridays = true
+					this.targetingSaturdays = true
+					break
 				case 7:
-					this.targetingMondays = true;
-					this.targetingTuesdays = true;
-					this.targetingWednesdays = true;
-					this.targetingThursdays = true;
-					this.targetingFridays = true;
-					this.targetingSaturdays = true;
-					this.targetingSundays = true;
-					break;
+					this.targetingMondays = true
+					this.targetingTuesdays = true
+					this.targetingWednesdays = true
+					this.targetingThursdays = true
+					this.targetingFridays = true
+					this.targetingSaturdays = true
+					this.targetingSundays = true
+					break
 			}
 		},
 
 		isTaskDay(date) {
-			switch(date.getDay()) {
-				case 0: return this.targetingSundays
-				case 1: return this.targetingMondays
-				case 2: return this.targetingTuesdays
-				case 3: return this.targetingWednesdays
-				case 4: return this.targetingThursdays
-				case 5: return this.targetingFridays
-				case 6: return this.targetingSaturdays
+			switch (date.getDay()) {
+				case 0:
+					return this.targetingSundays
+				case 1:
+					return this.targetingMondays
+				case 2:
+					return this.targetingTuesdays
+				case 3:
+					return this.targetingWednesdays
+				case 4:
+					return this.targetingThursdays
+				case 5:
+					return this.targetingFridays
+				case 6:
+					return this.targetingSaturdays
 			}
 		},
 		getPlannedTasksAfterCurrent() {
@@ -190,8 +197,8 @@ export const ResolutionLog = Class.create({
 			// Return all those at and after current task
 			let found = false
 			return _.filter(
-				_.map(tasks, (task) => {
-					if(task._id === this.currentTask) {
+				_.map(tasks, task => {
+					if (task._id === this.currentTask) {
 						found = true
 					}
 					return found ? task : false
@@ -216,9 +223,9 @@ export const ResolutionLog = Class.create({
 			const tasks = this.getPlannedTasksAfterCurrent()
 
 			// Start of all tasks is later of today or specified start date
-			const today =  moment().startOf('day').toDate()
+			const today = moment().startOf('day').toDate()
 			const logStartDate = moment(this.startDate).toDate()
-			const startDate = (logStartDate > today ? logStartDate : today)
+			const startDate = logStartDate > today ? logStartDate : today
 
 			// Gather all scheduled tasks in range
 			// TODO: Optomize this algorithm, many many loops if long running resolution
@@ -227,7 +234,7 @@ export const ResolutionLog = Class.create({
 			// * Ending with when filter end date
 			const scheduledTasks = []
 			let curr = new Date(startDate.valueOf())
-			while((curr <= end) && (tasks.length > 0)) {
+			while (curr <= end && tasks.length > 0) {
 				// Walk forward on tasks list if this is a task day
 				if (this.isTaskDay(curr)) {
 					const task = tasks.shift() // Walk forward on tasks list
@@ -252,9 +259,9 @@ export const ResolutionLog = Class.create({
 
 		getTodaysScheduledTask() {
 			const start = new Date()
-			start.setHours(0,0,0,0)
+			start.setHours(0, 0, 0, 0)
 			const end = new Date()
-			end.setHours(23,59,59,999)
+			end.setHours(23, 59, 59, 999)
 			const tasks = this.getScheduledTasksBetween(start, end)
 
 			if (!tasks.length) {
@@ -290,7 +297,7 @@ export const ResolutionLogsHelpers = {
 	// Checks if the user has chosen at least one plan already
 	// Doesn't check for archive status
 	userHas(userId) {
-		const res = ResolutionLog.findOne({user: userId})
+		const res = ResolutionLog.findOne({ user: userId })
 		return undefined !== res
 	}
 }

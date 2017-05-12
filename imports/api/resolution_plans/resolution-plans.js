@@ -80,7 +80,7 @@ export const ResolutionPlan = Class.create({
 			type: String,
 			validators: [
 				{
-					type: 'required',
+					type: 'required'
 				}
 			]
 		},
@@ -118,7 +118,7 @@ export const ResolutionPlan = Class.create({
 			default: () => -1
 		},
 		proofTypes: {
-			type: [ ProofType ],
+			type: [ProofType],
 			default: () => ProofType.BOOLEAN
 		},
 		daysPerWeekSuggested: {
@@ -151,7 +151,7 @@ export const ResolutionPlan = Class.create({
 
 		/// Optional
 		description: {
-			type: String,
+			type: String
 		},
 
 		/// Automatic
@@ -162,7 +162,7 @@ export const ResolutionPlan = Class.create({
 	helpers: {
 		getTaskAfter(taskId) {
 			const tasks = _.sortBy(this.tasks, 'order')
-			const taskAfterIndex = _.findIndex(tasks, {_id: taskId}) + 1
+			const taskAfterIndex = _.findIndex(tasks, { _id: taskId }) + 1
 			if (tasks[taskAfterIndex]) {
 				return tasks[taskAfterIndex]
 			}

@@ -1,22 +1,22 @@
 /* eslint-disable prefer-arrow-callback */
 
-import { Meteor } from 'meteor/meteor';
+import { Meteor } from 'meteor/meteor'
 
-import { User } from '../users.js';
+import { User } from '../users.js'
 
-Meteor.publish("userData", function () {
-	if (!this.userId) return false;
+Meteor.publish('userData', function() {
+	if (!this.userId) return false
 	return Meteor.users.find(
 		{
 			_id: this.userId
 		},
 		{
 			fields: {
-				'firstName': 1,
-				'lastName': 1,
-				'phone': 1,
-				'stripeSubscriptionId': 1
+				firstName: 1,
+				lastName: 1,
+				phone: 1,
+				stripeSubscriptionId: 1
 			}
 		}
-	);
-});
+	)
+})
