@@ -5,7 +5,52 @@ import MobileMenu from '../components/MobileMenu.jsx'
 import React from 'react'
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
+import _ from 'lodash'
 import i18n from 'meteor/universe:i18n'
+
+// http://stackoverflow.com/a/18628124
+// TODO: Replace this cork.mp3
+// TODO: 1. Could sound better
+// TODO: 2. Not sure on licencing, grabbed from
+// http://www.freesoundeffects.com/free-sounds/household-10036/
+const goodSound = new Audio('cork.mp3')
+
+class SubTaskChecklistItem extends BaseComponent {
+	constructor(props) {
+		super(props)
+		this.state = Object.assign(this.state, {})
+		this.change = this.change.bind(this)
+	}
+
+	change(event) {
+		const checked = event.target.checked
+		if (checked) {
+			goodSound.play()
+		}
+		this.setState({ checked })
+	}
+
+	render() {
+		const checkClass = this.state.checked ? 'checked' : ''
+		return (
+			<div key={this.props.key} className={checkClass}>
+				<label>
+					<input
+						onChange={this.change}
+						type="checkbox"
+						value="test"
+					/>
+					{this.props.text}
+				</label>
+			</div>
+		)
+	}
+}
+
+SubTaskChecklistItem.contextTypes = {
+	key: React.PropTypes.string,
+	text: React.PropTypes.string
+}
 
 export default class CompletionPage extends BaseComponent {
 	constructor(props) {
@@ -54,12 +99,26 @@ export default class CompletionPage extends BaseComponent {
 		const taskDescription = task.description
 		const planTitle = plan.title
 
+		// Setup: task
+		const subTaskChecklistItems = _.map(task.subTaskChecklist, (item, ii) =>
+			(
+				<SubTaskChecklistItem
+					key={ii}
+					text={item}
+				/>
+			)
+		)
+
 		const content = (
 			<div className="page completion">
 				<h3>{i18n.__('pages.completionPage.completeTodaysPlan')}</h3>
 				<h1>{planTitle}</h1>
 				<h2>{taskName}</h2>
 				<p>{taskDescription}</p>
+
+				<div className="sub-task-checklist-items">
+					{subTaskChecklistItems}
+				</div>
 
 				<div>
 					<button onClick={this.completeBooleanTask} className="btn-primary">
