@@ -1,6 +1,8 @@
-import { Class } from 'meteor/jagi:astronomy';
+/* globals Meteor */
+import { Class } from 'meteor/jagi:astronomy'
+import _ from 'lodash'
 
-export const User = Class.create({
+export default Class.create({
 	name: 'User',
 	collection: Meteor.users,
 	fields: {
@@ -18,12 +20,9 @@ export const User = Class.create({
 			// If the user can create ResolutionPlans
 			// TODO: Think through / migrate this to a roles package?
 			type: Boolean,
-			default: () => false
+			default: _.constant(false)
 		},
-		// TODO: Move a bunch of fields into a 'Profile' sub-object?
-		// TODO: * Then require the population of indivual fields as full set?
-		// TODO: * Note: Commented out to develop without required fields
-		/*
+
 		firstName: {
 			type: String,
 			validators: [
@@ -36,7 +35,7 @@ export const User = Class.create({
 				}
 			]
 		},
-		middleName: String,
+		// middleName: String,
 		lastName: {
 			type: String,
 			validators: [
@@ -62,7 +61,6 @@ export const User = Class.create({
 				}
 			]
 		},
-		*/
 
 		/// Optional
 		stripeSubscriptionId: {
@@ -129,6 +127,17 @@ export const User = Class.create({
 			createdFieldName: 'createdAt',
 			hasUpdatedField: true,
 			updatedFieldName: 'updatedAt'
+		}
+	},
+	helpers: {
+		// Checks if the user has their basic information filled in or not
+		basicsFull() {
+			return Boolean(this.firstName && this.lastName && this.phone)
+		},
+		// TODO: Maybe make this and all calls to it do something smart
+		// TODO: * Like check if subscription is active via stripe API call
+		hasStripeSubscription() {
+			return Boolean(this.stripeSubscriptionId)
 		}
 	}
 })

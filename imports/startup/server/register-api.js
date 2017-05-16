@@ -1,6 +1,7 @@
-import '../../api/lists/methods.js';
-import '../../api/lists/server/publications.js';
-import '../../api/todos/methods.js';
-import '../../api/todos/server/publications.js';
-import '../../api/languages/methods.js';
-import '../../api/stripe.js';
+import '../../api/languages/methods'
+import '../../api/stripe'
+import '../../api/users/methods'
+import '../../api/users/server/publications'
+import '../../api/resolution_plans/server/publications'
+import '../../api/resolution_logs/server/publications'
+import '../../api/resolution_logs/server/methods'

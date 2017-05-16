@@ -1,4 +1,19 @@
 {
+
+
+
+
+
+
+  "DEVELOPER.NOTE": "THIS FILE IS NOT MAINTAINED - It is left as an example for later internationalization",
+
+
+
+
+
+
+
+
   "components": {
     "userMenu": {
       "logout": "Se déconnecter",
