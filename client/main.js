@@ -1,6 +1,7 @@
 /* global document, Stripe */
 
 import '../node_modules/react-big-calendar/lib/css/react-big-calendar.css'
+import '../imports/startup/client/cloudinary.js'
 
 import { Meteor } from 'meteor/meteor'
 import { render } from 'react-dom'

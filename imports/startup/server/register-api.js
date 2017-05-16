@@ -1,5 +1,6 @@
 import '../../api/languages/methods'
 import '../../api/stripe'
+import '../../api/cloudinary'
 import '../../api/users/methods'
 import '../../api/users/server/publications'
 import '../../api/resolution_plans/server/publications'
