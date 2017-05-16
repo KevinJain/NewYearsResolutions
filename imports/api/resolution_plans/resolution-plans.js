@@ -55,6 +55,11 @@ const Task = Class.create({
 				}
 			]
 		},
+		// Just a list of line items to check off
+		subTaskChecklist: {
+			type: [String],
+			default: () => []
+		},
 		description: {
 			type: String
 		},
