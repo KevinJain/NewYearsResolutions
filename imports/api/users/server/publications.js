@@ -4,7 +4,7 @@ import { Meteor } from 'meteor/meteor'
 
 Meteor.publish('userData', function() {
 	if (!this.userId) {
-		return false
+		return []
 	}
 	return Meteor.users.find(
 		{
