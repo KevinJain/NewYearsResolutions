@@ -174,35 +174,15 @@ export default class CompletionPage extends BaseComponent {
 			)
 		)
 
-		let completeBooleanTask = ''
-		if (_.includes(plan.proofTypes, ProofType.BOOLEAN)) {
-			completeBooleanTask = (
-				<CompleteBooleanTask log={log} success={success} />
-			)
-		}
+		const completeBooleanTask =
+			_.includes(plan.proofTypes, ProofType.BOOLEAN)
+			? <CompleteBooleanTask log={log} success={success} />
+			: ''
 
-		let completeImageTask = ''
-		if (_.includes(plan.proofTypes, ProofType.IMAGE)) {
-			completeImageTask = (
-				<CompleteImageTask log={log} success={success} />
-			)
-		}
-
-		const content = (
-			<div className="page completion">
-				<h3>{i18n.__('pages.completionPage.completeTodaysPlan')}</h3>
-				<h1>{planTitle}</h1>
-				<h2>{taskName}</h2>
-				<p>{taskDescription}</p>
-
-				<div className="sub-task-checklist-items">
-					{subTaskChecklistItems}
-				</div>
-
-				{completeBooleanTask}
-				{completeImageTask}
-			</div>
-		)
+		const completeImageTask =
+			_.includes(plan.proofTypes, ProofType.IMAGE)
+			? <CompleteImageTask log={log} success={success} />
+			: ''
 
 		return (
 			<div className="page subscribe">
@@ -210,7 +190,19 @@ export default class CompletionPage extends BaseComponent {
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
-					{content}
+					<div className="page completion">
+						<h3>{i18n.__('pages.completionPage.completeTodaysPlan')}</h3>
+						<h1>{planTitle}</h1>
+						<h2>{taskName}</h2>
+						<p>{taskDescription}</p>
+
+						<div className="sub-task-checklist-items">
+							{subTaskChecklistItems}
+						</div>
+
+						{completeBooleanTask}
+						{completeImageTask}
+					</div>
 				</div>
 			</div>
 		)
