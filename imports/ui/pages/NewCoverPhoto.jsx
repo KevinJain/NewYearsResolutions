@@ -47,7 +47,7 @@ export default class NewProfilePicPage extends BaseComponent {
 		)
 
 		return (
-			<div className="page newprofilepic">
+			<div className="page newcoverphoto">
 				<div className="content-scrollable">
 					{content}
 				</div>
