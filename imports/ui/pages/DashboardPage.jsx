@@ -82,6 +82,16 @@ export default class DashboardPage extends BaseComponent {
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
+					<div className="cover">
+						<img className="cover-photo" src="/placeholders/cover-photo.png" />
+						<img className="profile-picture" src="/placeholders/profile-picture.png" />
+						<Link to="/newCoverPhoto" className="new-cover-photo btn-primary">
+							{i18n.__('pages.dashboardPage.newCoverPhoto')}
+						</Link>
+						<Link to="/newProfilePic" className="new-profile-pic btn-primary">
+							{i18n.__('pages.dashboardPage.newProfilePic')}
+						</Link>
+					</div>
 					{content}
 				</div>
 			</div>

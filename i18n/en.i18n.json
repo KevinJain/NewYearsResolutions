@@ -23,6 +23,8 @@
 	},
     "dashboardPage": {
       "tasksTodoToday": "Your tasks to do today",
+	  "newCoverPhoto": "New cover photo",
+	  "newProfilePic": "New profile pic",
 	  "progress":"Progress"
 	},
     "completionPage": {
