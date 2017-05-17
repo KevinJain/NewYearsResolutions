@@ -323,6 +323,19 @@ export const ResolutionLog = Class.create({
 				return false
 			}
 			return tasks[0].task
+		},
+
+		// Move to the next task starting tomorrow
+		moveOn(lastCompletedTaskId, lastCompletedTaskAt) {
+			const plan = ResolutionPlan.findOne(this.resolutionPlan)
+
+			// Mark currentTask to next
+			const nextTask = plan.getTaskAfter(lastCompletedTaskId)
+			this.currentTask = nextTask._id
+
+			// Mark `startDate` as tomorrow
+			this.startDate = moment(lastCompletedTaskAt)
+				.add(1, 'day').startOf('day').format('YYYY-MM-DD')
 		}
 	},
 	indexes: {

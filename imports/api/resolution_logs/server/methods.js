@@ -3,9 +3,7 @@
 /* eslint-disable max-statements */
 import { Meteor } from 'meteor/meteor'
 import { ResolutionLog } from '../resolution-logs'
-import { ResolutionPlan } from '../../resolution_plans/resolution-plans'
 import { check } from 'meteor/check'
-import moment from 'moment'
 
 Meteor.methods({
 	'resolutionlogs.user.start': basics => {
@@ -52,7 +50,6 @@ Meteor.methods({
 
 		// Get basic info
 		const log = ResolutionLog.findOne(resolutionLogId)
-		const plan = ResolutionPlan.findOne(log.resolutionPlan)
 
 		// Enforce this log belongs to user
 		if (log.user !== userId) {
@@ -67,12 +64,8 @@ Meteor.methods({
 			completedAt
 		})
 
-		// Mark `startDate` as tomorrow
-		log.startDate =	moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
-
-		// Mark currentTask to next
-		const nextTask = plan.getTaskAfter(taskId)
-		log.currentTask = nextTask._id
+		// Move to the next task starting tomorrow
+		log.moveOn(taskId, completedAt)
 
 		// Save it
 		if (!log.save()) {
@@ -94,7 +87,6 @@ Meteor.methods({
 
 		// Get basic info
 		const log = ResolutionLog.findOne(resolutionLogId)
-		const plan = ResolutionPlan.findOne(log.resolutionPlan)
 
 		// Enforce this log belongs to user
 		if (log.user !== userId) {
@@ -109,12 +101,8 @@ Meteor.methods({
 			completedAt
 		})
 
-		// Mark `startDate` as tomorrow
-		log.startDate =	moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
-
-		// Mark currentTask to next
-		const nextTask = plan.getTaskAfter(taskId)
-		log.currentTask = nextTask._id
+		// Move to the next task starting tomorrow
+		log.moveOn(taskId, completedAt)
 
 		// Save it
 		if (!log.save()) {
