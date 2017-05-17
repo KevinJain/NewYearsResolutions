@@ -2,6 +2,7 @@
 import { ProofType, ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
 import BaseComponent from '../components/BaseComponent.jsx'
 import MobileMenu from '../components/MobileMenu.jsx'
+import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
 import UploadImage from '../components/UploadImage.jsx'
@@ -145,10 +146,8 @@ export default class CompletionPage extends BaseComponent {
 
 	render() {
 		// Confirm logged in
-		const user = Meteor.user()
-		if (!user) {
-			const loggingOutContent = <div>Logging out</div>
-			return <CompletionPage content={loggingOutContent} />
+		if (!Meteor.user()) {
+			return <NotFoundPage />
 		}
 
 		// Get data
