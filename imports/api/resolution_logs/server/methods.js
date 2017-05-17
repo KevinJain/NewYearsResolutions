@@ -1,6 +1,3 @@
-// TODO: Refactor & remove this max-statements rule disable
-// TODO: * Probably some dupe code between the methods
-/* eslint-disable max-statements */
 import { Meteor } from 'meteor/meteor'
 import { ResolutionLog } from '../resolution-logs'
 import { check } from 'meteor/check'
