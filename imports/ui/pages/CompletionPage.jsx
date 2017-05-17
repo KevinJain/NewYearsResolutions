@@ -52,13 +52,10 @@ SubTaskChecklistItem.contextTypes = {
 	text: React.PropTypes.string
 }
 
-export default class CompletionPage extends BaseComponent {
+class UploadImage extends BaseComponent {
 	constructor(props) {
 		super(props)
-		this.state = Object.assign(this.state, {})
-		this.completeBooleanTask = this.completeBooleanTask.bind(this)
 
-		// TODO: Split out Cloudinary Upload into it's own react component (1 of 3)?
 		Meteor.call('cloudinary.sign_request', (err, cloudinary) => {
 			// TODO: Real error handling
 			if (err) {
@@ -73,7 +70,6 @@ export default class CompletionPage extends BaseComponent {
 	}
 
 	componentDidUpdate() {
-		// TODO: Split out Cloudinary Upload into it's own react component (2 of 3)?
 		if (
 			this.state.cloudinarySignature &&
 			this.state.cloudinaryTimestamp &&
@@ -87,6 +83,34 @@ export default class CompletionPage extends BaseComponent {
 				console.log(data.result.secure_url)
 			})
 		}
+	}
+
+	render() {
+		// Cloudinary
+		const cloudinaryConfig = JSON.stringify({
+			// "callback": "https://www.example.com/cloudinary_cors.html",
+			timestamp: this.state.cloudinaryTimestamp,
+			signature: this.state.cloudinarySignature,
+			api_key: Meteor.settings.public.cloudinary.key
+		})
+		return (
+			<input
+				name="file"
+				type="file"
+				className="cloudinary-fileupload"
+				data-cloudinary-field="image_id"
+				data-form-data={cloudinaryConfig}
+			>
+			</input>
+		)
+	}
+}
+
+export default class CompletionPage extends BaseComponent {
+	constructor(props) {
+		super(props)
+		this.state = Object.assign(this.state, {})
+		this.completeBooleanTask = this.completeBooleanTask.bind(this)
 	}
 
 	completeBooleanTask(e) {
@@ -129,25 +153,6 @@ export default class CompletionPage extends BaseComponent {
 		const taskDescription = task.description
 		const planTitle = plan.title
 
-		// TODO: Split out Cloudinary Upload into it's own react component (1 of 3)?
-		// Cloudinary
-		const cloudinaryConfig = JSON.stringify({
-			// "callback": "https://www.example.com/cloudinary_cors.html",
-			timestamp: this.state.cloudinaryTimestamp,
-			signature: this.state.cloudinarySignature,
-			api_key: Meteor.settings.public.cloudinary.key
-		})
-		const cloudinaryUpload = (
-			<input
-				name="file"
-				type="file"
-				className="cloudinary-fileupload"
-				data-cloudinary-field="image_id"
-				data-form-data={cloudinaryConfig}
-			>
-			</input>
-		)
-
 		// Setup: task
 		const subTaskChecklistItems = _.map(task.subTaskChecklist, (item, ii) =>
 			(
@@ -164,9 +169,7 @@ export default class CompletionPage extends BaseComponent {
 				<h1>{planTitle}</h1>
 				<h2>{taskName}</h2>
 				<p>{taskDescription}</p>
-				<div>
-					{cloudinaryUpload}
-				</div>
+				<UploadImage />
 
 				<div className="sub-task-checklist-items">
 					{subTaskChecklistItems}
