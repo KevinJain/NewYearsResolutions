@@ -3,7 +3,7 @@
 	"title": "Draw for a week",
 	"version": "1.0.0",
 	"proofTypes": [ 1 ],
-	"daysPerWeekSuggested": 3,
+	"daysPerWeekSuggested": 7,
 	"tasks": [
 		{
 			"title":"Draw beginner picture 1 of 3 today",
