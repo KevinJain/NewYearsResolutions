@@ -1,0 +1,460 @@
+{
+	"planId": "yoga",
+	"title": "Yoga",
+	"version": "1.0.0",
+	"proofTypes": [ 0 ],
+	"daysPerWeekSuggested": 7,
+	"tasks": [
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 1
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 2
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 3
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 4
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 5
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 6
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 7
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 8
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 9
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 10
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 11
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 12
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 13
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 14
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 15
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 16
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 17
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 18
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 19
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 20
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 21
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 22
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 23
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 24
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 25
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 26
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 27
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 28
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 29
+		},
+		{
+			"title":"Do today's Yoga",
+			"description":"",
+			"subTaskChecklist":[
+				"Backbend",
+				"Camel pose",
+				"Knara  yama",
+				"Leg stretches",
+				"Arm stretches",
+				"Torso stretch",
+				"Neck stretch",
+				"Shavasana"
+			],
+			"order": 30
+		}
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}

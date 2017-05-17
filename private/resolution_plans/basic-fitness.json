@@ -1,0 +1,550 @@
+{
+	"planId": "basic-fitness",
+	"title": "Basic Fitness",
+	"version": "1.0.0",
+	"proofTypes": [ 0 ],
+	"daysPerWeekSuggested": 7,
+	"tasks": [
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 1
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 2
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 3
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 4
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 5
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 6
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 7
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 8
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 9
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 10
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 11
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 12
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 13
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 14
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 15
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 16
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 17
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 18
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 19
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 20
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 21
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 22
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 23
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 24
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 25
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 26
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 27
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 28
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"minute long plank",
+				"minute long side plank left",
+				"minute long side plank right side",
+				"25 lunges",
+				"25 jumping jacks",
+				"25 high knees",
+				"25 butt kickers",
+				"Backbend"
+			],
+			"order": 29
+		},
+		{
+			"title":"Do today's workout",
+			"description":"",
+			"subTaskChecklist":[
+				"Transidental meditation (25 minutes)",
+				"25 situps",
+				"25 pushups",
+				"Minute long plank",
+				"Minute long side plank left",
+				"Minute long side plank right side",
+				"25 Lunges",
+				"25 Jumping jacks",
+				"25 High knees",
+				"25 Butt kickers",
+				"Backbend"
+			],
+			"order": 30
+		}
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}

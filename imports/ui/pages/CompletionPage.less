@@ -1,0 +1,23 @@
+// Cloned from AuthPage.less for reference
+@import '{}/imports/ui/stylesheets/utils.less';
+
+.page.completion {
+	.sub-task-checklist-items {
+		text-align: left;
+		margin: 10px;
+	}
+
+	.sub-task-checklist-items {
+		label {
+			font-weight: bolder;
+		}
+
+		div label {
+			transition: color .2s ease-in;
+			color: #333;
+		}
+		div.checked label {
+			color: #070;
+		}
+	}
+}
