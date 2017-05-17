@@ -40,7 +40,8 @@
     "completionPage": {
       "dashboard": "Back to dashboard",
 	  "completeTodaysPlan": "Complete today's",
-	  "completeTodaysTask": "Yes I've done it today"
+	  "completeTodaysTask": "Yes I've done it today",
+	  "uploadImageProof": "Upload an image showing what you've done"
     },
 	"subscribePagePlans": {
 	  "pickPlans": "Pick & follow plan(s)",

@@ -1,10 +1,9 @@
 /* globals Meteor */
+import { ProofType, ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
 import BaseComponent from '../components/BaseComponent.jsx'
-import { Link } from 'react-router'
 import MobileMenu from '../components/MobileMenu.jsx'
 import React from 'react'
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
-import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
 import UploadImage from '../components/UploadImage.jsx'
 import _ from 'lodash'
 import i18n from 'meteor/universe:i18n'
@@ -58,7 +57,7 @@ export default class CompletionPage extends BaseComponent {
 		super(props)
 		this.state = Object.assign(this.state, {})
 		this.completeBooleanTask = this.completeBooleanTask.bind(this)
-		this.proofUploaded = this.proofUploaded.bind(this)
+		this.imageProofUploaded = this.imageProofUploaded.bind(this)
 	}
 
 	completeBooleanTask(e) {
@@ -69,7 +68,7 @@ export default class CompletionPage extends BaseComponent {
 		const completedAt = new Date()
 
 		Meteor.call(
-			'resolutionlogs.tasks.complete',
+			'resolutionlogs.tasks.complete.boolean',
 			log._id,
 			task._id,
 			completedAt,
@@ -83,14 +82,28 @@ export default class CompletionPage extends BaseComponent {
 		)
 	}
 
-	proofUploaded(result) {
-		// TODO: Something with this data and stop alerting
-		console.log(result)
-		console.log(result.secure_url)
-		alert('Done upload to cloudinary, see console. TODO: Do something w/it')
+	imageProofUploaded(result) {
+		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
+		const task = log.getTodaysScheduledTask()
+		const completedAt = new Date()
+
+		Meteor.call(
+			'resolutionlogs.tasks.complete.image',
+			log._id,
+			task._id,
+			completedAt,
+			result.public_id,
+			(err, res) => {
+				if (err) {
+					alert('Error completing task')
+					return
+				}
+				this.context.router.replace('/dashboard')
+			}
+		)
 	}
 
-	render() {
+	render() { // eslint-disable-line max-statements
 		// Confirm logged in
 		const user = Meteor.user()
 		if (!user) {
@@ -118,31 +131,42 @@ export default class CompletionPage extends BaseComponent {
 			)
 		)
 
+		let completeBooleanTask = ''
+		if (_.includes(plan.proofTypes, ProofType.BOOLEAN)) {
+			completeBooleanTask = (
+				<div>
+					<button onClick={this.completeBooleanTask} className="btn-primary">
+						{i18n.__('pages.completionPage.completeTodaysTask')}
+					</button>
+				</div>
+			)
+		}
+
+		let completeImageTask = ''
+		if (_.includes(plan.proofTypes, ProofType.IMAGE)) {
+			completeImageTask = (
+				<div>
+					<h3>{i18n.__('pages.completionPage.uploadImageProof')}</h3>
+					<UploadImage
+						success={this.imageProofUploaded}
+					/>
+				</div>
+			)
+		}
+
 		const content = (
 			<div className="page completion">
 				<h3>{i18n.__('pages.completionPage.completeTodaysPlan')}</h3>
 				<h1>{planTitle}</h1>
 				<h2>{taskName}</h2>
 				<p>{taskDescription}</p>
-				<UploadImage
-					success={this.proofUploaded}
-				/>
 
 				<div className="sub-task-checklist-items">
 					{subTaskChecklistItems}
 				</div>
 
-				<div>
-					<button onClick={this.completeBooleanTask} className="btn-primary">
-						{i18n.__('pages.completionPage.completeTodaysTask')}
-					</button>
-				</div>
-
-				<div>
-					<Link to="/dashboard" className="btn-secondary">
-						{i18n.__('pages.completionPage.dashboard')}
-					</Link>
-				</div>
+				{completeBooleanTask}
+				{completeImageTask}
 			</div>
 		)
 

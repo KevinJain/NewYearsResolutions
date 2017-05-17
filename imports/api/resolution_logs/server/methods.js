@@ -1,3 +1,6 @@
+// TODO: Refactor & remove this max-statements rule disable
+// TODO: * Probably some dupe code between the methods
+/* eslint-disable max-statements */
 import { Meteor } from 'meteor/meteor'
 import { ResolutionLog } from '../resolution-logs'
 import { ResolutionPlan } from '../../resolution_plans/resolution-plans'
@@ -37,7 +40,7 @@ Meteor.methods({
 		log.remove()
 	},
 
-	'resolutionlogs.tasks.complete': (resolutionLogId, taskId, completedAt) => {
+	'resolutionlogs.tasks.complete.boolean': (resolutionLogId, taskId, completedAt) => {
 		// Enforce logged in
 		const userId = Meteor.userId()
 		check(userId, String)
@@ -61,6 +64,48 @@ Meteor.methods({
 			task: taskId,
 			// TODO: Make this work for more than just boolean proof
 			proof: { boolean: true },
+			completedAt
+		})
+
+		// Mark `startDate` as tomorrow
+		log.startDate =	moment(completedAt).add(1, 'day').startOf('day').format('YYYY-MM-DD')
+
+		// Mark currentTask to next
+		const nextTask = plan.getTaskAfter(taskId)
+		log.currentTask = nextTask._id
+
+		// Save it
+		if (!log.save()) {
+			throw new Meteor.Error('Failure saving log')
+		}
+	},
+
+	'resolutionlogs.tasks.complete.image':
+	(resolutionLogId, taskId, completedAt, cloudinaryPublicId) => {
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed string ids
+		check(resolutionLogId, String)
+		check(taskId, String)
+		check(completedAt, Date)
+		check(cloudinaryPublicId, String)
+
+		// Get basic info
+		const log = ResolutionLog.findOne(resolutionLogId)
+		const plan = ResolutionPlan.findOne(log.resolutionPlan)
+
+		// Enforce this log belongs to user
+		if (log.user !== userId) {
+			throw new Meteor.Error(`Log ${resolutionLogId} does not belog to user ${userId}`)
+		}
+
+		// Mark task completed
+		log.completedTasks.push({
+			task: taskId,
+			// TODO: Make this work for more than just boolean proof
+			proof: { image: cloudinaryPublicId },
 			completedAt
 		})
 

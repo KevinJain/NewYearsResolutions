@@ -3,11 +3,11 @@ import { Class, Enum } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
 import _ from 'lodash'
 
-const ProofType = Enum.create({
+export const ProofType = Enum.create({
 	name: 'ProofType',
-	identifiers: ['BOOLEAN']
+	identifiers: ['BOOLEAN', 'IMAGE']
 	// TODO: Add support for these proof types later
-	// 'IMAGE', 'AUDIO', 'VIDEO'
+	// 'AUDIO', 'VIDEO'
 })
 
 const TaskGroup = Class.create({

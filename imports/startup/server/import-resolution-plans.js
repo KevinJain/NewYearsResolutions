@@ -2,7 +2,13 @@
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
 import _ from 'lodash'
 
-const plans = ['run-a-5k.json', '60-day-multi-vitamin.json', 'basic-fitness.json', 'yoga.json']
+const plans = [
+	'run-a-5k.json',
+	'60-day-multi-vitamin.json',
+	'basic-fitness.json',
+	'yoga.json',
+	'draw-for-a-week.json'
+]
 
 // TODO: Enhance this so we can import updates without id over-writes?
 // TODO: * Maybe just add id's the .json content?

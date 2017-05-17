@@ -15,10 +15,57 @@ const Proof = Class.create({
 			validators: [
 				// TODO: Add must always be 'true' if present
 			]
+		},
+
+		image:  {
+			// Cloudinary image id
+			type: String,
+			optional: true,
+			validators: [
+				// TODO: Add must always be 'true' if present
+				// TODO: Add real validation here it's a cloudinary id
+				{
+					type: 'minLength',
+					param: 10
+				},
+				{
+					type: 'maxLength',
+					param: 100
+				}
+			]
+		},
+		imageUrlLarge: {
+			// Auto-generated field from image
+			type: String,
+			optional: true
+		},
+		imageUrlThumbnail: {
+			// Auto-generated field from image
+			type: String,
+			optional: true
 		}
+
 		// TODO: Add support for these proof types at some point
-		// 'IMAGE', 'VIDEO', 'AUDIO'
-	}
+		// 'VIDEO', 'AUDIO'
+	},
+	events: {
+		afterInit(e) {
+			// Get current doc & setup re-used information
+			const doc = e.currentTarget
+			const cloudinaryPrefix = 'https://res.cloudinary.com/'
+			const cloudName = Meteor.settings.public.cloudinary.name
+
+			const img = doc.image
+			if (img) {
+				const lTrans = 'w_600,c_fill'
+				doc.imageUrlLarge =
+					`${cloudinaryPrefix}${cloudName}/image/upload/${lTrans}/${img}.jpg`
+				const tTrans = 'w_75,h_75,c_fill'
+				doc.imageUrlThumbnail =
+					`${cloudinaryPrefix}${cloudName}/image/upload/${tTrans}/${img}.jpg`
+			}
+		}
+	},
 })
 
 // One log each step completed

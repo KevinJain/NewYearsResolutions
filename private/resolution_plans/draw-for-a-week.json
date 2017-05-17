@@ -1,0 +1,45 @@
+{
+	"planId": "draw-for-a-week",
+	"title": "Draw for a week",
+	"version": "1.0.0",
+	"proofTypes": [ 1 ],
+	"daysPerWeekSuggested": 3,
+	"tasks": [
+		{
+			"title":"Draw beginner picture 1 of 3 today",
+			"description":"",
+			"order": 1
+		},
+		{
+			"title":"Draw beginner picture 2 of 3 today",
+			"description":"",
+			"order": 2
+		},
+		{
+			"title":"Draw beginner picture 3 of 3 today",
+			"description":"",
+			"order": 3
+		},
+		{
+			"title":"Draw intermediate picture 1 of 3 today",
+			"description":"",
+			"order": 4
+		},
+		{
+			"title":"Draw intermediate picture 2 of 3 today",
+			"description":"",
+			"order": 5
+		},
+		{
+			"title":"Draw intermediate picture 3 of 3 today",
+			"description":"",
+			"order": 6
+		},
+		{
+			"title":"Draw final picture",
+			"description":"",
+			"order": 7
+		}
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}

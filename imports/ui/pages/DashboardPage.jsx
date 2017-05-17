@@ -60,10 +60,21 @@ export default class DashboardPage extends BaseComponent {
 				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
 				const planTask = _.find(plan.tasks, { _id: logTask.task })
 				const key2 = `task::${logTask._id}`
+				let taskImage = ''
+				if (logTask.proof.image) {
+					taskImage = (
+						<div>
+							<a href={logTask.proof.imageUrlLarge} target="_blank">
+								<img src={logTask.proof.imageUrlThumbnail} />
+							</a>
+						</div>
+					)
+				}
 
 				tasksDone.push(
-					<div key={key2}>
-						{planTask.title}&nbsp;on&nbsp;{completedAtStr}
+					<div className="task-completed-container" key={key2}>
+						<h4>{planTask.title}&nbsp;on&nbsp;{completedAtStr}</h4>
+						{taskImage}
 					</div>
 				)
 			})
