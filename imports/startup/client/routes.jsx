@@ -11,6 +11,7 @@ import CalendarPage from '../../ui/pages/CalendarPage.jsx'
 import CompletionPage from '../../ui/pages/CompletionPage.jsx'
 import DashboardPage from '../../ui/pages/DashboardPage.jsx'
 import NewProfilePic from '../../ui/pages/NewProfilePic.jsx'
+import NewCoverPhoto from '../../ui/pages/NewCoverPhoto.jsx'
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx'
 import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx'
 import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
@@ -30,6 +31,7 @@ export default () => ( // eslint-disable-line react/display-name
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
 			<Route path="subscribe-join" component={SubscribePageJoin} />
 			<Route path="new-profile-pic" component={NewProfilePic} />
+			<Route path="new-cover-photo" component={NewCoverPhoto} />
 			<Route path="calendar" component={CalendarPage} />
 			<Route path="*" component={NotFoundPage} />
 		</Route>

@@ -32,6 +32,11 @@
 		"current": "Your current profile picture",
 		"new": "Upload a new profile picture (will replace current existing)"
 	},
+	"newCoverPhoto": {
+		"title": "Cover Photo",
+		"current": "Your current cover photo",
+		"new": "Upload a new cover photo (will replace current existing)"
+	},
     "completionPage": {
       "dashboard": "Back to dashboard",
 	  "completeTodaysPlan": "Complete today's",

@@ -31,5 +31,19 @@ Meteor.methods({
 		const user = User.findOne(userId)
 		user.profilePicture = profilePicture
 		user.save() // Will throw an error back if fails
+	},
+
+	'users.newCoverPhoto': coverPhoto => {
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed a string
+		check(coverPhoto, String)
+
+		// Save data passed in
+		const user = User.findOne(userId)
+		user.coverPhoto = coverPhoto
+		user.save() // Will throw an error back if fails
 	}
 })

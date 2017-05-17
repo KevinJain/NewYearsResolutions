@@ -16,7 +16,8 @@ Meteor.publish('userData', function() {
 				lastName: 1,
 				phone: 1,
 				stripeSubscriptionId: 1,
-				profilePicture: 1
+				profilePicture: 1,
+				coverPhoto: 1
 			}
 		}
 	)

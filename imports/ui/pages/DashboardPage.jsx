@@ -85,9 +85,9 @@ export default class DashboardPage extends BaseComponent {
 				</nav>
 				<div className="content-scrollable">
 					<div className="cover">
-						<img className="cover-photo" src="/placeholders/cover-photo.png" />
+						<img className="cover-photo" src={user.coverPhotoUrl} />
 						<img className="profile-picture" src={user.profilePictureUrl} />
-						<Link to="/newCoverPhoto" className="new-cover-photo btn-primary">
+						<Link to="/new-cover-photo" className="new-cover-photo btn-primary">
 							{i18n.__('pages.dashboardPage.newCoverPhoto')}
 						</Link>
 						<Link to="/new-profile-pic" className="new-profile-pic btn-primary">

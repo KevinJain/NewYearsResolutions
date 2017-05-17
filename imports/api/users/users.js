@@ -63,6 +63,26 @@ export default Class.create({
 		},
 
 		/// Optional
+		coverPhoto: {
+			// Cloudinary image id
+			type: String,
+			optional: true,
+			// TODO: Add real validation here it's a cloudinary id
+			validators: [
+				{
+					type: 'minLength',
+					param: 10
+				},
+				{
+					type: 'maxLength',
+					param: 100
+				}
+			]
+		},
+		coverPhotoUrl: {
+			// Auto-generated field from coverPhoto
+			type: String
+		},
 		profilePicture: {
 			// Cloudinary image id
 			type: String,
@@ -151,16 +171,25 @@ export default Class.create({
 	},
 	events: {
 		afterInit(e) {
+			// Get current doc & setup re-used information
 			const doc = e.currentTarget
-			const profilePicture = doc.profilePicture
+			const cloudinaryPrefix = 'https://res.cloudinary.com/'
+			const cloudName = Meteor.settings.public.cloudinary.name
 
+			const profilePicture = doc.profilePicture
 			if (profilePicture) {
-				const cloudinaryPrefix = 'https://res.cloudinary.com/'
-				const cloudName = Meteor.settings.public.cloudinary.name
 				doc.profilePictureUrl =
 					`${cloudinaryPrefix}${cloudName}/image/upload/${profilePicture}.jpg`
 			} else {
 				doc.profilePictureUrl = '/placeholders/profile-picture.png'
+			}
+
+			const coverPhoto = doc.coverPhoto
+			if (coverPhoto) {
+				doc.coverPhotoUrl =
+					`${cloudinaryPrefix}${cloudName}/image/upload/${coverPhoto}.jpg`
+			} else {
+				doc.coverPhotoUrl = '/placeholders/cover-photo.png'
 			}
 		}
 	},
