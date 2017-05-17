@@ -27,6 +27,11 @@
 	  "newProfilePic": "New profile pic",
 	  "progress":"Progress"
 	},
+	"newProfilePic": {
+		"title": "Profile picture",
+		"current": "Your current profile picture",
+		"new": "Upload a new profile picture (will replace current existing)"
+	},
     "completionPage": {
       "dashboard": "Back to dashboard",
 	  "completeTodaysPlan": "Complete today's",

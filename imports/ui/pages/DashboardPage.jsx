@@ -6,6 +6,7 @@ import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
 import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
+import User from '../../api/users/users'
 import _ from 'lodash'
 import i18n from 'meteor/universe:i18n'
 import moment from 'moment'
@@ -17,10 +18,11 @@ export default class DashboardPage extends BaseComponent {
 	}
 
 	render() {
-		const user = Meteor.user()
+		let user = Meteor.user()
 		if (!user) {
 			return <NotFoundPage />
 		}
+		user = User.findOne(user._id)
 		const logs = ResolutionLog.find({ user: user._id })
 
 		const tasksTodoContent = []
@@ -84,11 +86,11 @@ export default class DashboardPage extends BaseComponent {
 				<div className="content-scrollable">
 					<div className="cover">
 						<img className="cover-photo" src="/placeholders/cover-photo.png" />
-						<img className="profile-picture" src="/placeholders/profile-picture.png" />
+						<img className="profile-picture" src={user.profilePictureUrl} />
 						<Link to="/newCoverPhoto" className="new-cover-photo btn-primary">
 							{i18n.__('pages.dashboardPage.newCoverPhoto')}
 						</Link>
-						<Link to="/newProfilePic" className="new-profile-pic btn-primary">
+						<Link to="/new-profile-pic" className="new-profile-pic btn-primary">
 							{i18n.__('pages.dashboardPage.newProfilePic')}
 						</Link>
 					</div>

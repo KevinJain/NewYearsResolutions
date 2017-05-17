@@ -17,5 +17,19 @@ Meteor.methods({
 		user.lastName = basics.lastName
 		user.phone = basics.phone
 		user.save() // Will throw an error back if fails
+	},
+
+	'users.newProfilePic': profilePicture => {
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed a string
+		check(profilePicture, String)
+
+		// Save data passed in
+		const user = User.findOne(userId)
+		user.profilePicture = profilePicture
+		user.save() // Will throw an error back if fails
 	}
 })

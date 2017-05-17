@@ -63,6 +63,26 @@ export default Class.create({
 		},
 
 		/// Optional
+		profilePicture: {
+			// Cloudinary image id
+			type: String,
+			optional: true,
+			// TODO: Add real validation here it's a cloudinary id
+			validators: [
+				{
+					type: 'minLength',
+					param: 10
+				},
+				{
+					type: 'maxLength',
+					param: 100
+				}
+			]
+		},
+		profilePictureUrl: {
+			// Auto-generated field from profilePicture
+			type: String
+		},
 		stripeSubscriptionId: {
 			type: String,
 			optional: true,
@@ -127,6 +147,21 @@ export default Class.create({
 			createdFieldName: 'createdAt',
 			hasUpdatedField: true,
 			updatedFieldName: 'updatedAt'
+		}
+	},
+	events: {
+		afterInit(e) {
+			const doc = e.currentTarget
+			const profilePicture = doc.profilePicture
+
+			if (profilePicture) {
+				const cloudinaryPrefix = 'https://res.cloudinary.com/'
+				const cloudName = Meteor.settings.public.cloudinary.name
+				doc.profilePictureUrl =
+					`${cloudinaryPrefix}${cloudName}/image/upload/${profilePicture}.jpg`
+			} else {
+				doc.profilePictureUrl = '/placeholders/profile-picture.png'
+			}
 		}
 	},
 	helpers: {
