@@ -46,30 +46,27 @@ class SubTaskChecklistItem extends BaseComponent {
 		)
 	}
 }
-
-SubTaskChecklistItem.contextTypes = {
+SubTaskChecklistItem.propTypes = {
 	key: React.PropTypes.string,
 	text: React.PropTypes.string
 }
 
-export default class CompletionPage extends BaseComponent {
+class CompleteBooleanTask extends BaseComponent {
 	constructor(props) {
 		super(props)
 		this.state = Object.assign(this.state, {})
 		this.completeBooleanTask = this.completeBooleanTask.bind(this)
-		this.imageProofUploaded = this.imageProofUploaded.bind(this)
 	}
 
 	completeBooleanTask(e) {
 		e.preventDefault()
 
-		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
-		const task = log.getTodaysScheduledTask()
+		const task = this.props.log.getTodaysScheduledTask()
 		const completedAt = new Date()
 
 		Meteor.call(
 			'resolutionlogs.tasks.complete.boolean',
-			log._id,
+			this.props.log._id,
 			task._id,
 			completedAt,
 			(err, res) => {
@@ -77,19 +74,40 @@ export default class CompletionPage extends BaseComponent {
 					alert('Error completing task')
 					return
 				}
-				this.context.router.replace('/dashboard')
+				this.props.success()
 			}
 		)
 	}
 
+	render() {
+		return (
+			<div>
+				<button onClick={this.completeBooleanTask} className="btn-primary">
+					{i18n.__('pages.completionPage.completeTodaysTask')}
+				</button>
+			</div>
+		)
+	}
+}
+CompleteBooleanTask.propTypes = {
+	log: React.PropTypes.object,
+	success: React.PropTypes.func
+}
+
+class CompleteImageTask extends BaseComponent {
+	constructor(props) {
+		super(props)
+		this.state = Object.assign(this.state, {})
+		this.imageProofUploaded = this.imageProofUploaded.bind(this)
+	}
+
 	imageProofUploaded(result) {
-		const log = ResolutionLog.findOne(this.props.params.resolutionLog)
-		const task = log.getTodaysScheduledTask()
+		const task = this.props.log.getTodaysScheduledTask()
 		const completedAt = new Date()
 
 		Meteor.call(
 			'resolutionlogs.tasks.complete.image',
-			log._id,
+			this.props.log._id,
 			task._id,
 			completedAt,
 			result.public_id,
@@ -98,12 +116,34 @@ export default class CompletionPage extends BaseComponent {
 					alert('Error completing task')
 					return
 				}
-				this.context.router.replace('/dashboard')
+				this.props.success()
 			}
 		)
 	}
 
-	render() { // eslint-disable-line max-statements
+	render() {
+		return (
+			<div>
+				<h3>{i18n.__('pages.completionPage.uploadImageProof')}</h3>
+				<UploadImage
+					success={this.imageProofUploaded}
+				/>
+			</div>
+		)
+	}
+}
+CompleteImageTask.propTypes = {
+	log: React.PropTypes.object,
+	success: React.PropTypes.func
+}
+
+export default class CompletionPage extends BaseComponent {
+	constructor(props) {
+		super(props)
+		this.state = Object.assign(this.state, {})
+	}
+
+	render() {
 		// Confirm logged in
 		const user = Meteor.user()
 		if (!user) {
@@ -120,6 +160,9 @@ export default class CompletionPage extends BaseComponent {
 		const taskName = task.title
 		const taskDescription = task.description
 		const planTitle = plan.title
+		const success = () => {
+			this.context.router.replace('/dashboard')
+		}
 
 		// Setup: task
 		const subTaskChecklistItems = _.map(task.subTaskChecklist, (item, ii) =>
@@ -134,23 +177,14 @@ export default class CompletionPage extends BaseComponent {
 		let completeBooleanTask = ''
 		if (_.includes(plan.proofTypes, ProofType.BOOLEAN)) {
 			completeBooleanTask = (
-				<div>
-					<button onClick={this.completeBooleanTask} className="btn-primary">
-						{i18n.__('pages.completionPage.completeTodaysTask')}
-					</button>
-				</div>
+				<CompleteBooleanTask log={log} success={success} />
 			)
 		}
 
 		let completeImageTask = ''
 		if (_.includes(plan.proofTypes, ProofType.IMAGE)) {
 			completeImageTask = (
-				<div>
-					<h3>{i18n.__('pages.completionPage.uploadImageProof')}</h3>
-					<UploadImage
-						success={this.imageProofUploaded}
-					/>
-				</div>
+				<CompleteImageTask log={log} success={success} />
 			)
 		}
 
@@ -182,7 +216,6 @@ export default class CompletionPage extends BaseComponent {
 		)
 	}
 }
-
 CompletionPage.contextTypes = {
 	router: React.PropTypes.object
 }
