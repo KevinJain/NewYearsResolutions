@@ -1,5 +1,5 @@
 import { Meteor } from 'meteor/meteor'
-import User from './users'
+import User from '../users'
 import { check } from 'meteor/check'
 
 Meteor.methods({
