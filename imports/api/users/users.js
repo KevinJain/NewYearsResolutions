@@ -176,18 +176,20 @@ export default Class.create({
 			const cloudinaryPrefix = 'https://res.cloudinary.com/'
 			const cloudName = Meteor.settings.public.cloudinary.name
 
-			const profilePicture = doc.profilePicture
-			if (profilePicture) {
+			const proP = doc.profilePicture
+			const pTrans = 'w_170,h_170,c_fill'
+			if (proP) {
 				doc.profilePictureUrl =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${profilePicture}.jpg`
+					`${cloudinaryPrefix}${cloudName}/image/upload/${pTrans}/${proP}.jpg`
 			} else {
 				doc.profilePictureUrl = '/placeholders/profile-picture.png'
 			}
 
-			const coverPhoto = doc.coverPhoto
-			if (coverPhoto) {
+			const coverP = doc.coverPhoto
+			const cTrans = 'w_820,h_312,c_fill'
+			if (coverP) {
 				doc.coverPhotoUrl =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${coverPhoto}.jpg`
+					`${cloudinaryPrefix}${cloudName}/image/upload/${cTrans}/${coverP}.jpg`
 			} else {
 				doc.coverPhotoUrl = '/placeholders/cover-photo.png'
 			}
