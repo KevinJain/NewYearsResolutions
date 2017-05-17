@@ -20,13 +20,17 @@ export default class UploadImage extends BaseComponent {
 	}
 
 	componentDidUpdate() {
+		const el = $('.cloudinary-fileupload')
+		const events = $._data(el[0], 'events')
+		const cloudinaryFileuploadIsSetup = (events && (events.length > 0))
 		if (
+			!cloudinaryFileuploadIsSetup &&
 			this.state.cloudinarySignature &&
 			this.state.cloudinaryTimestamp &&
 			($.fn.cloudinary_fileupload !== undefined) // eslint-disable-line no-undefined
 		) {
-			$('input.cloudinary-fileupload[type=file]').cloudinary_fileupload()
-			$('.cloudinary-fileupload').bind('cloudinarydone', (event, data) => {
+			el.cloudinary_fileupload()
+			el.bind('cloudinarydone', (event, data) => {
 				// TODO: Add error checking before calling success
 				// TODO: Do something if error
 				this.props.success(data.result)
