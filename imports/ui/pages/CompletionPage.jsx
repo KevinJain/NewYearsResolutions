@@ -77,10 +77,9 @@ class UploadImage extends BaseComponent {
 		) {
 			$('input.cloudinary-fileupload[type=file]').cloudinary_fileupload()
 			$('.cloudinary-fileupload').bind('cloudinarydone', (event, data) => {
-				// TODO: Something with this data and stop alerting
-				alert('Done upload to cloudinary, see console. TODO: Do something w/it')
-				console.log(data.result)
-				console.log(data.result.secure_url)
+				// TODO: Add error checking before calling success
+				// TODO: Do something if error
+				this.props.success(data.result)
 			})
 		}
 	}
@@ -106,11 +105,16 @@ class UploadImage extends BaseComponent {
 	}
 }
 
+UploadImage.contextTypes = {
+	success: React.PropTypes.func,
+}
+
 export default class CompletionPage extends BaseComponent {
 	constructor(props) {
 		super(props)
 		this.state = Object.assign(this.state, {})
 		this.completeBooleanTask = this.completeBooleanTask.bind(this)
+		this.proofUploaded = this.proofUploaded.bind(this)
 	}
 
 	completeBooleanTask(e) {
@@ -133,6 +137,13 @@ export default class CompletionPage extends BaseComponent {
 				this.context.router.replace('/dashboard')
 			}
 		)
+	}
+
+	proofUploaded(result) {
+		// TODO: Something with this data and stop alerting
+		console.log(result)
+		console.log(result.secure_url)
+		alert('Done upload to cloudinary, see console. TODO: Do something w/it')
 	}
 
 	render() {
@@ -169,7 +180,9 @@ export default class CompletionPage extends BaseComponent {
 				<h1>{planTitle}</h1>
 				<h2>{taskName}</h2>
 				<p>{taskDescription}</p>
-				<UploadImage />
+				<UploadImage
+					success={this.proofUploaded}
+				/>
 
 				<div className="sub-task-checklist-items">
 					{subTaskChecklistItems}
