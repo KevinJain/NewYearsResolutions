@@ -67,14 +67,17 @@ export default class DashboardPage extends BaseComponent {
 
 	quartersRanges() {
 		const year = this.state.date.clone().year()
+		const month = this.state.date.clone().month()
 		const monthRanges = [[0, 2], [3, 5], [6, 8], [9, 11]]
 		return _.map(monthRanges, range => {
 			const startMonth = range[0]
 			const endMonth = range[1]
 			const start = moment().year(year).month(startMonth).startOf('month')
 			const end = moment().year(year).month(endMonth).endOf('month')
+			const current = (month >= startMonth) && (month <= endMonth)
 
 			return {
+				current,
 				start,
 				end,
 				resolutionsTasks: this.resolutionsTasks(start, end)
@@ -94,7 +97,10 @@ export default class DashboardPage extends BaseComponent {
 			const m = moment().month(mon)
 			const start = m.clone().startOf('month')
 			const end = m.clone().endOf('month')
+			const current = month === mon
+
 			return {
+				current,
 				start,
 				end,
 				resolutionsTasks: this.resolutionsTasks(start, end)
@@ -195,6 +201,7 @@ export default class DashboardPage extends BaseComponent {
 				startMonth={range.start.month()}
 				endMonth={range.end.month()}
 				resolutionsTasks={range.resolutionsTasks}
+				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
 		)
@@ -204,6 +211,7 @@ export default class DashboardPage extends BaseComponent {
 				key={ii}
 				month={range.start.month()}
 				resolutionsTasks={range.resolutionsTasks}
+				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
 		)
@@ -213,6 +221,7 @@ export default class DashboardPage extends BaseComponent {
 				key={ii}
 				start={range.start.clone()}
 				end={range.end.clone()}
+				current={range.current}
 				resolutionsTasks={range.resolutionsTasks}
 			/>
 		)

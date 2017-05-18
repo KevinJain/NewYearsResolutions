@@ -30,7 +30,7 @@ export class MetricsYearComponent extends BaseComponent {
 
 	render() {
 		return (
-			<div className="metric metric-year">
+			<div className="metric metric-year current">
 				<div className="inner">
 					<h1>{this.props.year}</h1>
 					{getSummary(this.props.resolutionsTasks)}
@@ -49,8 +49,10 @@ export class MetricsQuarterComponent extends BaseComponent {
 	render() {
 		const start = moment().month(this.props.startMonth).format('MMM')
 		const end = moment().month(this.props.endMonth).format('MMM')
+		const current = this.props.current ? 'current' : ''
+		const className = `metric metric-quarter ${current}`
 		return (
-			<div className="metric metric-quarter">
+			<div className={className}>
 				<div className="inner" onClick={this.props.click}>
 					<h2>Q: {start}-{end}</h2>
 					{getSummary(this.props.resolutionsTasks)}
@@ -68,8 +70,10 @@ export class MetricsMonthComponent extends BaseComponent {
 
 	render() {
 		const month = moment().month(this.props.month).format('MMMM')
+		const current = this.props.current ? 'current' : ''
+		const className = `metric metric-month ${current}`
 		return (
-			<div className="metric metric-month">
+			<div className={className}>
 				<div className="inner" onClick={this.props.click}>
 					<h3>{month}</h3>
 					{getSummary(this.props.resolutionsTasks)}
