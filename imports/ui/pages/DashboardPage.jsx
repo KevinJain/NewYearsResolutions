@@ -16,10 +16,65 @@ import moment from 'moment'
 export default class DashboardPage extends BaseComponent {
 	constructor(props) {
 		super(props)
-		this.state = Object.assign(this.state, {})
+		this.state = Object.assign(this.state, {
+			date: moment()
+		})
 	}
 
-	render() {
+	yearRange() {
+		return {
+			start: this.state.date.clone().startOf('year'),
+			end: this.state.date.clone().endOf('year')
+		}
+	}
+
+	quartersRanges() {
+		const year = this.state.date.clone().year()
+		const monthRanges = [[0, 2], [3, 5], [6, 8], [9, 11]]
+		return _.map(monthRanges, range => {
+			const startMonth = range[0]
+			const endMonth = range[1]
+			return {
+				start: moment().year(year).month(startMonth).startOf('month'),
+				end: moment().year(year).month(endMonth).endOf('month')
+			}
+		})
+	}
+
+	monthsRanges() {
+		// Get list of months in current quarter
+		const month = this.state.date.clone().month()
+		const quarter = Math.floor(month / 3)
+		const startMonth = quarter * 3
+		const months = _.range(startMonth, startMonth + 3)
+
+		// Return date ranges of each month
+		return _.map(months, mon => {
+			const m = moment().month(mon)
+			return {
+				start: m.clone().startOf('month'),
+				end: m.clone().endOf('month')
+			}
+		})
+	}
+
+	weeksRanges() {
+		const weekNumbers = _.uniq(
+			_.map(
+				_.range(0, 31),
+				day => this.state.date.clone().startOf('month').day(day).week()
+			)
+		)
+		return _.map(weekNumbers, week => {
+			const m = this.state.date.clone().week(week)
+			return {
+				start: m.clone().startOf('week'),
+				end: m.clone().endOf('week')
+			}
+		})
+	}
+
+	render() { // eslint-disable-line max-statements
 		let user = Meteor.user()
 		if (!user) {
 			return <NotFoundPage />
@@ -82,27 +137,45 @@ export default class DashboardPage extends BaseComponent {
 			})
 		})
 
+		const yearRange = this.yearRange()
+		const quartersRanges = this.quartersRanges()
+		const monthsRanges = this.monthsRanges()
+		const weeksRanges = this.weeksRanges()
+
+		const quarters = _.map(quartersRanges, (range, ii) =>
+			<MetricsQuarterComponent
+				key={ii}
+				startMonth={range.start.month()}
+				endMonth={range.end.month()}
+			/>
+		)
+
+		const months = _.map(monthsRanges, (range, ii) =>
+			<MetricsMonthComponent
+				key={ii}
+				month={range.start.month()}
+			/>
+		)
+
+		const weeks = _.map(weeksRanges, (range, ii) =>
+			<MetricsWeekComponent
+				key={ii}
+				start={range.start.clone()}
+				end={range.end.clone()}
+			/>
+		)
+
 		const metrics = (
 			<div className="metrics">
-				<MetricsYearComponent />
+				<MetricsYearComponent year={yearRange.start.year()} />
 				<div className="quarters">
-					<MetricsQuarterComponent />
-					<MetricsQuarterComponent />
-					<MetricsQuarterComponent />
-					<MetricsQuarterComponent />
+					{quarters}
 				</div>
 				<div className="months">
-					<MetricsMonthComponent />
-					<MetricsMonthComponent />
-					<MetricsMonthComponent />
+					{months}
 				</div>
 				<div className="weeks">
-					<MetricsWeekComponent />
-					<MetricsWeekComponent />
-					<MetricsWeekComponent />
-					<MetricsWeekComponent />
-					<MetricsWeekComponent />
-					<MetricsWeekComponent />
+					{weeks}
 				</div>
 			</div>
 		)
