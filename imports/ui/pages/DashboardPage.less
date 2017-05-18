@@ -3,6 +3,27 @@
 .page.dashboard {
 	text-align: center;
 
+	.metrics {
+		margin: 5px;
+		.quarters, .months, .weeks {
+			clear: both;
+		}
+
+		.quarters {
+			.metric-quarter {
+				float: left;
+				width: 25%;
+			}
+		}
+
+		.months {
+			.metric-month {
+				float: left;
+				width: 33.333333333%;
+			}
+		}
+	}
+
 	.content-scrollable {
 		background: @color-empty;
 		top: 5em !important;

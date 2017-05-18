@@ -1,4 +1,6 @@
 /* globals Meteor */
+import { MetricsMonthComponent, MetricsQuarterComponent, MetricsWeekComponent,
+	MetricsYearComponent } from '../components/Metrics.jsx'
 import BaseComponent from '../components/BaseComponent.jsx'
 import { Link } from 'react-router'
 import MobileMenu from '../components/MobileMenu.jsx'
@@ -80,12 +82,28 @@ export default class DashboardPage extends BaseComponent {
 			})
 		})
 
-		const content = (
-			<div>
-				<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
-				{tasksTodoContent}
-				<h1>{i18n.__('pages.dashboardPage.progress')}</h1>
-				{tasksDone}
+		const metrics = (
+			<div className="metrics">
+				<MetricsYearComponent />
+				<div className="quarters">
+					<MetricsQuarterComponent />
+					<MetricsQuarterComponent />
+					<MetricsQuarterComponent />
+					<MetricsQuarterComponent />
+				</div>
+				<div className="months">
+					<MetricsMonthComponent />
+					<MetricsMonthComponent />
+					<MetricsMonthComponent />
+				</div>
+				<div className="weeks">
+					<MetricsWeekComponent />
+					<MetricsWeekComponent />
+					<MetricsWeekComponent />
+					<MetricsWeekComponent />
+					<MetricsWeekComponent />
+					<MetricsWeekComponent />
+				</div>
 			</div>
 		)
 
@@ -105,7 +123,15 @@ export default class DashboardPage extends BaseComponent {
 							{i18n.__('pages.dashboardPage.newProfilePic')}
 						</Link>
 					</div>
-					{content}
+
+					<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
+					{tasksTodoContent}
+
+					<h1>{i18n.__('pages.dashboardPage.metrics')}</h1>
+					{metrics}
+
+					<h1>{i18n.__('pages.dashboardPage.progress')}</h1>
+					{tasksDone}
 				</div>
 			</div>
 		)
