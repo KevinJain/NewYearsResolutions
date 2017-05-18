@@ -226,11 +226,15 @@ export default class DashboardPage extends BaseComponent {
 			/>
 		)
 
+		const lastYear = yearRange.start.clone().subtract(1, 'year').startOf('year')
+		const nextYear = yearRange.start.clone().add(1, 'year').startOf('year')
 		const metrics = (
 			<div className="metrics">
 				<MetricsYearComponent
 					year={yearRange.start.year()}
 					resolutionsTasks={yearRange.resolutionsTasks}
+					jumpLastYear={this.createSetDateCallback(lastYear)}
+					jumpNextYear={this.createSetDateCallback(nextYear)}
 				/>
 				<div className="quarters">
 					{quarters}
