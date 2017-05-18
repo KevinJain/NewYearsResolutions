@@ -19,12 +19,44 @@ export default class DashboardPage extends BaseComponent {
 		this.state = Object.assign(this.state, {
 			date: moment()
 		})
+
+		this.resolutionsTasks = this.resolutionsTasks.bind(this)
+		this.yearRange = this.yearRange.bind(this)
+		this.quartersRanges = this.quartersRanges.bind(this)
+		this.monthsRanges = this.monthsRanges.bind(this)
+		this.weeksRanges = this.weeksRanges.bind(this)
+	}
+
+	resolutionsTasks(start, end) {
+		const userId = Meteor.user()._id
+		const logs = ResolutionLog.find({ user: userId })
+		if (!logs) {
+			return {
+				completed: [],
+				scheduled: []
+			}
+		}
+		return _.filter(
+			logs.map(log => ({
+				plan: ResolutionPlan.findOne(log.resolutionPlan),
+				scheduled: log.getScheduledTasksBetween(start.toDate(), end.toDate()),
+				// TODO: Fill in completed for range
+				// TODO: * Needs abstract method?
+				completed: [],
+			})),
+			resolutionTasks =>
+				(resolutionTasks.scheduled.length > 0) ||
+				(resolutionTasks.completed.length > 0)
+		)
 	}
 
 	yearRange() {
+		const start = this.state.date.clone().startOf('year')
+		const end = this.state.date.clone().endOf('year')
 		return {
-			start: this.state.date.clone().startOf('year'),
-			end: this.state.date.clone().endOf('year')
+			start,
+			end,
+			resolutionsTasks: this.resolutionsTasks(start, end)
 		}
 	}
 
@@ -34,9 +66,13 @@ export default class DashboardPage extends BaseComponent {
 		return _.map(monthRanges, range => {
 			const startMonth = range[0]
 			const endMonth = range[1]
+			const start = moment().year(year).month(startMonth).startOf('month')
+			const end = moment().year(year).month(endMonth).endOf('month')
+
 			return {
-				start: moment().year(year).month(startMonth).startOf('month'),
-				end: moment().year(year).month(endMonth).endOf('month')
+				start,
+				end,
+				resolutionsTasks: this.resolutionsTasks(start, end)
 			}
 		})
 	}
@@ -51,9 +87,12 @@ export default class DashboardPage extends BaseComponent {
 		// Return date ranges of each month
 		return _.map(months, mon => {
 			const m = moment().month(mon)
+			const start = m.clone().startOf('month')
+			const end = m.clone().endOf('month')
 			return {
-				start: m.clone().startOf('month'),
-				end: m.clone().endOf('month')
+				start,
+				end,
+				resolutionsTasks: this.resolutionsTasks(start, end)
 			}
 		})
 	}
@@ -67,9 +106,12 @@ export default class DashboardPage extends BaseComponent {
 		)
 		return _.map(weekNumbers, week => {
 			const m = this.state.date.clone().week(week)
+			const start = m.clone().startOf('week')
+			const end = m.clone().endOf('week')
 			return {
-				start: m.clone().startOf('week'),
-				end: m.clone().endOf('week')
+				start,
+				end,
+				resolutionsTasks: this.resolutionsTasks(start, end)
 			}
 		})
 	}
@@ -147,6 +189,7 @@ export default class DashboardPage extends BaseComponent {
 				key={ii}
 				startMonth={range.start.month()}
 				endMonth={range.end.month()}
+				resolutionsTasks={range.resolutionsTasks}
 			/>
 		)
 
@@ -154,6 +197,7 @@ export default class DashboardPage extends BaseComponent {
 			<MetricsMonthComponent
 				key={ii}
 				month={range.start.month()}
+				resolutionsTasks={range.resolutionsTasks}
 			/>
 		)
 
@@ -162,12 +206,16 @@ export default class DashboardPage extends BaseComponent {
 				key={ii}
 				start={range.start.clone()}
 				end={range.end.clone()}
+				resolutionsTasks={range.resolutionsTasks}
 			/>
 		)
 
 		const metrics = (
 			<div className="metrics">
-				<MetricsYearComponent year={yearRange.start.year()} />
+				<MetricsYearComponent
+					year={yearRange.start.year()}
+					resolutionsTasks={yearRange.resolutionsTasks}
+				/>
 				<div className="quarters">
 					{quarters}
 				</div>
