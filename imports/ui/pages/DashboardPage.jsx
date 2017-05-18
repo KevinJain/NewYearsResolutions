@@ -41,13 +41,16 @@ export default class DashboardPage extends BaseComponent {
 				scheduled: []
 			}
 		}
+		const startDate = start.toDate()
+		const endDate = end.toDate()
 		return _.filter(
 			logs.map(log => ({
 				plan: ResolutionPlan.findOne(log.resolutionPlan),
-				scheduled: log.getScheduledTasksBetween(start.toDate(), end.toDate()),
-				// TODO: Fill in completed for range
-				// TODO: * Needs abstract method?
-				completed: [],
+				scheduled: log.getScheduledTasksBetween(startDate, endDate),
+				completed: _.filter(log.completedTasks, task => {
+					const completedAt = task.completedAt
+					return (completedAt >= startDate) && (completedAt <= endDate)
+				}),
 			})),
 			resolutionTasks =>
 				(resolutionTasks.scheduled.length > 0) ||
