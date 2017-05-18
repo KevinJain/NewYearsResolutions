@@ -20,11 +20,16 @@ export default class DashboardPage extends BaseComponent {
 			date: moment()
 		})
 
+		this.createSetDateCallback = this.createSetDateCallback.bind(this)
 		this.resolutionsTasks = this.resolutionsTasks.bind(this)
 		this.yearRange = this.yearRange.bind(this)
 		this.quartersRanges = this.quartersRanges.bind(this)
 		this.monthsRanges = this.monthsRanges.bind(this)
 		this.weeksRanges = this.weeksRanges.bind(this)
+	}
+
+	createSetDateCallback(momentDate) {
+		return () => this.setState({ date: momentDate.clone() })
 	}
 
 	resolutionsTasks(start, end) {
@@ -190,6 +195,7 @@ export default class DashboardPage extends BaseComponent {
 				startMonth={range.start.month()}
 				endMonth={range.end.month()}
 				resolutionsTasks={range.resolutionsTasks}
+				click={this.createSetDateCallback(range.start)}
 			/>
 		)
 
@@ -198,6 +204,7 @@ export default class DashboardPage extends BaseComponent {
 				key={ii}
 				month={range.start.month()}
 				resolutionsTasks={range.resolutionsTasks}
+				click={this.createSetDateCallback(range.start)}
 			/>
 		)
 

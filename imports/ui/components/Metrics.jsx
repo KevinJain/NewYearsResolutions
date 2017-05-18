@@ -51,7 +51,7 @@ export class MetricsQuarterComponent extends BaseComponent {
 		const end = moment().month(this.props.endMonth).format('MMM')
 		return (
 			<div className="metric metric-quarter">
-				<div className="inner">
+				<div className="inner" onClick={this.props.click}>
 					<h2>Q: {start}-{end}</h2>
 					{getSummary(this.props.resolutionsTasks)}
 				</div>
@@ -70,7 +70,7 @@ export class MetricsMonthComponent extends BaseComponent {
 		const month = moment().month(this.props.month).format('MMMM')
 		return (
 			<div className="metric metric-month">
-				<div className="inner">
+				<div className="inner" onClick={this.props.click}>
 					<h3>{month}</h3>
 					{getSummary(this.props.resolutionsTasks)}
 				</div>
