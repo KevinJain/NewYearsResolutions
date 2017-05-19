@@ -1,0 +1,310 @@
+{
+	"planId": "wake-happy",
+	"title": "Wake happy",
+	"version": "1.0.0",
+	"proofTypes": [ 2 ],
+	"daysPerWeekSuggested": 7,
+	"tasks": [
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 1
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 2
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 3
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 4
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 5
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 6
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 7
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 8
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 9
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 10
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 11
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 12
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 13
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 14
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 15
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 16
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 17
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 18
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 19
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 20
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 21
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 22
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 23
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 24
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 25
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 26
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 27
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 28
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 29
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 30
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 31
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 32
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 33
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 34
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 35
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 36
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 37
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 38
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 39
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 40
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 41
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 42
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 43
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 44
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 45
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 46
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 47
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 48
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 49
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 50
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 51
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 52
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 53
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 54
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 55
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 56
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 57
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 58
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 59
+		},
+		{
+			"title":"Dance",
+			"description":"",
+			"order": 60
+		}
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}

@@ -1,0 +1,310 @@
+{
+	"planId": "go-to-bed-happy",
+	"title": "Go to bed happy",
+	"version": "1.0.0",
+	"proofTypes": [ 2 ],
+	"daysPerWeekSuggested": 7,
+	"tasks": [
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 1
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 2
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 3
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 4
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 5
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 6
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 7
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 8
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 9
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 10
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 11
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 12
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 13
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 14
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 15
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 16
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 17
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 18
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 19
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 20
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 21
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 22
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 23
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 24
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 25
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 26
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 27
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 28
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 29
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 30
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 31
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 32
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 33
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 34
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 35
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 36
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 37
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 38
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 39
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 40
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 41
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 42
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 43
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 44
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 45
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 46
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 47
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 48
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 49
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 50
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 51
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 52
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 53
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 54
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 55
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 56
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 57
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 58
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 59
+		},
+		{
+			"title":"Write a self afirmation",
+			"description":"",
+			"order": 60
+		}
+	],
+	"description":"Train to run a 5k over the course of 8 weeks by timer"
+}
