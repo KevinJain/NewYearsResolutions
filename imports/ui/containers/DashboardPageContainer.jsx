@@ -13,8 +13,9 @@ const DashboardPageContainer = createContainer(({ params: { userId } }) => {
 	const loading = !userHandle.ready() && !logsHandle.ready()
 
 	const user = User.findOne(userId)
-	const logs = ResolutionLog.find({ user: userId })
+	const logs = ResolutionLog.find({ user: userId }).fetch()
 	const onUsersOwnDashboard = Meteor.user() && (Meteor.user()._id === userId)
+
 	return {
 		loading,
 		user,
