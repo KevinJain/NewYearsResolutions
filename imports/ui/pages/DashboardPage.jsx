@@ -6,9 +6,7 @@ import { Link } from 'react-router'
 import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
-import { ResolutionLog } from '../../api/resolution_logs/resolution-logs'
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'
-import User from '../../api/users/users'
 import _ from 'lodash'
 import i18n from 'meteor/universe:i18n'
 import moment from 'moment'
@@ -44,7 +42,7 @@ export default class DashboardPage extends BaseComponent {
 	}
 
 	resolutionsTasks(start, end) {
-		const logs = ResolutionLog.find({ user: this.props.params.userId })
+		const logs = this.props.logs
 		if (!logs) {
 			return {
 				completed: [],
@@ -141,17 +139,11 @@ export default class DashboardPage extends BaseComponent {
 	}
 
 	render() { // eslint-disable-line max-statements
-		if (!this.props.params.userId) {
+		if (this.props.loading || !this.props.params.userId) {
 			return <NotFoundPage />
 		}
-		const user = User.findOne(this.props.params.userId)
-		if (!user) {
-			return <NotFoundPage />
-		}
-		const logs = ResolutionLog.find({ user: this.props.params.userId })
-		if (!logs) {
-			return <NotFoundPage />
-		}
+		const user = this.props.user
+		const logs = this.props.logs
 
 		const tasksTodoContent = []
 		logs.forEach(log => {
@@ -295,6 +287,12 @@ export default class DashboardPage extends BaseComponent {
 			</div>
 		)
 	}
+}
+
+DashboardPage.propType = {
+	user: React.PropTypes.object,
+	todos: React.PropTypes.array,
+	loading: React.PropTypes.bool
 }
 
 DashboardPage.contextTypes = {

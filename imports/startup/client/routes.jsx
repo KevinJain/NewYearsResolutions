@@ -9,7 +9,7 @@ import AuthPageJoin from '../../ui/pages/AuthPageJoin.jsx'
 import AuthPageSignIn from '../../ui/pages/AuthPageSignIn.jsx'
 import CalendarPage from '../../ui/pages/CalendarPage.jsx'
 import CompletionPage from '../../ui/pages/CompletionPage.jsx'
-import DashboardPage from '../../ui/pages/DashboardPage.jsx'
+import DashboardPageContainer from '../../ui/containers/DashboardPageContainer.jsx'
 import NewProfilePic from '../../ui/pages/NewProfilePic.jsx'
 import NewCoverPhoto from '../../ui/pages/NewCoverPhoto.jsx'
 import NotFoundPage from '../../ui/pages/NotFoundPage.jsx'
@@ -25,8 +25,8 @@ export default () => ( // eslint-disable-line react/display-name
 		<Route path="/" component={AppContainer}>
 			<Route path="signin" component={AuthPageSignIn} />
 			<Route path="join" component={AuthPageJoin} />
-			<Route path="dashboard" component={DashboardPage} />
-			<Route path="dashboard/:userId" component={DashboardPage} />
+			<Route path="dashboard" component={DashboardPageContainer} />
+			<Route path="dashboard/:userId" component={DashboardPageContainer} />
 			<Route path="completion/:resolutionLog" component={CompletionPage} />
 			<Route path="subscribe-basics" component={SubscribePageBasics} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
