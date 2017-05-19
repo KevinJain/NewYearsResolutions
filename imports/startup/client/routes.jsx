@@ -26,6 +26,7 @@ export default () => ( // eslint-disable-line react/display-name
 			<Route path="signin" component={AuthPageSignIn} />
 			<Route path="join" component={AuthPageJoin} />
 			<Route path="dashboard" component={DashboardPage} />
+			<Route path="dashboard/:userId" component={DashboardPage} />
 			<Route path="completion/:resolutionLog" component={CompletionPage} />
 			<Route path="subscribe-basics" component={SubscribePageBasics} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />

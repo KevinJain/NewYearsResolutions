@@ -14,11 +14,22 @@ import i18n from 'meteor/universe:i18n'
 import moment from 'moment'
 
 export default class DashboardPage extends BaseComponent {
-	constructor(props) {
+	constructor(props, context) {
 		super(props)
+
 		this.state = Object.assign(this.state, {
 			date: moment()
 		})
+
+		// If no userId in url and logged in, redirect to users' own dashboard
+		if (!props.params.userId && Meteor.user()) {
+			// TODO: Rewrite this probably a better way with react-router
+			// TODO:   than starting the constructor
+			// TODO: * This is causing an error "setState(...): Cannot update"
+			const userId = Meteor.user()._id
+			context.router.replace(`/dashboard/${userId}`)
+			return
+		}
 
 		this.createSetDateCallback = this.createSetDateCallback.bind(this)
 		this.resolutionsTasks = this.resolutionsTasks.bind(this)
@@ -33,8 +44,7 @@ export default class DashboardPage extends BaseComponent {
 	}
 
 	resolutionsTasks(start, end) {
-		const userId = Meteor.user()._id
-		const logs = ResolutionLog.find({ user: userId })
+		const logs = ResolutionLog.find({ user: this.props.params.userId })
 		if (!logs) {
 			return {
 				completed: [],
@@ -131,12 +141,17 @@ export default class DashboardPage extends BaseComponent {
 	}
 
 	render() { // eslint-disable-line max-statements
-		let user = Meteor.user()
+		if (!this.props.params.userId) {
+			return <NotFoundPage />
+		}
+		const user = User.findOne(this.props.params.userId)
 		if (!user) {
 			return <NotFoundPage />
 		}
-		user = User.findOne(user._id)
-		const logs = ResolutionLog.find({ user: user._id })
+		const logs = ResolutionLog.find({ user: this.props.params.userId })
+		if (!logs) {
+			return <NotFoundPage />
+		}
 
 		const tasksTodoContent = []
 		logs.forEach(log => {
