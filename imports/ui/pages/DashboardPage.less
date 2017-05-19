@@ -3,6 +3,35 @@
 .page.dashboard {
 	text-align: center;
 
+	.metrics {
+		margin: 5px;
+		.quarters, .months {
+			.metric {
+				.inner {
+					cursor: pointer;
+				}
+			}
+		}
+
+		.quarters, .months, .weeks {
+			clear: both;
+		}
+
+		.quarters {
+			.metric-quarter {
+				float: left;
+				width: 25%;
+			}
+		}
+
+		.months {
+			.metric-month {
+				float: left;
+				width: 33.333333333%;
+			}
+		}
+	}
+
 	.content-scrollable {
 		background: @color-empty;
 		top: 5em !important;
@@ -22,6 +51,14 @@
 		width: 100%;
 		position: relative;
 		margin-bottom: 50px;
+
+		h2.name-text {
+			position: absolute;
+			left: 210px;
+			text-shadow: 2px 2px #333;
+			bottom: 20px;
+			color: #FFF;
+		}
 
 		a.btn-primary {
 			z-index: 99;

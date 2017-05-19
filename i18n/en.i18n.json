@@ -14,6 +14,9 @@
     },
     "mobileMenu": {
       "showMenu": "Show Menu"
+    },
+    "metrics": {
+      "completed": "completed"
     }
   },
   "pages": {
@@ -25,7 +28,8 @@
       "tasksTodoToday": "Your tasks to do today",
 	  "newCoverPhoto": "New cover photo",
 	  "newProfilePic": "New profile pic",
-	  "progress":"Progress"
+	  "progress":"Progress",
+	  "metrics":"Tracking / Accountability Metrics"
 	},
 	"newProfilePic": {
 		"title": "Profile picture",
