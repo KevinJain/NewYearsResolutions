@@ -14,10 +14,12 @@ const DashboardPageContainer = createContainer(({ params: { userId } }) => {
 
 	const user = User.findOne(userId)
 	const logs = ResolutionLog.find({ user: userId })
+	const onUsersOwnDashboard = Meteor.user() && (Meteor.user()._id === userId)
 	return {
 		loading,
 		user,
-		logs
+		logs,
+		onUsersOwnDashboard
 	}
 }, DashboardPage)
 

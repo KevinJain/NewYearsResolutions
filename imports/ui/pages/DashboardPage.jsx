@@ -258,6 +258,28 @@ export default class DashboardPage extends BaseComponent {
 			</div>
 		)
 
+		let newCoverPhoto = ''
+		let newProfilePic = ''
+		let tasksTodo = ''
+		if (this.props.onUsersOwnDashboard) {
+			newCoverPhoto = (
+				<Link to="/new-cover-photo" className="new-cover-photo btn-primary">
+					{i18n.__('pages.dashboardPage.newCoverPhoto')}
+				</Link>
+			)
+			newProfilePic = (
+				<Link to="/new-profile-pic" className="new-profile-pic btn-primary">
+					{i18n.__('pages.dashboardPage.newProfilePic')}
+				</Link>
+			)
+			tasksTodo = (
+				<div>
+					<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
+					{tasksTodoContent}
+				</div>
+			)
+		}
+
 		return (
 			<div className="page dashboard">
 				<nav>
@@ -267,16 +289,11 @@ export default class DashboardPage extends BaseComponent {
 					<div className="cover">
 						<img className="cover-photo" src={user.coverPhotoUrl} />
 						<img className="profile-picture" src={user.profilePictureUrl} />
-						<Link to="/new-cover-photo" className="new-cover-photo btn-primary">
-							{i18n.__('pages.dashboardPage.newCoverPhoto')}
-						</Link>
-						<Link to="/new-profile-pic" className="new-profile-pic btn-primary">
-							{i18n.__('pages.dashboardPage.newProfilePic')}
-						</Link>
+						{newCoverPhoto}
+						{newProfilePic}
 					</div>
 
-					<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
-					{tasksTodoContent}
+					{tasksTodo}
 
 					<h1>{i18n.__('pages.dashboardPage.metrics')}</h1>
 					{metrics}
@@ -292,7 +309,8 @@ export default class DashboardPage extends BaseComponent {
 DashboardPage.propType = {
 	user: React.PropTypes.object,
 	todos: React.PropTypes.array,
-	loading: React.PropTypes.bool
+	loading: React.PropTypes.bool,
+	onUsersOwnDashboard: React.PropTypes.bool
 }
 
 DashboardPage.contextTypes = {
