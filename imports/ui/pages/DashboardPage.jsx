@@ -261,6 +261,7 @@ export default class DashboardPage extends BaseComponent {
 		let newCoverPhoto = ''
 		let newProfilePic = ''
 		let tasksTodo = ''
+		let nameText = ''
 		if (this.props.onUsersOwnDashboard) {
 			newCoverPhoto = (
 				<Link to="/new-cover-photo" className="new-cover-photo btn-primary">
@@ -278,6 +279,12 @@ export default class DashboardPage extends BaseComponent {
 					{tasksTodoContent}
 				</div>
 			)
+		} else {
+			nameText = (
+				<h2 className="name-text">
+					{this.props.user.firstName} {this.props.user.lastName}
+				</h2>
+			)
 		}
 
 		return (
@@ -291,6 +298,7 @@ export default class DashboardPage extends BaseComponent {
 						<img className="profile-picture" src={user.profilePictureUrl} />
 						{newCoverPhoto}
 						{newProfilePic}
+						{nameText}
 					</div>
 
 					{tasksTodo}
