@@ -138,6 +138,54 @@ CompleteImageTask.propTypes = {
 	success: React.PropTypes.func
 }
 
+class CompleteTextTask extends BaseComponent {
+	constructor(props) {
+		super(props)
+		this.state = Object.assign(this.state, {})
+		this.completeTextTask = this.completeTextTask.bind(this)
+	}
+
+	completeTextTask(e) {
+		e.preventDefault()
+
+		const task = this.props.log.getTodaysScheduledTask()
+		const completedAt = new Date()
+		const text = $(e.target).closest('.text-proof-container').find('textarea').val()
+
+		Meteor.call(
+			'resolutionlogs.tasks.complete.text',
+			this.props.log._id,
+			task._id,
+			completedAt,
+			text,
+			(err, res) => {
+				if (err) {
+					alert('Error completing task')
+					return
+				}
+				this.props.success()
+			}
+		)
+	}
+
+	render() {
+		return (
+			<div className="text-proof-container">
+				<h4>{i18n.__('pages.completionPage.completeTodaysTaskTellUsAbout')}</h4>
+				<textarea></textarea>
+				<br />
+				<button onClick={this.completeTextTask} className="btn-primary">
+					{i18n.__('pages.completionPage.completeTodaysTaskText')}
+				</button>
+			</div>
+		)
+	}
+}
+CompleteTextTask.propTypes = {
+	log: React.PropTypes.object,
+	success: React.PropTypes.func
+}
+
 export default class CompletionPage extends BaseComponent {
 	constructor(props) {
 		super(props)
@@ -183,6 +231,11 @@ export default class CompletionPage extends BaseComponent {
 			? <CompleteImageTask log={log} success={success} />
 			: ''
 
+		const completeTextTask =
+			_.includes(plan.proofTypes, ProofType.TEXT)
+			? <CompleteTextTask log={log} success={success} />
+			: ''
+
 		return (
 			<div className="page subscribe">
 				<nav>
@@ -201,6 +254,7 @@ export default class CompletionPage extends BaseComponent {
 
 						{completeBooleanTask}
 						{completeImageTask}
+						{completeTextTask}
 					</div>
 				</div>
 			</div>

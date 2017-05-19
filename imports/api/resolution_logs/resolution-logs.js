@@ -43,6 +43,11 @@ const Proof = Class.create({
 			// Auto-generated field from image
 			type: String,
 			optional: true
+		},
+
+		text: {
+			type: String,
+			optional: true
 		}
 
 		// TODO: Add support for these proof types at some point

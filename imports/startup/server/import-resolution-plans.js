@@ -7,7 +7,9 @@ const plans = [
 	'60-day-multi-vitamin.json',
 	'basic-fitness.json',
 	'yoga.json',
-	'draw-for-a-week.json'
+	'draw-for-a-week.json',
+	'wake-happy.json',
+	'go-to-bed-happy.json'
 ]
 
 // TODO: Enhance this so we can import updates without id over-writes?

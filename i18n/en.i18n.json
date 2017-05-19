@@ -45,6 +45,8 @@
       "dashboard": "Back to dashboard",
 	  "completeTodaysPlan": "Complete today's",
 	  "completeTodaysTask": "Yes I've done it today",
+	  "completeTodaysTaskTellUsAbout": "Tell us about it",
+	  "completeTodaysTaskText": "Done",
 	  "uploadImageProof": "Upload an image showing what you've done"
     },
 	"subscribePagePlans": {

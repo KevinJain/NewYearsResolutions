@@ -190,11 +190,20 @@ export default class DashboardPage extends BaseComponent {
 						</div>
 					)
 				}
+				let taskText = ''
+				if (logTask.proof.text) {
+					taskText = (
+						<div className="proof-text">
+							"{logTask.proof.text}"
+						</div>
+					)
+				}
 
 				tasksDone.push(
 					<div className="task-completed-container" key={key2}>
 						<h4>{planTask.title}&nbsp;on&nbsp;{completedAtStr}</h4>
 						{taskImage}
+						{taskText}
 					</div>
 				)
 			})

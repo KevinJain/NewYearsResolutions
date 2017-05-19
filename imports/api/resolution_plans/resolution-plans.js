@@ -5,7 +5,7 @@ import _ from 'lodash'
 
 export const ProofType = Enum.create({
 	name: 'ProofType',
-	identifiers: ['BOOLEAN', 'IMAGE']
+	identifiers: ['BOOLEAN', 'IMAGE', 'TEXT']
 	// TODO: Add support for these proof types later
 	// 'AUDIO', 'VIDEO'
 })

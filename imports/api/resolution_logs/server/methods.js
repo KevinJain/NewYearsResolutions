@@ -35,6 +35,42 @@ Meteor.methods({
 		log.remove()
 	},
 
+	'resolutionlogs.tasks.complete.text': (resolutionLogId, taskId, completedAt, text) => {
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed ok
+		check(resolutionLogId, String)
+		check(taskId, String)
+		check(completedAt, Date)
+		check(text, String)
+
+		// Get basic info
+		const log = ResolutionLog.findOne(resolutionLogId)
+
+		// Enforce this log belongs to user
+		if (log.user !== userId) {
+			throw new Meteor.Error(`Log ${resolutionLogId} does not belog to user ${userId}`)
+		}
+
+		// Mark task completed
+		log.completedTasks.push({
+			task: taskId,
+			// TODO: Make this work for more than just boolean proof
+			proof: { text },
+			completedAt
+		})
+
+		// Move to the next task starting tomorrow
+		log.moveOn(taskId, completedAt)
+
+		// Save it
+		if (!log.save()) {
+			throw new Meteor.Error('Failure saving log')
+		}
+	},
+
 	'resolutionlogs.tasks.complete.boolean': (resolutionLogId, taskId, completedAt) => {
 		// Enforce logged in
 		const userId = Meteor.userId()
