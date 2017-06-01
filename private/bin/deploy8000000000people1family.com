@@ -1,7 +1,7 @@
 #!/bin/bash
 DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_REPO_DIR=$(dirname $(dirname $DIR))
-SETTINGS_PATH="${ROOT_REPO_DIR}/secrets/settings.production.json"
+SETTINGS_PATH="${ROOT_REPO_DIR}/secrets/settings.8000000000people1family.com.json"
 DEPLOY_HOSTNAME="us-east-1.galaxy-deploy.meteor.com"
 DEPLOY_TO_URL="http://8000000000people1family.com"
 METEOR_DEPLOY_USER="kevinjainit"
