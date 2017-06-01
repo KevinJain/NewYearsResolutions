@@ -25,7 +25,7 @@ export default class UserMenu extends BaseComponent {
 				</div>
 				<div>
 					<Link to="/dashboard" className="btn-secondary">
-						Execution Dashboard
+						My Execution Dashboard
 					</Link>
 				</div>
 				<div>
@@ -34,17 +34,17 @@ export default class UserMenu extends BaseComponent {
 					</Link>
 				</div><div>
 					<Link to="/calendar" className="btn-secondary">
-						Schedule
+						My Schedule
 					</Link>
 				</div>
 				<div>
 					<Link to="/teams" className="btn-secondary">
-						Teams
+						My Teams
 					</Link>
 				</div>
 				<div>
 					<Link to="/contactUs" className="btn-secondary">
-						Contact Us / Feedback
+						My Contact Us / Feedback
 					</Link>
 				</div>
 				<div>

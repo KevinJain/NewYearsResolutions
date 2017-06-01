@@ -57,7 +57,7 @@ export default class TeamsPage extends BaseComponent {
 				</nav>
 				<div className="content-scrollable">
 					<div>
-						<h2>Your teams</h2>
+						<h2>My teams</h2>
 					</div>
 					<div>
 						<h2>Create a team</h2>
