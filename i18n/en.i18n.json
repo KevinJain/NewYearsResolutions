@@ -3,7 +3,7 @@
     "userMenu": {
       "logout": "Logout",
       "login": "Sign In",
-      "join": "Join"
+      "join": "Welcome!"
     },
     "connectionNotification": {
       "tryingToConnect": "Trying to connect",
@@ -83,8 +83,8 @@
       "emailRequired": "Email required",
       "passwordRequired": "Password required",
       "passwordConfirm": "Please confirm your password",
-      "join": "Join.",
-      "joinReason": "Join us in achieving your goals.",
+      "join": "Welcome!",
+      "joinReason": "8 billion people 1 family",
       "yourEmail": "Your Email",
       "password": "Password",
       "confirmPassword": "Confirm Password",
