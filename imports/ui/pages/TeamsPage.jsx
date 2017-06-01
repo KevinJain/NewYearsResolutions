@@ -44,8 +44,9 @@ export default class TeamsPage extends BaseComponent {
 
 		// TODO: Box teams (grid like?)
 		const teamsEls = teams.map(team => (
-			<div key={team._id}>
-				Team name:{team.title}
+			<div key={team._id} className="team-block">
+				<div className="team-name">{team.title}</div>
+				<button className="btn-primary">Join Team</button>
 			</div>
 		))
 
