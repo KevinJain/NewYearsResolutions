@@ -305,6 +305,7 @@ export default class DashboardPage extends BaseComponent {
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
+					{/*
 					<div className="cover">
 						<img className="cover-photo" src={user.coverPhotoUrl} />
 						<img className="profile-picture" src={user.profilePictureUrl} />
@@ -312,6 +313,7 @@ export default class DashboardPage extends BaseComponent {
 						{newProfilePic}
 						{nameText}
 					</div>
+					*/}
 
 					{tasksTodo}
 
