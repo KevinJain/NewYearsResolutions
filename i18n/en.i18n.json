@@ -20,61 +20,65 @@
     }
   },
   "pages": {
+    "contactUs": {
+      "title": "Contact us",
+      "mission": "Mission: Our Mission is to ignite faith in Humanity, inspire collective action, and accelerate the moral development of our species to achieve long term human goals, transcend that which divides us, and propel the human race forward."
+    },
     "calendarPage": {
       "title": "Scheduled goal tasks",
       "subTitle": "Calendar will automatically adjust based on your progress"
-	},
+    },
     "dashboardPage": {
       "tasksTodoToday": "Your tasks to do today",
-	  "newCoverPhoto": "New cover photo",
-	  "newProfilePic": "New profile pic",
-	  "progress":"Progress",
-	  "metrics":"Tracking / Accountability Metrics"
-	},
-	"newProfilePic": {
-		"title": "Profile picture",
-		"current": "Your current profile picture",
-		"new": "Upload a new profile picture (will replace current existing)"
-	},
-	"newCoverPhoto": {
-		"title": "Cover Photo",
-		"current": "Your current cover photo",
-		"new": "Upload a new cover photo (will replace current existing)"
-	},
+      "newCoverPhoto": "New cover photo",
+      "newProfilePic": "New profile pic",
+      "progress": "Progress",
+      "metrics": "Tracking / Accountability Metrics"
+    },
+    "newProfilePic": {
+      "title": "Profile picture",
+      "current": "Your current profile picture",
+      "new": "Upload a new profile picture (will replace current existing)"
+    },
+    "newCoverPhoto": {
+      "title": "Cover Photo",
+      "current": "Your current cover photo",
+      "new": "Upload a new cover photo (will replace current existing)"
+    },
     "completionPage": {
       "dashboard": "Back to dashboard",
-	  "completeTodaysPlan": "Complete today's",
-	  "completeTodaysTask": "Yes I've done it today",
-	  "completeTodaysTaskTellUsAbout": "Tell us about it",
-	  "completeTodaysTaskText": "Done",
-	  "uploadImageProof": "Upload an image showing what you've done"
+      "completeTodaysPlan": "Complete today's",
+      "completeTodaysTask": "Yes I've done it today",
+      "completeTodaysTaskTellUsAbout": "Tell us about it",
+      "completeTodaysTaskText": "Done",
+      "uploadImageProof": "Upload an image showing what you've done"
     },
-	"subscribePagePlans": {
-	  "pickPlans": "Pick & follow plan(s)",
+    "subscribePagePlans": {
+      "pickPlans": "Pick & follow plan(s)",
       "reason": "They help you acheive your goals",
-	  "continue": "Continue"
-	},
-	"subscribePageBasics": {
-	  "subscribe": "Tell us about yourself.",
+      "continue": "Continue"
+    },
+    "subscribePageBasics": {
+      "subscribe": "Tell us about yourself.",
       "reason": "Let us know who you are",
-	  "firstName": "First Name",
-	  "lastName": "Last Name",
-	  "phone": "Phone Number",
-	  "optional": "The following fields are optional. We'd like you to let us know who you are so we're all commited to achieving together",
-	  "ssn": "Social Security Number",
-	  "driverLicenceNumber": "Drivers Licence Number",
-	  "passportNumber": "Passport Number",
-	  "continue": "Continue"
-	},
-	"subscribePageJoin": {
-	  "subscribe": "Subscribe.",
+      "firstName": "First Name",
+      "lastName": "Last Name",
+      "phone": "Phone Number",
+      "optional": "The following fields are optional. We'd like you to let us know who you are so we're all commited to achieving together",
+      "ssn": "Social Security Number",
+      "driverLicenceNumber": "Drivers Licence Number",
+      "passportNumber": "Passport Number",
+      "continue": "Continue"
+    },
+    "subscribePageJoin": {
+      "subscribe": "Subscribe.",
       "reason": "Acheive your goals for $7/month!",
-	  "ccNumber": "Credit Card Number",
-	  "subscribeNow": "Subscribe now",
-	  "ccExpMonth": "Credit Card Expiration Month (e.g;; 12)",
-	  "ccExpYear": "Credit Card Expiration Year (e.g;; 2025)",
-	  "ccCvc": "Credit Card Security Code (e.g; 123)"
-	},
+      "ccNumber": "Credit Card Number",
+      "subscribeNow": "Subscribe now",
+      "ccExpMonth": "Credit Card Expiration Month (e.g;; 12)",
+      "ccExpYear": "Credit Card Expiration Year (e.g;; 2025)",
+      "ccCvc": "Credit Card Security Code (e.g; 123)"
+    },
     "authPageJoin": {
       "emailRequired": "Email required",
       "passwordRequired": "Password required",
@@ -101,6 +105,5 @@
       "pageNotFound": "Page not found"
     }
   },
-  "api": {
-  }
+  "api": {}
 }
