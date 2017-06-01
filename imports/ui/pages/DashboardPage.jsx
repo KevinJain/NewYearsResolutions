@@ -140,12 +140,12 @@ export default class DashboardPage extends BaseComponent {
 		})
 	}
 
+	// eslint-disable-next-line max-statements
 	render() {
-		// eslint-disable-line max-statements
 		if (this.props.loading || !this.props.params.userId) {
 			return <NotFoundPage />
 		}
-		const user = this.props.user
+		// const user = this.props.user
 		const logs = this.props.logs
 
 		const tasksTodoContent = []
@@ -270,11 +270,14 @@ export default class DashboardPage extends BaseComponent {
 			</div>
 		)
 
+		let tasksTodo = ''
+		/*
 		let newCoverPhoto = ''
 		let newProfilePic = ''
-		let tasksTodo = ''
 		let nameText = ''
+		*/
 		if (this.props.onUsersOwnDashboard) {
+			/*
 			newCoverPhoto = (
 				<Link to="/new-cover-photo" className="new-cover-photo btn-primary">
 					{i18n.__('pages.dashboardPage.newCoverPhoto')}
@@ -285,18 +288,21 @@ export default class DashboardPage extends BaseComponent {
 					{i18n.__('pages.dashboardPage.newProfilePic')}
 				</Link>
 			)
+			*/
 			tasksTodo = (
 				<div>
 					<h1>{i18n.__('pages.dashboardPage.tasksTodoToday')}</h1>
 					{tasksTodoContent}
 				</div>
 			)
+			/*
 		} else {
 			nameText = (
 				<h2 className="name-text">
 					{this.props.user.firstName} {this.props.user.lastName}
 				</h2>
 			)
+		*/
 		}
 
 		return (
