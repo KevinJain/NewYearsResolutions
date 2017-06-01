@@ -40,9 +40,7 @@ export default class NewProfilePicPage extends BaseComponent {
 				<h4>{i18n.__('pages.newCoverPhoto.current')}</h4>
 				<img src={user.coverPhotoUrl} />
 				<h4>{i18n.__('pages.newCoverPhoto.new')}</h4>
-				<UploadImage
-					success={this.picUploaded}
-				/>
+				<UploadImage success={this.picUploaded} />
 			</div>
 		)
 

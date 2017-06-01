@@ -22,12 +22,12 @@ export default class UploadImage extends BaseComponent {
 	componentDidUpdate() {
 		const el = $('.cloudinary-fileupload')
 		const events = $._data(el[0], 'events')
-		const cloudinaryFileuploadIsSetup = (events && (events.length > 0))
+		const cloudinaryFileuploadIsSetup = events && events.length > 0
 		if (
 			!cloudinaryFileuploadIsSetup &&
 			this.state.cloudinarySignature &&
 			this.state.cloudinaryTimestamp &&
-			($.fn.cloudinary_fileupload !== undefined) // eslint-disable-line no-undefined
+			$.fn.cloudinary_fileupload !== undefined // eslint-disable-line no-undefined
 		) {
 			el.cloudinary_fileupload()
 			el.bind('cloudinarydone', (event, data) => {
@@ -53,12 +53,11 @@ export default class UploadImage extends BaseComponent {
 				className="cloudinary-fileupload"
 				data-cloudinary-field="image_id"
 				data-form-data={cloudinaryConfig}
-			>
-			</input>
+			/>
 		)
 	}
 }
 
 UploadImage.contextTypes = {
-	success: React.PropTypes.func,
+	success: React.PropTypes.func
 }

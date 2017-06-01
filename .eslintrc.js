@@ -2,7 +2,7 @@
 // Perhaps a bit too custom and should be adjusted if more people come on board
 // Also use prettier as noted in private/bin/prettierAllTheJs
 
-'use strict';
+'use strict'
 // Not in Meteor so this file isn't babelified
 /* eslint-disable import/no-commonjs*/
 
@@ -16,16 +16,11 @@ module.exports = {
 	},
 
 	globals: {
-		'React': true,
-		'YT': true
+		React: true,
+		YT: true
 	},
 
-	plugins: [
-		'lodash',
-		'meteor',
-		'react',
-		'import'
-	],
+	plugins: ['lodash', 'meteor', 'react', 'import'],
 
 	extends: [
 		'eslint:recommended',
@@ -53,7 +48,7 @@ module.exports = {
 		 * * Most already included in recommended
 		 */
 		'no-unsafe-finally': ['error'],
-		'no-console': ['warn'],			// Don't force vim jumping, but do highlight
+		'no-console': ['warn'], // Don't force vim jumping, but do highlight
 		'no-prototype-builtins': ['error'],
 		// 'valid-jsdoc': ['error']
 
@@ -150,7 +145,7 @@ module.exports = {
 		// 'no-undef': ['error'],									// eslint:recommended
 		'no-undef-init': ['error'],
 		'no-undefined': ['error'],
-		'no-unused-vars': ['error', { vars: 'all', args: 'none' }],	// eslint:recommended
+		'no-unused-vars': ['error', { vars: 'all', args: 'none' }], // eslint:recommended
 		'no-use-before-define': ['error'],
 
 		/**
@@ -180,16 +175,15 @@ module.exports = {
 		'consistent-this': ['error'],
 		'eol-last': ['error'],
 		// 'func-names': ['error'],				// Helpful debugging, but clutters code
-												// +Over 500+ of these in wingr Mar 14th
+		// +Over 500+ of these in wingr Mar 14th
 		'func-style': ['error', 'declaration', { allowArrowFunctions: true }],
 		// 'id-blacklist': ['error'],				// I like generic var names at times
-		'id-length': ['error', { min: 1, max: 30 }],	// Short & long are each useful
-													// 1-30 sticks our current at least
+		'id-length': ['error', { min: 1, max: 30 }], // Short & long are each useful
+		// 1-30 sticks our current at least
 		// 'id-match': ['error'],					// Processor intensive - skip it
 		indent: ['error', 'tab', { SwitchCase: 1 }],
 		'jsx-quotes': ['error'],
-		'key-spacing': ['error',
-			{ multiLine: { mode: 'minimum' } }],	// Alignment for multi
+		'key-spacing': ['error', { multiLine: { mode: 'minimum' } }], // Alignment for multi
 		'keyword-spacing': ['error', {}],
 		'linebreak-style': ['error', 'unix'],
 		// 'lines-around-comment': ['error'],	// Terser code style, this rule not for me
@@ -220,7 +214,7 @@ module.exports = {
 		// 'no-ternary': ['error'],				// I like the ternary operator
 		'no-trailing-spaces': ['error'],
 		// 'no-underscore-dangle': ['error'],	// I hack too much on private vars
-												// * From using bleeding edge software
+		// * From using bleeding edge software
 		'no-unneeded-ternary': ['error', { defaultAssignment: false }],
 		'no-whitespace-before-property': ['error'],
 		'object-curly-spacing': ['error', 'always'],
@@ -256,7 +250,7 @@ module.exports = {
 		// 'no-class-assign': ['error'],						// eslint:recommended
 		'no-confusing-arrow': ['error', { allowParens: true }],
 		// 'no-const-assign': ['error'],						// eslint:recommended
-		'no-dupe-class-members': ['error'],						// eslint:recommended
+		'no-dupe-class-members': ['error'], // eslint:recommended
 		'no-duplicate-imports': ['error'],
 		// 'no-new-symbol': ['error'],							// eslint:recommended
 		// 'no-restricted-imports': ['error'],					// Let's allow everything
@@ -270,7 +264,7 @@ module.exports = {
 		'prefer-const': ['error', { ignoreReadBeforeAssign: true }],
 		//	https://github.com/meteor/meteor/issues/7060
 		// 'prefer-reflect': ['error', { exceptions: [			// Meteor missing Reflect
-			// 'call'	// Used all over by Meteor.call(...)	// * https://goo.gl/W1M3K0
+		// 'call'	// Used all over by Meteor.call(...)	// * https://goo.gl/W1M3K0
 		// ] }],
 		'prefer-rest-params': ['error'],
 		'prefer-spread': ['error'],
@@ -299,10 +293,13 @@ module.exports = {
 		/* Blaze*/
 		'meteor/template-names': ['error'],
 		'meteor/no-template-lifecycle-assignments': ['error'],
-		'meteor/eventmap-params': ['error', {
-			eventParamName: 'ev',
-			templateInstanceParamName: 'it'
-		}],
+		'meteor/eventmap-params': [
+			'error',
+			{
+				eventParamName: 'ev',
+				templateInstanceParamName: 'it'
+			}
+		],
 		'meteor/prefix-eventmap-selectors': ['error', 'js-', 'strict'],
 		'meteor/scope-dom-lookups': ['error'],
 		'meteor/no-dom-lookup-on-created': ['error'],
@@ -318,10 +315,10 @@ module.exports = {
 		'import/namespace': ['error'],
 		/* Helpful warnings */
 		'import/export': ['error'],
-		'import/no-named-as-default': ['error'],			// Not working for Meteor?
-		'import/no-named-as-default-member': ['error'],		// "
+		'import/no-named-as-default': ['error'], // Not working for Meteor?
+		'import/no-named-as-default-member': ['error'], // "
 		// 'import/no-deprecated': ['error'],				// Rule is work in progress
-															// https://goo.gl/EH0DNB
+		// https://goo.gl/EH0DNB
 		// 'import/no-extraneous-dependencies': ['error'],	// False positive Meteor
 		'import/no-mutable-exports': ['error'],
 		/* Module systems */
@@ -337,4 +334,4 @@ module.exports = {
 		'import/newline-after-import': ['error'],
 		'import/prefer-default-export': ['error']
 	}
-};
+}

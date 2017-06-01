@@ -17,7 +17,7 @@ const Proof = Class.create({
 			]
 		},
 
-		image:  {
+		image: {
 			// Cloudinary image id
 			type: String,
 			optional: true,
@@ -63,14 +63,12 @@ const Proof = Class.create({
 			const img = doc.image
 			if (img) {
 				const lTrans = 'w_600,c_fill'
-				doc.imageUrlLarge =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${lTrans}/${img}.jpg`
+				doc.imageUrlLarge = `${cloudinaryPrefix}${cloudName}/image/upload/${lTrans}/${img}.jpg`
 				const tTrans = 'w_75,h_75,c_fill'
-				doc.imageUrlThumbnail =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${tTrans}/${img}.jpg`
+				doc.imageUrlThumbnail = `${cloudinaryPrefix}${cloudName}/image/upload/${tTrans}/${img}.jpg`
 			}
 		}
-	},
+	}
 })
 
 // One log each step completed
@@ -272,7 +270,8 @@ export const ResolutionLog = Class.create({
 		// TODO: * It may end up very core to the application
 		// TODO: Test this method works outside of the current day
 		// TODO: Reduce statements and remove eslint disable
-		getScheduledTasksBetween(start, end) { // eslint-disable-line max-statements
+		getScheduledTasksBetween(start, end) {
+			// eslint-disable-line max-statements
 			// Sanity check state
 			check(start, Date)
 			check(end, Date)
@@ -340,7 +339,9 @@ export const ResolutionLog = Class.create({
 
 			// Mark `startDate` as tomorrow
 			this.startDate = moment(lastCompletedTaskAt)
-				.add(1, 'day').startOf('day').format('YYYY-MM-DD')
+				.add(1, 'day')
+				.startOf('day')
+				.format('YYYY-MM-DD')
 		}
 	},
 	indexes: {

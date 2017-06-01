@@ -1,5 +1,8 @@
 /* globals Meteor */
-import { ResolutionLog, ResolutionLogsHelpers } from '../../api/resolution_logs/resolution-logs'
+import {
+	ResolutionLog,
+	ResolutionLogsHelpers
+} from '../../api/resolution_logs/resolution-logs'
 import BaseComponent from '../components/BaseComponent.jsx'
 import React from 'react'
 import { ResolutionPlan } from '../../api/resolution_plans/resolution-plans'

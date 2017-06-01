@@ -32,7 +32,8 @@ export default class App extends React.Component {
 	}
 
 	// TODO: Reduce complexity
-	componentWillReceiveProps({ loading, children }) { // eslint-disable-line complexity
+	componentWillReceiveProps({ loading, children }) {
+		// eslint-disable-line complexity
 		// redirect somewhere once data is ready
 		if (!loading && !children) {
 			let user = Meteor.user()

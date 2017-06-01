@@ -179,8 +179,7 @@ export default Class.create({
 			const proP = doc.profilePicture
 			const pTrans = 'w_170,h_170,c_fill'
 			if (proP) {
-				doc.profilePictureUrl =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${pTrans}/${proP}.jpg`
+				doc.profilePictureUrl = `${cloudinaryPrefix}${cloudName}/image/upload/${pTrans}/${proP}.jpg`
 			} else {
 				doc.profilePictureUrl = '/placeholders/profile-picture.png'
 			}
@@ -188,8 +187,7 @@ export default Class.create({
 			const coverP = doc.coverPhoto
 			const cTrans = 'w_820,h_312,c_fill'
 			if (coverP) {
-				doc.coverPhotoUrl =
-					`${cloudinaryPrefix}${cloudName}/image/upload/${cTrans}/${coverP}.jpg`
+				doc.coverPhotoUrl = `${cloudinaryPrefix}${cloudName}/image/upload/${cTrans}/${coverP}.jpg`
 			} else {
 				doc.coverPhotoUrl = '/placeholders/cover-photo.png'
 			}

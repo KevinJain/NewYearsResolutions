@@ -3,4 +3,4 @@ DIR="$( cd "$( dirname "${BASH_SOURCE[0]}" )" && pwd )"
 ROOT_REPO_DIR=$(dirname $(dirname $DIR))
 PRETTIER=$(npm bin)/prettier
 
-find $ROOT_REPO_DIR \( -iname "*.js" -o -iname "*.jsx" \) -type f -not -path "*node_modules*" -not -path "*.meteor*" -exec $PRETTIER --use-tabs=true --print-width=90 --single-quote=true --write --no-semi {} \;
+find $ROOT_REPO_DIR \( -iname "*.js" -o -iname "*.jsx" \) -type f -not -path "*/packages/*" -not -path "*/public/*" -not -path "*node_modules*" -not -path "*.meteor*" -exec $PRETTIER --use-tabs=true --print-width=90 --single-quote=true --write --no-semi {} \;

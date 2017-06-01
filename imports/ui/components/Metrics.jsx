@@ -33,7 +33,7 @@ export class MetricsYearComponent extends BaseComponent {
 			<div className="metric metric-year current">
 				<div className="inner">
 					<div className="last-year" onClick={this.props.jumpLastYear}>&lt;</div>
-					<div className="this-year" >
+					<div className="this-year">
 						<h1>{this.props.year}</h1>
 						{getSummary(this.props.resolutionsTasks)}
 					</div>

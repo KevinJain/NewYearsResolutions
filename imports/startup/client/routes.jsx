@@ -20,7 +20,8 @@ import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
 i18n.setLocale('en')
 
 // TODO: Rework esline disable of 'react/display-name'
-export default () => ( // eslint-disable-line react/display-name
+export default () => // eslint-disable-line react/display-name
+(
 	<Router history={browserHistory}>
 		<Route path="/" component={AppContainer}>
 			<Route path="signin" component={AuthPageSignIn} />

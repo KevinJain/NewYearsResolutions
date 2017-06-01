@@ -106,8 +106,12 @@ Meteor.methods({
 		}
 	},
 
-	'resolutionlogs.tasks.complete.image':
-	(resolutionLogId, taskId, completedAt, cloudinaryPublicId) => {
+	'resolutionlogs.tasks.complete.image': (
+		resolutionLogId,
+		taskId,
+		completedAt,
+		cloudinaryPublicId
+	) => {
 		// Enforce logged in
 		const userId = Meteor.userId()
 		check(userId, String)

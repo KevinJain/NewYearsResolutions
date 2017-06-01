@@ -36,11 +36,7 @@ class SubTaskChecklistItem extends BaseComponent {
 		return (
 			<div key={this.props.key} className={checkClass}>
 				<label>
-					<input
-						onChange={this.change}
-						type="checkbox"
-						value="test"
-					/>
+					<input onChange={this.change} type="checkbox" value="test" />
 					{this.props.text}
 				</label>
 			</div>
@@ -126,9 +122,7 @@ class CompleteImageTask extends BaseComponent {
 		return (
 			<div>
 				<h3>{i18n.__('pages.completionPage.uploadImageProof')}</h3>
-				<UploadImage
-					success={this.imageProofUploaded}
-				/>
+				<UploadImage success={this.imageProofUploaded} />
 			</div>
 		)
 	}
@@ -172,7 +166,7 @@ class CompleteTextTask extends BaseComponent {
 		return (
 			<div className="text-proof-container">
 				<h4>{i18n.__('pages.completionPage.completeTodaysTaskTellUsAbout')}</h4>
-				<textarea></textarea>
+				<textarea />
 				<br />
 				<button onClick={this.completeTextTask} className="btn-primary">
 					{i18n.__('pages.completionPage.completeTodaysTaskText')}
@@ -212,27 +206,19 @@ export default class CompletionPage extends BaseComponent {
 		}
 
 		// Setup: task
-		const subTaskChecklistItems = _.map(task.subTaskChecklist, (item, ii) =>
-			(
-				<SubTaskChecklistItem
-					key={ii}
-					text={item}
-				/>
-			)
-		)
+		const subTaskChecklistItems = _.map(task.subTaskChecklist, (item, ii) => (
+			<SubTaskChecklistItem key={ii} text={item} />
+		))
 
-		const completeBooleanTask =
-			_.includes(plan.proofTypes, ProofType.BOOLEAN)
+		const completeBooleanTask = _.includes(plan.proofTypes, ProofType.BOOLEAN)
 			? <CompleteBooleanTask log={log} success={success} />
 			: ''
 
-		const completeImageTask =
-			_.includes(plan.proofTypes, ProofType.IMAGE)
+		const completeImageTask = _.includes(plan.proofTypes, ProofType.IMAGE)
 			? <CompleteImageTask log={log} success={success} />
 			: ''
 
-		const completeTextTask =
-			_.includes(plan.proofTypes, ProofType.TEXT)
+		const completeTextTask = _.includes(plan.proofTypes, ProofType.TEXT)
 			? <CompleteTextTask log={log} success={success} />
 			: ''
 

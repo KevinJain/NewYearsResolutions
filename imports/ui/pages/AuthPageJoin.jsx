@@ -96,10 +96,7 @@ export default class JoinPage extends BaseComponent {
 							}}
 							placeholder={i18n.__('pages.authPageJoin.password')}
 						/>
-						<span
-							className="icon-lock"
-							title={i18n.__('pages.authPageJoin.password')}
-						/>
+						<span className="icon-lock" title={i18n.__('pages.authPageJoin.password')} />
 					</div>
 					<div className={`input-symbol ${errorClass('confirm')}`}>
 						<input
