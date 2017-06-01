@@ -1,6 +1,10 @@
 /* globals Meteor */
-import { MetricsMonthComponent, MetricsQuarterComponent, MetricsWeekComponent,
-	MetricsYearComponent } from '../components/Metrics.jsx'
+import {
+	MetricsMonthComponent,
+	MetricsQuarterComponent,
+	MetricsWeekComponent,
+	MetricsYearComponent
+} from '../components/Metrics.jsx'
 import BaseComponent from '../components/BaseComponent.jsx'
 import { Link } from 'react-router'
 import MobileMenu from '../components/MobileMenu.jsx'
@@ -57,12 +61,11 @@ export default class DashboardPage extends BaseComponent {
 				scheduled: log.getScheduledTasksBetween(startDate, endDate),
 				completed: _.filter(log.completedTasks, task => {
 					const completedAt = task.completedAt
-					return (completedAt >= startDate) && (completedAt <= endDate)
-				}),
+					return completedAt >= startDate && completedAt <= endDate
+				})
 			})),
 			resolutionTasks =>
-				(resolutionTasks.scheduled.length > 0) ||
-				(resolutionTasks.completed.length > 0)
+				resolutionTasks.scheduled.length > 0 || resolutionTasks.completed.length > 0
 		)
 	}
 
@@ -85,7 +88,7 @@ export default class DashboardPage extends BaseComponent {
 			const endMonth = range[1]
 			const start = moment().year(year).month(startMonth).startOf('month')
 			const end = moment().year(year).month(endMonth).endOf('month')
-			const current = (month >= startMonth) && (month <= endMonth)
+			const current = month >= startMonth && month <= endMonth
 
 			return {
 				current,
@@ -121,9 +124,8 @@ export default class DashboardPage extends BaseComponent {
 
 	weeksRanges() {
 		const weekNumbers = _.uniq(
-			_.map(
-				_.range(0, 31),
-				day => this.state.date.clone().startOf('month').day(day).week()
+			_.map(_.range(0, 31), day =>
+				this.state.date.clone().startOf('month').day(day).week()
 			)
 		)
 		return _.map(weekNumbers, week => {
@@ -138,7 +140,8 @@ export default class DashboardPage extends BaseComponent {
 		})
 	}
 
-	render() { // eslint-disable-line max-statements
+	render() {
+		// eslint-disable-line max-statements
 		if (this.props.loading || !this.props.params.userId) {
 			return <NotFoundPage />
 		}
@@ -214,7 +217,7 @@ export default class DashboardPage extends BaseComponent {
 		const monthsRanges = this.monthsRanges()
 		const weeksRanges = this.weeksRanges()
 
-		const quarters = _.map(quartersRanges, (range, ii) =>
+		const quarters = _.map(quartersRanges, (range, ii) => (
 			<MetricsQuarterComponent
 				key={ii}
 				startMonth={range.start.month()}
@@ -223,9 +226,9 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
-		)
+		))
 
-		const months = _.map(monthsRanges, (range, ii) =>
+		const months = _.map(monthsRanges, (range, ii) => (
 			<MetricsMonthComponent
 				key={ii}
 				month={range.start.month()}
@@ -233,9 +236,9 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
-		)
+		))
 
-		const weeks = _.map(weeksRanges, (range, ii) =>
+		const weeks = _.map(weeksRanges, (range, ii) => (
 			<MetricsWeekComponent
 				key={ii}
 				start={range.start.clone()}
@@ -243,7 +246,7 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				resolutionsTasks={range.resolutionsTasks}
 			/>
-		)
+		))
 
 		const lastYear = yearRange.start.clone().subtract(1, 'year').startOf('year')
 		const nextYear = yearRange.start.clone().add(1, 'year').startOf('year')
