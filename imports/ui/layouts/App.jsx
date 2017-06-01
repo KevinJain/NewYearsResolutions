@@ -1,6 +1,7 @@
 // TODO: no-session!
 /* eslint-disable meteor/no-session */
 import ConnectionNotification from '../components/ConnectionNotification.jsx'
+import { Link } from 'react-router'
 import Loading from '../components/Loading.jsx'
 import MainMenu from '../components/MainMenu.jsx'
 import { Meteor } from 'meteor/meteor'
@@ -32,6 +33,7 @@ export default class App extends React.Component {
 	}
 
 	// TODO: Reduce complexity
+	// eslint-disable-next-lint complexity
 	componentWillReceiveProps({ loading, children }) {
 		// eslint-disable-line complexity
 		// redirect somewhere once data is ready
@@ -90,6 +92,11 @@ export default class App extends React.Component {
 		return (
 			<div id="container" className={menuOpen ? 'menu-open' : ''}>
 				<section id="menu">
+					<div>
+						<Link to="/world" className="btn-secondary">
+							World
+						</Link>
+					</div>
 					<UserMenu user={user} logout={this.logout} />
 					<MainMenu user={user} />
 				</section>

@@ -19,11 +19,20 @@ export default class UserMenu extends BaseComponent {
 		return (
 			<div className="main-menu">
 				<div>
-					<Link to="/dashboard" className="btn-secondary">
-						Dashboard
+					<Link to="/myData" className="btn-secondary">
+						My Personal Data
 					</Link>
 				</div>
 				<div>
+					<Link to="/dashboard" className="btn-secondary">
+						Execution Dashboard
+					</Link>
+				</div>
+				<div>
+					<Link to="/mySuccesses" className="btn-secondary">
+						My Successes
+					</Link>
+				</div><div>
 					<Link to="/calendar" className="btn-secondary">
 						Schedule
 					</Link>
@@ -31,6 +40,16 @@ export default class UserMenu extends BaseComponent {
 				<div>
 					<Link to="/teams" className="btn-secondary">
 						Teams
+					</Link>
+				</div>
+				<div>
+					<Link to="/contactUs" className="btn-secondary">
+						Contact Us / Feedback
+					</Link>
+				</div>
+				<div>
+					<Link to="/myFiles" className="btn-secondary">
+						My Files
 					</Link>
 				</div>
 			</div>
