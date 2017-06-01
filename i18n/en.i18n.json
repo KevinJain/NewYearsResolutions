@@ -3,7 +3,7 @@
     "userMenu": {
       "logout": "Logout",
       "login": "Sign In",
-      "join": "Welcome!"
+      "join": "Join!"
     },
     "connectionNotification": {
       "tryingToConnect": "Trying to connect",
@@ -94,8 +94,8 @@
     "authPageSignIn": {
       "emailRequired": "Email required",
       "passwordRequired": "Password required",
-      "signIn": "Sign In.",
-      "signInReason": "Signing in allows you to view private lists",
+      "signIn": "Welcome Back!",
+      "signInReason": "Achieve success",
       "yourEmail": "Your Email",
       "password": "Password",
       "signInButton": "Sign in",
