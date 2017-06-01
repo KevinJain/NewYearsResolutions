@@ -181,7 +181,7 @@ module.exports = {
 		'id-length': ['error', { min: 1, max: 30 }], // Short & long are each useful
 		// 1-30 sticks our current at least
 		// 'id-match': ['error'],					// Processor intensive - skip it
-		indent: ['error', 'tab', { SwitchCase: 1 }],
+		// indent: ['error', 'tab', { SwitchCase: 1 }],
 		'jsx-quotes': ['error'],
 		'key-spacing': ['error', { multiLine: { mode: 'minimum' } }], // Alignment for multi
 		'keyword-spacing': ['error', {}],
@@ -225,7 +225,7 @@ module.exports = {
 		'operator-linebreak': ['error'],
 		'padded-blocks': ['error', 'never'],
 		'quote-props': ['error', 'as-needed'],
-		quotes: ['error', 'single'],
+		// quotes: ['error', 'single'],
 		// 'require-jsdoc': ['error'],			// Descriptive naming > docs
 		semi: ['error', 'never'],
 		'semi-spacing': ['error'],
@@ -248,7 +248,7 @@ module.exports = {
 		// 'constructor-super': ['error'],						// eslint:recommended
 		'generator-star-spacing': ['error'],
 		// 'no-class-assign': ['error'],						// eslint:recommended
-		'no-confusing-arrow': ['error', { allowParens: true }],
+		// 'no-confusing-arrow': ['error', { allowParens: true }],
 		// 'no-const-assign': ['error'],						// eslint:recommended
 		'no-dupe-class-members': ['error'], // eslint:recommended
 		'no-duplicate-imports': ['error'],
