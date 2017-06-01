@@ -82,39 +82,6 @@ export default class BasicsPage extends BaseComponent {
 						/>
 					</div>
 
-					<p className="divide">{i18n.__('pages.subscribePageBasics.optional')}</p>
-
-					<div className={`input-symbol ${errorClass('ssn')}`}>
-						<input
-							type="text"
-							name="ssn"
-							ref={c => {
-								this.ssn = c
-							}}
-							placeholder={i18n.__('pages.subscribePageBasics.ssn')}
-						/>
-					</div>
-					<div className={`input-symbol ${errorClass('driverlicencenumber')}`}>
-						<input
-							type="text"
-							name="driverlicencenumber"
-							ref={c => {
-								this.driverlicencenumber = c
-							}}
-							placeholder={i18n.__('pages.subscribePageBasics.driverLicenceNumber')}
-						/>
-					</div>
-					<div className={`input-symbol ${errorClass('passportnumber')}`}>
-						<input
-							type="text"
-							name="passportnumber"
-							ref={c => {
-								this.passportnumber = c
-							}}
-							placeholder={i18n.__('pages.subscribePageBasics.passportNumber')}
-						/>
-					</div>
-
 					<button type="submit" className="btn-primary">
 						{i18n.__('pages.subscribePageBasics.continue')}
 					</button>
