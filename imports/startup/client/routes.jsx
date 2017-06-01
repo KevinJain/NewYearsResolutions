@@ -16,6 +16,7 @@ import NotFoundPage from '../../ui/pages/NotFoundPage.jsx'
 import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx'
 import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
 import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
+import TeamsPageContainer from '../../ui/containers/TeamsPageContainer.jsx'
 
 i18n.setLocale('en')
 
@@ -32,6 +33,7 @@ export default () => // eslint-disable-line react/display-name
 			<Route path="subscribe-basics" component={SubscribePageBasics} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
 			<Route path="subscribe-join" component={SubscribePageJoin} />
+			<Route path="teams" component={TeamsPageContainer} />
 			<Route path="new-profile-pic" component={NewProfilePic} />
 			<Route path="new-cover-photo" component={NewCoverPhoto} />
 			<Route path="calendar" component={CalendarPage} />

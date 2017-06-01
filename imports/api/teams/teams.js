@@ -7,11 +7,9 @@ export const Team = Class.create({
 	collection: Teams,
 	fields: {
 		/// Required
-		_id: {
-			type: Mongo.ObjectID
-		},
+		_id: String,
 		admins: {
-			type: [Mongo.ObjectID]
+			type: [String]
 		},
 		title: {
 			type: String,

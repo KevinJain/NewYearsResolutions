@@ -28,6 +28,11 @@ export default class UserMenu extends BaseComponent {
 						Schedule
 					</Link>
 				</div>
+				<div>
+					<Link to="/teams" className="btn-secondary">
+						Teams
+					</Link>
+				</div>
 			</div>
 		)
 	}
