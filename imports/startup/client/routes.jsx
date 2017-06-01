@@ -18,6 +18,7 @@ import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
 import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
 import TeamsPageContainer from '../../ui/containers/TeamsPageContainer.jsx'
 import ContactUsPage from '../../ui/pages/ContactUsPage.jsx'
+import MyDataPage from '../../ui/pages/MyDataPage.jsx'
 
 i18n.setLocale('en')
 
@@ -33,6 +34,7 @@ export default () => // eslint-disable-line react/display-name
 			<Route path="completion/:resolutionLog" component={CompletionPage} />
 			<Route path="subscribe-basics" component={SubscribePageBasics} />
 			<Route path="contactUs" component={ContactUsPage} />
+			<Route path="myData" component={MyDataPage} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
 			<Route path="subscribe-join" component={SubscribePageJoin} />
 			<Route path="teams" component={TeamsPageContainer} />
