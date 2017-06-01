@@ -2,9 +2,9 @@
 /* eslint-disable quote-props */
 
 App.info({
-	name: 'Todos',
-	description: 'A simple todo list app built in Meteor.',
-	author: 'Percolate Studio Team',
+	name: 'Family',
+	description: 'Stay connected with family',
+	author: 'Kevin Jain',
 	email: 'us@percolatestudio.com',
 	website: 'http://percolatestudio.com',
 	version: '0.0.1'
