@@ -59,11 +59,11 @@ export default class TeamsPage extends BaseComponent {
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
-					<div>
+					<div className="clear">
 						<h2>My teams</h2>
 						{myTeamEls}
 					</div>
-					<div>
+					<div className="clear">
 						<h2>Create a team</h2>
 						<form onSubmit={this.createTeam}>
 							Name:
@@ -76,7 +76,7 @@ export default class TeamsPage extends BaseComponent {
 							<input type="submit" value="Submit" />
 						</form>
 					</div>
-					<div>
+					<div className="clear">
 						<h2>All teams</h2>
 						{allTeamEls}
 					</div>
