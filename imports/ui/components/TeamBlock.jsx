@@ -30,6 +30,19 @@ JoinTeamButton.propTypes = {
 	teamId: PropTypes.string
 }
 
+function ViewTeamButton(props, context) {
+	function viewTeam() {
+		context.router.replace(`/team/${props.teamId}`)
+	}
+	return <button className="btn-primary" onClick={viewTeam}>View Team Page</button>
+}
+ViewTeamButton.propTypes = {
+	teamId: PropTypes.string
+}
+ViewTeamButton.contextTypes = {
+	router: React.PropTypes.object
+}
+
 export default function TeamBlock(props) {
 	// TODO: Box teams (grid like?)
 	return (
@@ -37,6 +50,9 @@ export default function TeamBlock(props) {
 			<h3>{props.team.title}</h3>
 			{'leave' === props.action ? <LeaveTeamButton teamId={props.team._id} /> : ''}
 			{'join' === props.action ? <JoinTeamButton teamId={props.team._id} /> : ''}
+			<br />
+			<br />
+			<ViewTeamButton teamId={props.team._id} />
 		</div>
 	)
 }
