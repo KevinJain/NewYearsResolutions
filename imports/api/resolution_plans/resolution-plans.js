@@ -156,6 +156,10 @@ export const ResolutionPlan = Class.create({
 		},
 
 		/// Optional
+		owner: {
+			// TODO: Add validation here, etc
+			type: String
+		},
 		description: {
 			type: String
 		},
