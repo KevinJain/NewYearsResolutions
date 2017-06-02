@@ -17,14 +17,12 @@ export default class TeamsPage extends BaseComponent {
 
 	createTeam(ev) {
 		ev.preventDefault()
-		// const that = this
 		Meteor.call('teams.user.create', this.state.newTeamName, (err, res) => {
 			if (err) {
 				alert('Error adding team')
 				return
 			}
-			// TODO: Fix this
-			// that.setSate({ newTeamName: '' })
+			this.setState({ newTeamName: '' })
 		})
 	}
 
