@@ -15,11 +15,11 @@ class MyDataPage extends BaseComponent {
 						{i18n.__('pages.myDataPage.title')}
 					</h2>
 					<div>
-						My blood type
+						{i18n.__('pages.myDataPage.myBloodType')}
 						<input type="text" />
 					</div>
 					<div>
-						My cholesterol
+						{i18n.__('pages.myDataPage.myCholesterol')}
 						<input type="text" />
 					</div>
 					<input type="submit" value="Submit" />
