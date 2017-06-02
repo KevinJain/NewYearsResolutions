@@ -2,7 +2,52 @@
 import BaseComponent from '../components/BaseComponent.jsx'
 import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
+import PropTypes from 'prop-types'
 import React from 'react'
+import _ from 'lodash'
+
+function LeaveTeamButton(props) {
+	function leaveTeam() {
+		Meteor.call('teams.user.leave', props.teamId, (err, res) => {
+			if (err) {
+				alert('Error leaving team')
+			}
+		})
+	}
+	return <button className="btn-primary" onClick={leaveTeam}>Leave Team</button>
+}
+LeaveTeamButton.propTypes = {
+	teamId: PropTypes.string
+}
+
+function JoinTeamButton(props) {
+	function joinTeam() {
+		Meteor.call('teams.user.join', props.teamId, (err, res) => {
+			if (err) {
+				alert('Error joining team')
+			}
+		})
+	}
+	return <button className="btn-primary" onClick={joinTeam}>Join Team</button>
+}
+JoinTeamButton.propTypes = {
+	teamId: PropTypes.string
+}
+
+function TeamBlock(props) {
+	// TODO: Box teams (grid like?)
+	return (
+		<div className="team-block">
+			<h3>{props.team.title}</h3>
+			{'leave' === props.action ? <LeaveTeamButton teamId={props.team._id} /> : ''}
+			{'join' === props.action ? <JoinTeamButton teamId={props.team._id} /> : ''}
+		</div>
+	)
+}
+TeamBlock.propTypes = {
+	action: PropTypes.oneOf(['leave', 'join']),
+	team: PropTypes.object.isRequired
+}
 
 export default class TeamsPage extends BaseComponent {
 	constructor(props, context) {
@@ -38,13 +83,16 @@ export default class TeamsPage extends BaseComponent {
 		if (this.props.loading) {
 			return <NotFoundPage />
 		}
-		const teams = this.props.teams
-
-		// TODO: Box teams (grid like?)
-		const teamsEls = teams.map(team => (
-			<div key={team._id} className="team-block">
-				<div className="team-name">{team.title}</div>
-				<button className="btn-primary">Join Team</button>
+		const myTeamEls = this.props.myTeams.map(team => (
+			<div key={team._id}><TeamBlock action="leave" team={team} /></div>
+		))
+		const allTeamEls = this.props.allTeams.map(team => (
+			<div key={team._id}>
+				<TeamBlock
+					action={_.includes(this.props.user.teams, team._id) ? null : 'join'}
+					team={team}
+				/>
+				<br />
 			</div>
 		))
 
@@ -56,6 +104,7 @@ export default class TeamsPage extends BaseComponent {
 				<div className="content-scrollable">
 					<div>
 						<h2>My teams</h2>
+						{myTeamEls}
 					</div>
 					<div>
 						<h2>Create a team</h2>
@@ -72,7 +121,7 @@ export default class TeamsPage extends BaseComponent {
 					</div>
 					<div>
 						<h2>All teams</h2>
-						{teamsEls}
+						{allTeamEls}
 					</div>
 				</div>
 			</div>
