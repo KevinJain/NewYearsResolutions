@@ -6,7 +6,7 @@ import i18n from 'meteor/universe:i18n'
 class MyDataPage extends BaseComponent {
 	render() {
 		return (
-			<div className="page not-found">
+			<div className="page my-data">
 				<nav>
 					<MobileMenu />
 				</nav>
