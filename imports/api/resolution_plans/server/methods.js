@@ -25,7 +25,6 @@ Meteor.methods({
 			order,
 			title: basicPlanInfo.tasksTitle
 		}))
-		console.log(plan)
 		plan.save()
 	}
 })
