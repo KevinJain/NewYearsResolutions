@@ -16,6 +16,7 @@ export default class MyCustomPlansPage extends BaseComponent {
 		}
 		this.changeInput = this.changeInput.bind(this)
 		this.createPlan = this.createPlan.bind(this)
+		this.clearForm = this.clearForm.bind(this)
 	}
 
 	changeInput(ev) {
@@ -37,9 +38,20 @@ export default class MyCustomPlansPage extends BaseComponent {
 		}
 		Meteor.call('resolution_plans.create.custom.basic', plan, (err, res) => {
 			if (err) {
-				alert('Error creating plan')
+				console.log(err)
+				alert(`Error creating plan: ${err.details[0].message} (Also see console log)`)
 				return
 			}
+			this.clearForm()
+		})
+	}
+
+	clearForm() {
+		this.setState({
+			newPlanTitle: '',
+			newPlanDaysPerWeek: 7,
+			newPlanDays: 30,
+			newPlanTasksTitle: ''
 		})
 	}
 
@@ -50,6 +62,11 @@ export default class MyCustomPlansPage extends BaseComponent {
 		}
 		const daysPerWeekOptions = _.map(_.range(1, 7 + 1), daysPerWeek =>
 			<option key={daysPerWeek} value={daysPerWeek}>{daysPerWeek}</option>
+		)
+		const myCustomPlans = _.map(this.props.resolutionPlans, plan =>
+			<div key={plan._id}>
+				{plan.title}
+			</div>
 		)
 
 		return (
@@ -108,6 +125,7 @@ export default class MyCustomPlansPage extends BaseComponent {
 					</div>
 					<div>
 						<h2>My custom plans (Work In Progress)</h2>
+						{myCustomPlans}
 					</div>
 				</div>
 			</div>
