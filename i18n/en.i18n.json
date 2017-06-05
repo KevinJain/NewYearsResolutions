@@ -20,6 +20,11 @@
     }
   },
   "pages": {
+    "myDataPage": {
+      "title": "My Data",
+      "myBloodType": "My Blood Type",
+      "myCholesterol": "My Cholesterol"
+    },
     "contactUs": {
       "title": "Contact us",
       "mission": "Mission: Our Mission is to ignite faith in Humanity, inspire collective action, and accelerate the moral development of our species to achieve long term human goals, transcend that which divides us, and propel the human race forward."

@@ -3,6 +3,8 @@ import BaseComponent from '../components/BaseComponent.jsx'
 import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
+import TeamBlock from '../components/TeamBlock.jsx'
+import _ from 'lodash'
 
 export default class TeamsPage extends BaseComponent {
 	constructor(props, context) {
@@ -17,14 +19,12 @@ export default class TeamsPage extends BaseComponent {
 
 	createTeam(ev) {
 		ev.preventDefault()
-		// const that = this
 		Meteor.call('teams.user.create', this.state.newTeamName, (err, res) => {
 			if (err) {
 				alert('Error adding team')
 				return
 			}
-			// TODO: Fix this
-			// that.setSate({ newTeamName: '' })
+			this.setState({ newTeamName: '' })
 		})
 	}
 
@@ -40,13 +40,16 @@ export default class TeamsPage extends BaseComponent {
 		if (this.props.loading) {
 			return <NotFoundPage />
 		}
-		const teams = this.props.teams
-
-		// TODO: Box teams (grid like?)
-		const teamsEls = teams.map(team => (
-			<div key={team._id} className="team-block">
-				<div className="team-name">{team.title}</div>
-				<button className="btn-primary">Join Team</button>
+		const myTeamEls = this.props.myTeams.map(team => (
+			<div key={team._id}><TeamBlock action="leave" team={team} /></div>
+		))
+		const allTeamEls = this.props.allTeams.map(team => (
+			<div key={team._id}>
+				<TeamBlock
+					action={_.includes(this.props.user.teams, team._id) ? null : 'join'}
+					team={team}
+				/>
+				<br />
 			</div>
 		))
 
@@ -56,10 +59,11 @@ export default class TeamsPage extends BaseComponent {
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
-					<div>
+					<div className="clear">
 						<h2>My teams</h2>
+						{myTeamEls}
 					</div>
-					<div>
+					<div className="clear">
 						<h2>Create a team</h2>
 						<form onSubmit={this.createTeam}>
 							Name:
@@ -72,9 +76,9 @@ export default class TeamsPage extends BaseComponent {
 							<input type="submit" value="Submit" />
 						</form>
 					</div>
-					<div>
+					<div className="clear">
 						<h2>All teams</h2>
-						{teamsEls}
+						{allTeamEls}
 					</div>
 				</div>
 			</div>

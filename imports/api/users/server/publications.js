@@ -18,7 +18,8 @@ Meteor.publish('userData', function() {
 				phone: 1,
 				stripeSubscriptionId: 1,
 				profilePicture: 1,
-				coverPhoto: 1
+				coverPhoto: 1,
+				teams: 1
 			}
 		}
 	)
@@ -36,7 +37,8 @@ Meteor.publish('otherUser', function(userId) {
 				firstName: 1,
 				lastName: 1,
 				profilePicture: 1,
-				coverPhoto: 1
+				coverPhoto: 1,
+				teams: 1
 			}
 		}
 	)

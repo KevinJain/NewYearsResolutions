@@ -17,6 +17,8 @@ import SubscribePageBasics from '../../ui/pages/SubscribePageBasics.jsx'
 import SubscribePageJoin from '../../ui/pages/SubscribePageJoin.jsx'
 import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
 import TeamsPageContainer from '../../ui/containers/TeamsPageContainer.jsx'
+import TeamPageContainer from '../../ui/containers/TeamPageContainer.jsx'
+import WorldPageContainer from '../../ui/containers/WorldPageContainer.jsx'
 import ContactUsPage from '../../ui/pages/ContactUsPage.jsx'
 import MyDataPage from '../../ui/pages/MyDataPage.jsx'
 
@@ -35,8 +37,10 @@ export default () => // eslint-disable-line react/display-name
 			<Route path="subscribe-basics" component={SubscribePageBasics} />
 			<Route path="contactUs" component={ContactUsPage} />
 			<Route path="myData" component={MyDataPage} />
+			<Route path="world" component={WorldPageContainer} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
 			<Route path="subscribe-join" component={SubscribePageJoin} />
+			<Route path="team/:teamId" component={TeamPageContainer} />
 			<Route path="teams" component={TeamsPageContainer} />
 			<Route path="new-profile-pic" component={NewProfilePic} />
 			<Route path="new-cover-photo" component={NewCoverPhoto} />

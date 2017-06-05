@@ -13,6 +13,7 @@ export default Class.create({
 
 		/// Required
 		teams: {
+			// TODO: Enforce uniqueness
 			type: [String],
 			default: () => []
 		},
