@@ -23,7 +23,7 @@ class WorldPage extends BaseComponent {
 				<nav>
 					<MobileMenu />
 				</nav>
-				<div>
+				<div className="content-scrollable">
 					<div>
 						<h2>
 							{i18n.__('pages.WorldPage.title')}
@@ -58,10 +58,10 @@ class WorldPage extends BaseComponent {
 							</li>
 						</ol>
 					</div>
-				</div>
-				<div>
-					<h2>All teams</h2>
-					{allTeamEls}
+					<div>
+						<h2>All teams</h2>
+						{allTeamEls}
+					</div>
 				</div>
 			</div>
 		)
