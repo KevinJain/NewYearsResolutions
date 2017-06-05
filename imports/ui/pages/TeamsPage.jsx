@@ -18,13 +18,20 @@ export default class TeamsPage extends BaseComponent {
 
 	createTeam(ev) {
 		ev.preventDefault()
-		Meteor.call('teams.user.create', this.state.newTeamName, (err, res) => {
+		Meteor.call('teams.user.create', this.state.newTeamName, (err, newTeam) => {
 			if (err) {
 				console.log(err)
 				alert('Error adding team')
 				return
 			}
-			this.setState({ newTeamName: '' })
+			Meteor.call('teams.user.join', newTeam._id, (err, res) => {
+				if (err) {
+					console.log(err)
+					alert('Error joining team just created')
+					return
+				}
+				this.setState({ newTeamName: '' })
+			})
 		})
 	}
 
@@ -55,7 +62,7 @@ export default class TeamsPage extends BaseComponent {
 						{myTeamEls}
 					</div>
 					<div className="clear">
-						<h2>Create a team</h2>
+						<h2>Create (& join) a team</h2>
 						<form onSubmit={this.createTeam}>
 							Name:
 							<input

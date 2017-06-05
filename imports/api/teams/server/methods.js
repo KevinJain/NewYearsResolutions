@@ -57,5 +57,6 @@ Meteor.methods({
 		team.title = teamName
 		team.admins = [userId]
 		team.save()
+		return team
 	}
 })
