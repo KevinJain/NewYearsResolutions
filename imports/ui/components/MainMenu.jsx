@@ -24,6 +24,10 @@ export default class UserMenu extends BaseComponent {
 					</Link>
 				</div>
 				<div>
+					<Link to="/myCustomPlans" className="btn-secondary">
+						My Custom Plans
+					</Link>
+				</div><div>
 					<Link to="/dashboard" className="btn-secondary">
 						My Execution Dashboard
 					</Link>

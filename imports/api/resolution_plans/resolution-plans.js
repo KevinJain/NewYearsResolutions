@@ -61,7 +61,8 @@ const Task = Class.create({
 			default: () => []
 		},
 		description: {
-			type: String
+			type: String,
+			default: _.constant('')
 		},
 		order: {
 			type: Number
@@ -156,8 +157,13 @@ export const ResolutionPlan = Class.create({
 		},
 
 		/// Optional
-		description: {
+		owner: {
+			// TODO: Add validation here, etc
 			type: String
+		},
+		description: {
+			type: String,
+			default: _.constant('')
 		},
 
 		/// Automatic

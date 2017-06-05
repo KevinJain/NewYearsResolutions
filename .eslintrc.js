@@ -278,6 +278,7 @@ module.exports = {
 		 * Plugin: lodash (exceptions as recommended enabled all)
 		 **/
 		'lodash/prefer-lodash-method': ['off'],
+		'lodash/import-scope': ['off'], // We're okay importing it all; don't care to prematurely optomize
 		//'lodash/prefer-lodash-method': ['warn', { except: ['find'] }],
 
 		/**
