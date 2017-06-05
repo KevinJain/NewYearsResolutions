@@ -19,14 +19,15 @@ import SubscribePagePlans from '../../ui/pages/SubscribePagePlans.jsx'
 import TeamsPageContainer from '../../ui/containers/TeamsPageContainer.jsx'
 import TeamPageContainer from '../../ui/containers/TeamPageContainer.jsx'
 import WorldPageContainer from '../../ui/containers/WorldPageContainer.jsx'
+import SuccessPageContainer from '../../ui/containers/SuccessPageContainer.jsx'
 import ContactUsPage from '../../ui/pages/ContactUsPage.jsx'
 import MyDataPage from '../../ui/pages/MyDataPage.jsx'
 
 i18n.setLocale('en')
 
 // TODO: Rework esline disable of 'react/display-name'
-export default () => // eslint-disable-line react/display-name
-(
+export default () =>
+	// eslint-disable-line react/display-name
 	<Router history={browserHistory}>
 		<Route path="/" component={AppContainer}>
 			<Route path="signin" component={AuthPageSignIn} />
@@ -38,6 +39,7 @@ export default () => // eslint-disable-line react/display-name
 			<Route path="contactUs" component={ContactUsPage} />
 			<Route path="myData" component={MyDataPage} />
 			<Route path="world" component={WorldPageContainer} />
+			<Route path="mySuccesses" component={SuccessPageContainer} />
 			<Route path="subscribe-plans" component={SubscribePagePlans} />
 			<Route path="subscribe-join" component={SubscribePageJoin} />
 			<Route path="team/:teamId" component={TeamPageContainer} />
@@ -48,4 +50,3 @@ export default () => // eslint-disable-line react/display-name
 			<Route path="*" component={NotFoundPage} />
 		</Route>
 	</Router>
-)
