@@ -20,6 +20,9 @@
     }
   },
   "pages": {
+    "WorldPage": {
+      "title": "2017 World Goals"
+    },
     "myDataPage": {
       "title": "My Data",
       "myBloodType": "My Blood Type",
