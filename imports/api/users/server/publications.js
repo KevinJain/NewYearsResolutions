@@ -43,3 +43,28 @@ Meteor.publish('otherUser', function(userId) {
 		}
 	)
 })
+
+Meteor.publish('teamMembers', function(teamId) {
+	// Check logged in
+	if (!this.userId) {
+		return []
+	}
+	check(teamId, String)
+
+	// TODO: Add check logged in user is a part of team
+
+	const res = Meteor.users.find(
+		{
+			teams: teamId
+		},
+		{
+			fields: {
+				firstName: 1,
+				lastName: 1,
+				phone: 1,
+				teams: 1
+			}
+		}
+	)
+	return res
+})
