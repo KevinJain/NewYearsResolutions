@@ -1,6 +1,8 @@
+/* eslint-disable lodash/import-scope */
 /* globals Mongo */
 import { Class } from 'meteor/jagi:astronomy'
 import { Random } from 'meteor/random'
+import _ from 'lodash'
 
 const ChatMessage = Class.create({
 	name: 'ChatMessage',
@@ -86,7 +88,8 @@ export const Team = Class.create({
 			]
 		},
 		chatMessages: {
-			type: [ChatMessage]
+			type: [ChatMessage],
+			default: _.constant([])
 		},
 
 		/// Automatic
