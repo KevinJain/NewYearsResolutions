@@ -33,6 +33,10 @@ export default class TeamPage extends BaseComponent {
 					<div className="members">
 						{memberEls}
 					</div>
+					<div>
+						<h2>Invite someone to your team</h2>
+						<div className="sharethis-inline-share-buttons" />
+					</div>
 				</div>
 			</div>
 		)
