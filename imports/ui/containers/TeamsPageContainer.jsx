@@ -10,12 +10,10 @@ const TeamsPageContainer = createContainer(() => {
 	const loading = !teamsHandle.ready()
 
 	const user = User.findOne(userId)
-	const allTeams = Teams.find().fetch()
 	const myTeams = Teams.find({ _id: { $in: user.teams } }).fetch()
 	return {
 		loading,
 		user,
-		allTeams,
 		myTeams
 	}
 }, TeamsPage)

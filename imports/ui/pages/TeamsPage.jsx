@@ -4,7 +4,6 @@ import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
 import TeamBlock from '../components/TeamBlock.jsx'
-import _ from 'lodash'
 
 export default class TeamsPage extends BaseComponent {
 	constructor(props, context) {
@@ -40,18 +39,9 @@ export default class TeamsPage extends BaseComponent {
 		if (this.props.loading) {
 			return <NotFoundPage />
 		}
-		const myTeamEls = this.props.myTeams.map(team => (
+		const myTeamEls = this.props.myTeams.map(team =>
 			<div key={team._id}><TeamBlock action="leave" team={team} /></div>
-		))
-		const allTeamEls = this.props.allTeams.map(team => (
-			<div key={team._id}>
-				<TeamBlock
-					action={_.includes(this.props.user.teams, team._id) ? null : 'join'}
-					team={team}
-				/>
-				<br />
-			</div>
-		))
+		)
 
 		return (
 			<div className="page teams">
@@ -76,10 +66,6 @@ export default class TeamsPage extends BaseComponent {
 							<input type="submit" value="Submit" />
 						</form>
 					</div>
-					<div className="clear">
-						<h2>All teams</h2>
-						{allTeamEls}
-					</div>
 				</div>
 			</div>
 		)
@@ -88,7 +74,7 @@ export default class TeamsPage extends BaseComponent {
 
 TeamsPage.propType = {
 	user: React.PropTypes.object,
-	teams: React.PropTypes.array,
+	myTeams: React.PropTypes.array,
 	loading: React.PropTypes.bool
 }
 
