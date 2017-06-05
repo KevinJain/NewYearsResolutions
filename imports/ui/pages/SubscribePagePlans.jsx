@@ -60,7 +60,7 @@ export default class PlansPage extends BaseComponent {
 			return <SubscribePage content={loggingOutContent} />
 		}
 
-		const plans = ResolutionPlan.find()
+		const plans = ResolutionPlan.find({ owner: null })
 		const plansContent = plans.map(plan => {
 			const query = { user: user._id, resolutionPlan: plan._id }
 			const log = ResolutionLog.findOne(query)
