@@ -147,7 +147,7 @@ export default class JoinPage extends BaseComponent {
 					</button>
 				</form>
 				<br />
-				<Link to="/dashboard" className="btn-secondary">
+				<Link to="/dashboard" className="btn-primary">
 					Skip
 				</Link>
 			</div>
