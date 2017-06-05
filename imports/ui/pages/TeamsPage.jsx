@@ -20,6 +20,7 @@ export default class TeamsPage extends BaseComponent {
 		ev.preventDefault()
 		Meteor.call('teams.user.create', this.state.newTeamName, (err, res) => {
 			if (err) {
+				console.log(err)
 				alert('Error adding team')
 				return
 			}
