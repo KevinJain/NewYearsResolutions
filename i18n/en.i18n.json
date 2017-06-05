@@ -33,11 +33,14 @@
       "title": "Scheduled goal tasks",
       "subTitle": "Calendar will automatically adjust based on your progress"
     },
+    "SuccessPage": {
+      "title": "My Successes",
+      "progress": "Progress"
+    },
     "dashboardPage": {
       "tasksTodoToday": "Your tasks to do today",
       "newCoverPhoto": "New cover photo",
       "newProfilePic": "New profile pic",
-      "progress": "Progress",
       "metrics": "Tracking / Accountability Metrics"
     },
     "newProfilePic": {

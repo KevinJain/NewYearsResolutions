@@ -164,60 +164,12 @@ export default class DashboardPage extends BaseComponent {
 			)
 		})
 
-		const tasksDone = []
-		// TODO: Make this display work for more than just booleans
-		logs.forEach(log => {
-			if (0 === log.completedTasks.length) {
-				return
-			}
-
-			const plan = ResolutionPlan.findOne(log.resolutionPlan)
-			const key = `plan::${plan._id}`
-			tasksDone.push(
-				<h2 key={key}>
-					{plan.title}
-				</h2>
-			)
-			const completedTasks = _.sortBy(log.completedTasks, 'completedAt').reverse()
-			_.forEach(completedTasks, logTask => {
-				const completedAtStr = moment(logTask.completedAt).format('dddd, MMMM Do YYYY')
-				const planTask = _.find(plan.tasks, { _id: logTask.task })
-				const key2 = `task::${logTask._id}`
-				let taskImage = ''
-				if (logTask.proof.image) {
-					taskImage = (
-						<div>
-							<a href={logTask.proof.imageUrlLarge} target="_blank">
-								<img src={logTask.proof.imageUrlThumbnail} />
-							</a>
-						</div>
-					)
-				}
-				let taskText = ''
-				if (logTask.proof.text) {
-					taskText = (
-						<div className="proof-text">
-							"{logTask.proof.text}"
-						</div>
-					)
-				}
-
-				tasksDone.push(
-					<div className="task-completed-container" key={key2}>
-						<h4>{planTask.title}&nbsp;on&nbsp;{completedAtStr}</h4>
-						{taskImage}
-						{taskText}
-					</div>
-				)
-			})
-		})
-
 		const yearRange = this.yearRange()
 		const quartersRanges = this.quartersRanges()
 		const monthsRanges = this.monthsRanges()
 		const weeksRanges = this.weeksRanges()
 
-		const quarters = _.map(quartersRanges, (range, ii) => (
+		const quarters = _.map(quartersRanges, (range, ii) =>
 			<MetricsQuarterComponent
 				key={ii}
 				startMonth={range.start.month()}
@@ -226,9 +178,9 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
-		))
+		)
 
-		const months = _.map(monthsRanges, (range, ii) => (
+		const months = _.map(monthsRanges, (range, ii) =>
 			<MetricsMonthComponent
 				key={ii}
 				month={range.start.month()}
@@ -236,9 +188,9 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				click={this.createSetDateCallback(range.start)}
 			/>
-		))
+		)
 
-		const weeks = _.map(weeksRanges, (range, ii) => (
+		const weeks = _.map(weeksRanges, (range, ii) =>
 			<MetricsWeekComponent
 				key={ii}
 				start={range.start.clone()}
@@ -246,7 +198,7 @@ export default class DashboardPage extends BaseComponent {
 				current={range.current}
 				resolutionsTasks={range.resolutionsTasks}
 			/>
-		))
+		)
 
 		const lastYear = yearRange.start.clone().subtract(1, 'year').startOf('year')
 		const nextYear = yearRange.start.clone().add(1, 'year').startOf('year')
@@ -325,9 +277,6 @@ export default class DashboardPage extends BaseComponent {
 
 					<h1>{i18n.__('pages.dashboardPage.metrics')}</h1>
 					{metrics}
-
-					<h1>{i18n.__('pages.dashboardPage.progress')}</h1>
-					{tasksDone}
 				</div>
 			</div>
 		)
