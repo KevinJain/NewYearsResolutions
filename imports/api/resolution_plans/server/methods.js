@@ -26,5 +26,6 @@ Meteor.methods({
 			title: basicPlanInfo.tasksTitle
 		}))
 		plan.save()
+		return plan
 	}
 })

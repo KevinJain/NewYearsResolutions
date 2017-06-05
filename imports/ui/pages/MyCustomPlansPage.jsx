@@ -30,19 +30,33 @@ export default class MyCustomPlansPage extends BaseComponent {
 
 	createPlan(ev) {
 		ev.preventDefault()
-		const plan = {
+		const basicPlanInfo = {
 			title: this.state.newPlanTitle,
 			days: this.state.newPlanDays,
 			daysPerWeek: this.state.newPlanDaysPerWeek,
 			tasksTitle: this.state.newPlanTasksTitle
 		}
-		Meteor.call('resolution_plans.create.custom.basic', plan, (err, res) => {
+		Meteor.call('resolution_plans.create.custom.basic', basicPlanInfo, (err, plan) => {
 			if (err) {
 				console.log(err)
 				alert(`Error creating plan: ${err.details[0].message} (Also see console log)`)
 				return
 			}
-			this.clearForm()
+			Meteor.call(
+				'resolutionlogs.user.start',
+				{
+					resolutionPlanId: plan._id,
+					daysPerWeekSuggested: plan.daysPerWeekSuggested
+				},
+				(err, res) => {
+					if (err) {
+						console.log(err)
+						alert(`Start plan error: ${err.details[0].message} (Also see console log)`)
+						return
+					}
+					this.clearForm()
+				}
+			)
 		})
 	}
 
