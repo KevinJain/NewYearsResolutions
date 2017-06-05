@@ -19,6 +19,16 @@ class ContactUsPage extends BaseComponent {
 						<li>Things you like</li>
 						<li>Other Feedback</li>
 					</ul>
+					<h2>
+						JOIN OUR TEAM!
+					</h2>
+					<p>
+						TO INTERVIEW NOW, CALL 949-482-9555!!
+					</p>
+					<p>
+						Developers contact
+						{' '}<a href="mailto:AnthonyAstige@gmail.com">AnthonyAstige@gmail.com</a>
+					</p>
 					{/*
 					<form>
 						<textarea></textarea>
