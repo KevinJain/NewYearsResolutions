@@ -19,7 +19,7 @@ Meteor.methods({
 		plan.owner = userId
 		plan.title = basicPlanInfo.title
 		plan.proofTypes = [0] // Just a checkbox
-		plan.daysPerWeekSuggested = basicPlanInfo.daysPerWeek
+		plan.daysPerWeekSuggested = Number(basicPlanInfo.daysPerWeek)
 		plan.tasks = _.map(_.range(0, basicPlanInfo.days), order => ({
 			_id: Random.id(),
 			order,
