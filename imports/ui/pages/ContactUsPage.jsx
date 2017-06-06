@@ -27,7 +27,10 @@ class ContactUsPage extends BaseComponent {
 					</p>
 					<p>
 						Developers contact
-						{' '}<a href="mailto:AnthonyAstige@gmail.com">AnthonyAstige@gmail.com</a>
+						{' '}
+						<a href="mailto:AnthonyAstige+KJ8000000000Dev@gmail.com">
+							AnthonyAstige+KJ8000000000Dev@gmail.com
+						</a>
 					</p>
 					{/*
 					<form>
