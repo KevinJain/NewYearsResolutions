@@ -91,6 +91,11 @@ export const Team = Class.create({
 			type: String,
 			default: () => _.constant('')
 		},
+		// Cloudinary public id's
+		images: {
+			type: [String],
+			default: () => []
+		},
 		chatMessages: {
 			type: [ChatMessage],
 			default: _.constant([])

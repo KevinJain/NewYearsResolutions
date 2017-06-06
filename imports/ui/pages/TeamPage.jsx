@@ -1,22 +1,32 @@
 /* globals Meteor */
 /* eslint-disable lodash/import-scope */
+/* eslint-disable max-len */
 import BaseComponent from '../components/BaseComponent.jsx'
 import MobileMenu from '../components/MobileMenu.jsx'
 import NotFoundPage from '../pages/NotFoundPage.jsx'
 import React from 'react'
+import UploadImage from '../components/UploadImage.jsx'
 import _ from 'lodash'
 
 export default class TeamPage extends BaseComponent {
 	constructor(props, context) {
 		super(props)
+		this.state = {
+			extrainfo: ''
+		}
 
 		this.submitExtraInfo = this.submitExtraInfo.bind(this)
 		this.changeExtraInfo = this.changeExtraInfo.bind(this)
+		this.teamImageUploaded = this.teamImageUploaded.bind(this)
 	}
-	componentWillMount() {
-		this.state = {
-			extrainfo: this.props.team && this.props.team.extrainfo
-		}
+	teamImageUploaded(result) {
+		Meteor.call('teams.add.image', this.props.team._id, result.public_id, (err, res) => {
+			if (err) {
+				console.log(err)
+				alert('Error uploading team image')
+				return
+			}
+		})
 	}
 
 	submitExtraInfo(ev) {
@@ -45,6 +55,20 @@ export default class TeamPage extends BaseComponent {
 		// TODO: ** Can probably work around this in the container
 		if (!this.state.extrainfo && this.props.team && this.props.team.extrainfo) {
 			this.setState({ extrainfo: this.props.team.extrainfo })
+		}
+		let imageEls = ''
+		if (this.props.team && this.props.team.images) {
+			imageEls = _.map(this.props.team.images, img => {
+				const cloudinaryPrefix = 'https://res.cloudinary.com/'
+				const cloudName = Meteor.settings.public.cloudinary.name
+				const lTrans = 'w_600,c_fill'
+				const url = `${cloudinaryPrefix}${cloudName}/image/upload/${lTrans}/${img}.jpg`
+				return (
+					<div key={img}>
+						<img src={url} />
+					</div>
+				)
+			})
 		}
 
 		if (this.props.loading) {
@@ -82,6 +106,13 @@ export default class TeamPage extends BaseComponent {
 							<input type="submit" value="submit" />
 						</form>
 
+					</div>
+					<div className="clear">
+						{imageEls}
+						<div className="clear">
+							<h2>Upload team image</h2>
+							<UploadImage success={this.teamImageUploaded} />
+						</div>
 					</div>
 				</div>
 			</div>

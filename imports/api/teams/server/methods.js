@@ -79,5 +79,25 @@ Meteor.methods({
 
 		team.extrainfo = extrainfo
 		team.save()
+	},
+	'teams.add.image': (teamId, cloudinaryPublicId) => {
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed data ok
+		check(teamId, String)
+		check(cloudinaryPublicId, String)
+
+		// Enforce team exists
+		const team = Team.findOne(teamId)
+		if (!team) {
+			throw new Meteor.Error('bad-params', 'Team does not exist')
+		}
+
+		// TODO: Enforce user on team
+
+		team.images.push(cloudinaryPublicId)
+		team.save()
 	}
 })
