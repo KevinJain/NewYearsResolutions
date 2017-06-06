@@ -5,12 +5,15 @@ import i18n from 'meteor/universe:i18n'
 
 class MyDataPage extends BaseComponent {
 	render() {
+		const goalStatement = this.props.user && this.props.user.goalStatement
 		return (
 			<div className="page my-data">
 				<nav>
 					<MobileMenu />
 				</nav>
 				<div className="content-scrollable">
+					<h2>My Goal Statement</h2>
+					<p>{goalStatement}</p>
 					<h2>
 						{i18n.__('pages.myDataPage.title')}
 					</h2>
@@ -27,6 +30,10 @@ class MyDataPage extends BaseComponent {
 			</div>
 		)
 	}
+}
+
+MyDataPage.propType = {
+	user: React.PropTypes.object
 }
 
 export default MyDataPage

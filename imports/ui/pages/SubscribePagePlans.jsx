@@ -12,13 +12,26 @@ import i18n from 'meteor/universe:i18n'
 export default class PlansPage extends BaseComponent {
 	constructor(props) {
 		super(props)
-		this.state = Object.assign(this.state, { selectingPlan: false })
+		this.state = Object.assign(this.state, { selectingPlan: false, goalStatement: '' })
 		this.onSubmit = this.onSubmit.bind(this)
 		this.togglePlan = this.togglePlan.bind(this)
+		this.changeGoalStatement = this.changeGoalStatement.bind(this)
+	}
+
+	changeGoalStatement(ev) {
+		this.setState({ goalStatement: ev.target.value })
 	}
 
 	onSubmit(event) {
 		event.preventDefault()
+
+		Meteor.call('users.newGoalStatement', this.state.goalStatement, (err, res) => {
+			if (err) {
+				console.log(err)
+				alert('Problem submitting / adding goal statement')
+				return
+			}
+		})
 
 		const user = Meteor.user()
 		if (!ResolutionLogsHelpers.userHas(user._id)) {
@@ -29,6 +42,7 @@ export default class PlansPage extends BaseComponent {
 	}
 
 	togglePlan(event, resolutionPlan, toggleOn) {
+		event.preventDefault()
 		this.setState({ selectingPlan: true })
 		if (toggleOn) {
 			const logBasics = {
@@ -89,14 +103,19 @@ export default class PlansPage extends BaseComponent {
 
 		const content = (
 			<div className="wrapper-subscribe">
-				<h1 className="title-subscribe">
-					{i18n.__('pages.subscribePagePlans.pickPlans')}
-				</h1>
-				<p className="subtitle-subscribe">
-					{i18n.__('pages.subscribePagePlans.reason')}
-				</p>
-				{plansContent}
 				<form onSubmit={this.onSubmit}>
+					<h1>Goal Statement</h1>
+					<textarea
+						value={this.state.goalStatement}
+						onChange={this.changeGoalStatement}
+					/>
+					<h1 className="title-subscribe">
+						{i18n.__('pages.subscribePagePlans.pickPlans')}
+					</h1>
+					<p className="subtitle-subscribe">
+						{i18n.__('pages.subscribePagePlans.reason')}
+					</p>
+					{plansContent}
 					<button type="submit" className="btn-primary">
 						{i18n.__('pages.subscribePagePlans.continue')}
 					</button>

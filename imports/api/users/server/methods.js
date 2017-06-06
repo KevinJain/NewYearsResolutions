@@ -45,5 +45,20 @@ Meteor.methods({
 		const user = User.findOne(userId)
 		user.coverPhoto = coverPhoto
 		user.save() // Will throw an error back if fails
+	},
+
+	'users.newGoalStatement': goalStatement => {
+		console.log(goalStatement)
+		// Enforce logged in
+		const userId = Meteor.userId()
+		check(userId, String)
+
+		// Enforce passed a string
+		check(goalStatement, String)
+
+		// Save data passed in
+		const user = User.findOne(userId)
+		user.goalStatement = goalStatement
+		user.save() // Will throw an error back if fails
 	}
 })

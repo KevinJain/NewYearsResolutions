@@ -64,6 +64,10 @@ export default Class.create({
 		},
 
 		/// Optional
+		goalStatement: {
+			type: String,
+			optional: true
+		},
 		coverPhoto: {
 			// Cloudinary image id
 			type: String,

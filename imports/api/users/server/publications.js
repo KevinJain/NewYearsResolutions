@@ -15,6 +15,7 @@ Meteor.publish('userData', function() {
 			fields: {
 				firstName: 1,
 				lastName: 1,
+				goalStatement: 1,
 				phone: 1,
 				stripeSubscriptionId: 1,
 				profilePicture: 1,
@@ -36,6 +37,7 @@ Meteor.publish('otherUser', function(userId) {
 			fields: {
 				firstName: 1,
 				lastName: 1,
+				goalStatement: 1,
 				profilePicture: 1,
 				coverPhoto: 1,
 				teams: 1
