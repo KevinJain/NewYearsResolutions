@@ -87,6 +87,10 @@ export const Team = Class.create({
 				}
 			]
 		},
+		extrainfo: {
+			type: String,
+			default: () => _.constant('')
+		},
 		chatMessages: {
 			type: [ChatMessage],
 			default: _.constant([])
