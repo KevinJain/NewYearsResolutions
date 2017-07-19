@@ -65,7 +65,7 @@ export default class JoinPage extends BaseComponent {
 				</p>
 				<iframe
 					className="intro-video"
-					src="https://www.youtube.com/embed/GPaYrhUZSYQ"
+					src="https://www.youtube.com/embed/ZNshDBRWkGY"
 					frameBorder="0"
 					allowFullScreen
 				/>
