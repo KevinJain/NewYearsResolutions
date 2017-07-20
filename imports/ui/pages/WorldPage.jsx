@@ -23,14 +23,7 @@ class WorldPage extends BaseComponent {
 				<nav>
 					<MobileMenu />
 				</nav>
-				<div className="content-scrollable">
-					<div>
-						<h2>
-							Advanced Praise
-						</h2>
-						
-					</div>
-						
+				<div className="content-scrollable">					
 					
 					<div>
 						<h2>
@@ -38,7 +31,7 @@ class WorldPage extends BaseComponent {
 						</h2>
 						<ol>
 							<li>
-								0. This is a test by Kevin Jain, hello world!!
+								0. This is a test by Kevin Jain, hello world!! XYZ
 								1. End World Hunger => Ensure Nobody on the world Dies of
 								Starvation => Make sure everybody has enough food to eat =>
 								<br />
