@@ -26,6 +26,14 @@ class WorldPage extends BaseComponent {
 				<div className="content-scrollable">
 					<div>
 						<h2>
+							Advanced Praise
+						</h2>
+						
+					</div>
+						
+					
+					<div>
+						<h2>
 							{i18n.__('pages.WorldPage.title')}
 						</h2>
 						<ol>
