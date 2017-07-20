@@ -27,11 +27,16 @@ class WorldPage extends BaseComponent {
 					
 					<div>
 						<h2>
+							This would be awesome if it shows july 20th 2017
+							
+						</h2>
+						
+						<h2>
 							{i18n.__('pages.WorldPage.title')}
 						</h2>
 						<ol>
 							<li>
-								0. This is a test by Kevin Jain, hello world!! XYZ
+								0. This is a test by Kevin Jain, hello world!! XYZ this should show up on july 20th right no
 								1. End World Hunger => Ensure Nobody on the world Dies of
 								Starvation => Make sure everybody has enough food to eat =>
 								<br />
